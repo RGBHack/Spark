@@ -1,3 +1,4 @@
+var calendar;
 $(document).ready(function() {
 	    var date = new Date();
 		var d = date.getDate();
@@ -38,7 +39,7 @@ $(document).ready(function() {
 		/* initialize the calendar
 		-----------------------------------------------------------------*/
 		
-		var calendar =  $('#calendar').fullCalendar({
+		calendar =  $('#calendar').fullCalendar({
 			header: {
 				left: 'title',
 				center: 'agendaDay,agendaWeek,month',
@@ -109,5 +110,12 @@ $(document).ready(function() {
 			],			
 		});
 		
+		function getEvents() {
+			if (calendar.fullCalendar('clientEvents').length !== 0) {
+				console.log(calendar.fullCalendar('clientEvents')[0])
+			}
+			setTimeout(getEvents, 1000);
+		}
 		
+		getEvents();
 	});
