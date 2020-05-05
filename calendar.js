@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			editable: true,
 			selectable: true,
 			select: function(info) {
-				var title = prompt('Event Title:');
+				$("#dialog").dialog();
+				var title = "hello"
 				if (title) {
 					calendar.addEvent(
 						{
@@ -64,5 +65,5 @@ document.addEventListener('DOMContentLoaded', function() {
 			setTimeout(getEvents, 1000);
 		}
 		
-		//getEvents();
-	});
+		getEvents();
+});
