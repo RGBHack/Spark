@@ -6,7 +6,7 @@
   <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
 </p>
 
-> ⚡ A productivity web app for those affected by COVID-19
+### ⚡ A productivity web app for those affected by COVID-19
 
 ### 🏠 [Homepage](https://www.sparkapp.tk)
 
