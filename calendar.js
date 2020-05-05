@@ -18,17 +18,21 @@ document.addEventListener('DOMContentLoaded', function() {
 			editable: true,
 			selectable: true,
 			select: function(info) {
-				$("#dialog").dialog();
-				var title = "hello"
-				if (title) {
+				var start = info.start.toISOString().split("T")[0]+"T";
+				$("#prompt-submit").click(function(){
+					console.log($("#title").val())
+					console.log(start+$("#start").val())
+					console.log(new Date(start+$("#start").val()))
 					calendar.addEvent(
 						{
-							title: title,
-							start: info.start,
+							title: $("#title").val(),
+							start: new Date(start+$("#start").val()),
 							allDay: false
 						}
 					);
-				}
+					$("#dialog").dialog("close")
+				})
+				$("#dialog").dialog();
 				calendar.unselect();
 			},
 			droppable: true,
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		calendar.render()
 		function getEvents() {
 			if (calendar.getEvents() !== 0) {
-				console.log(calendar.getEvents())
+				//console.log(calendar.getEvents())
 			}
 			setTimeout(getEvents, 1000);
 		}
