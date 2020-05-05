@@ -17,13 +17,6 @@ git clone https://github.com/RGBHack/Spark.git
 npm i -g firebase
 ```
 
-## Install
-
-```sh
-git clone https://github.com/RGBHack/Spark.git
-npm i -g firebase
-```
-
 ## Usage
 
 ```sh
