@@ -19,7 +19,7 @@ def join(id):
     return render_template('signup.html',id=id)
 
 @app.route('/workspace/<id>')
-def join(id):
+def workspace(id):
     print(id, file=sys.stdout)
     #if id is in database, then continue, otherwise redirect to 404 error
     return render_template('signup.html',id=id)
