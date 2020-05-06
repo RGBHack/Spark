@@ -15,11 +15,7 @@ def index():
     return render_template('index.html', context=context)
 
 @app.route('/dashboard')
-<<<<<<< HEAD
-def index():
-=======
 def dash():
->>>>>>> 0d1a9e0ea8709b63a2e1f8aedb1f6bc53f0fe1f4
     context = { 'server_time': format_server_time() }
     return render_template('dashboard.html', context=context)
 
