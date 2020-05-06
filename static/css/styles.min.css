@@ -61,12 +61,13 @@ div#formContent div.separator {
 }
 .btn-primary {
   background: linear-gradient(
-    0deg,
+    90deg,
     rgba(255, 93, 0, 1) 0,
     rgba(255, 217, 25, 1) 100%
   );
   border-color: #fff;
 }
+
 .loginbtn {
   width: 50%;
 }
@@ -99,7 +100,7 @@ a {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
-    90deg,
+    0deg,
     rgba(255, 93, 0, 1) 0,
     rgba(255, 217, 25, 1) 100%
   );
