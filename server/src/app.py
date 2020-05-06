@@ -12,12 +12,6 @@ class RegexConverter(BaseConverter):
         self.regex = items[0]
 app.url_map.converters['regex'] = RegexConverter
 
-@app.route('/join/<id>')
-def join(id):
-    print(id, file=sys.stdout)
-    #if id is in database, then continue, otherwise redirect to 404 error
-    return render_template('signup.html',id=id)
-
 @app.route('/workspace/<id>')
 def workspace(id):
     print(id, file=sys.stdout)
@@ -37,6 +31,11 @@ def index():
 def dash():
     context = { 'server_time': format_server_time() }
     return render_template('dashboard.html', context=context)
+
+@app.route('/calendar')
+def calendar():
+    context = { 'server_time': format_server_time() }
+    return render_template('calendar.html', context=context)
 
 @app.route('/login')
 def login():
