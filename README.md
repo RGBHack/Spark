@@ -1,5 +1,5 @@
-<h1>Welcome to Spark 👋</h1>
-<p>
+<h1 style="text-align: center;">Welcome to Spark 👋</h1>
+<p style="text-align: center;">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
