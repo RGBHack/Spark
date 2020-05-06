@@ -15,7 +15,7 @@ def index():
     return render_template('index.html', context=context)
 
 @app.route('/dashboard')
-def index():
+def dash():
     context = { 'server_time': format_server_time() }
     return render_template('dashboard.html', context=context)
 
