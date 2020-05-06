@@ -9,7 +9,7 @@
 
 > ⚡ A productivity web app for those affected by COVID-19
 
-### 🏠 [Homepage](https://www.sparkapp.tk)
+### 🏠 [Homepage](https://www.sparkapp.cf)
 
 ## Install
 
