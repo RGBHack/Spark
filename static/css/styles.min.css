@@ -73,3 +73,25 @@ div#formContent div.separator {
 a {
   color: #ff5d00;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 93, 0, 1) 0,
+    rgba(255, 217, 25, 1) 100%
+  );
+  border-radius: 10px;
+}
