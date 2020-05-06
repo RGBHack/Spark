@@ -39,7 +39,7 @@ def dash():
     return render_template('dashboard.html', context=context)
 
 @app.route('/login')
-def dash():
+def login():
     context = { 'server_time': format_server_time() }
     return render_template('login.html', context=context)
 
