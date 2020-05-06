@@ -1,12 +1,12 @@
-<h1 align="center">Welcome to Spark 👋</h1>
-<p align="center">
+<h1>Welcome to Spark 👋</h1>
+<p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
   <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
 </p>
 
-### ⚡ A productivity web app for those affected by COVID-19
+> ⚡ A productivity web app for those affected by COVID-19
 
 ### 🏠 [Homepage](https://www.sparkapp.tk)
 
