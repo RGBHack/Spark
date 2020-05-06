@@ -8,15 +8,31 @@ function addDate () {
 	console.log("end")
 	console.log(start+$("#end").val())
 	console.log(new Date(start+$("#end").val()))
-	calendar.addEvent(
-		{
-			title: $("#title").val(),
-			start: new Date(start+$("#start").val()),
-			end: new Date(start+$("#end").val()),
-			allDay: false
-		}
-	);
+	if (new Date().toISOString().split("T")[0]+"T" === start) {
+		calendar.addEvent(
+			{
+				title: $("#title").val(),
+				start: new Date(start+$("#start").val()),
+				end: new Date(start+$("#end").val()),
+				allDay: false,
+				color: '#1a252f'
+			}
+		);
+	}
+	else {
+		calendar.addEvent(
+			{
+				title: $("#title").val(),
+				start: new Date(start+$("#start").val()),
+				end: new Date(start+$("#end").val()),
+				allDay: false
+			}
+		);
+	}
 	console.log("new event added")
+	$("#title").val("")
+	$("#start").val("")
+	$("#end").val("")
 	$("#dialog").dialog("close")
 }
 document.addEventListener('DOMContentLoaded', function() {
@@ -28,7 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		var y = date.getFullYear();
 		
 		calendar = new FullCalendar.Calendar(calendarEl, {
-			plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+			plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'bootstrap' ],
+			/*theme: true,
+			themeSystem: 'bootstrap4',*/
+			eventColor: '#2C3E50',
 			header: {
 				left: 'prev,next today',
 				center: 'title',
