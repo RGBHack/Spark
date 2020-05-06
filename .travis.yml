@@ -1,0 +1,39 @@
+matrix:
+    include:
+        - language: generic
+          python: "3.7"
+          node_js: "node"
+          services: docker
+          env:
+          - GCP_PROJECT_ID=spark-2121
+          - IMAGE=gcr.io/spark-2121/spark-2121
+          - CLOUD_RUN_SERVICE=spark-2121
+          - CLOUD_RUN_REGION=us-central1
+          - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # prevent gcloud from prompting
+          before_install:
+          - nvm install node
+          - npm i -g firebase-tools
+  
+          - openssl aes-256-cbc -K $encrypted_98d237b7dbf4_key -iv $encrypted_98d237b7dbf4_iv -in google-key.json.enc -out google-key.json -d
+          - curl https://sdk.cloud.google.com | bash > /dev/null
+          - source "$HOME/google-cloud-sdk/path.bash.inc"
+          - gcloud auth activate-service-account --key-file=google-key.json
+          - gcloud auth configure-docker    # enable "docker push" to gcr
+          - gcloud config set project "${GCP_PROJECT_ID}"
+          - gcloud components install beta  # until Cloud Run is generally available (GA)
+          install: true
+          script:
+          - |
+            set -ex;
+            docker build -t "${IMAGE}:${TRAVIS_COMMIT}" ./server && \
+            docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
+            gcloud beta run deploy "${CLOUD_RUN_SERVICE}" \
+              --image="${IMAGE}:${TRAVIS_COMMIT}" \
+              --platform=managed \
+              --region="${CLOUD_RUN_REGION}" \
+              --allow-unauthenticated;
+            set +x
+          deploy:
+            provider: firebase
+            token:
+              secure: "smUJkLO6G4B+H5S28o8/Z/WRckVEqcHwmcNuKO7GBuSeIGqjFfG4qmTcJjFKEI12rVISIyQntRjEPZvZfMcowsdN+sPrDFsjOhE6CkouFTkVzJ4vwrc/8bgqdoXK3ptky4Rq2RGjGRYK+Y03yGtcrB3OcGAYyESdkvVSRzp8WZaIhCsfbnPvhHC6aBUMmAQg0z1byMZZNW8ackoyMPyNS6IjooXks8Rwg+E+wNzZtFD322ZgLH2i5eoMLaExHB+PBvD0TlgeYkkQN96fzMVbwfT4JgYWHgH8IytIGUcl8dQcv+3GL994Rte3dWDc23bhlUPPhZwMU4GtHSNaps26aJWcg/NMAjoXIij7IStH2TyCaVa+8O1cU9Fq4Mb1WIBQbaVqVyxfA0PgGLZ6g7TScRC5TIW3GaCEA1f7ZNYeO1mkdhgbmgAY899MiFetcw22olITelxVnUeqCOUj0WzPuMxhoX80iYD9OMxSkXsXctR8sNRIecU9f5nmAL7xGUQn7yvxzF7EDPUWDloO+E9orpZlAvhKNQ+bKoxpc1sCtL6VttNWMWcGGz5ae2jfgl8INTtnIFNLxubPpgViYOU2QX064mJ4kHJKBo+ns9tpaBzXHqfBe625wBSPtTQ4/VaQD2U+0yyaSIqn6IIsKfdICwjhG0CPWubDsCiozmP0dls="

@@ -4,6 +4,7 @@
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
   <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+  <img alt="Build" src="https://travis-ci.com/RGBHack/Spark.svg?token=yK4yfmRA1QdUzxuse6q8&branch=master">
 </p>
 
 > ⚡ A productivity web app for those affected by COVID-19
