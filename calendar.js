@@ -1,4 +1,24 @@
 var calendar;
+var start;
+var end;
+function addDate () {
+	console.log("start")
+	console.log(start+$("#start").val())
+	console.log(new Date(start+$("#start").val()))
+	console.log("end")
+	console.log(start+$("#end").val())
+	console.log(new Date(start+$("#end").val()))
+	calendar.addEvent(
+		{
+			title: $("#title").val(),
+			start: new Date(start+$("#start").val()),
+			end: new Date(start+$("#end").val()),
+			allDay: false
+		}
+	);
+	console.log("new event added")
+	$("#dialog").dialog("close")
+}
 document.addEventListener('DOMContentLoaded', function() {
 		var date = new Date();
 		var calendarEl = document.getElementById('calendar');
@@ -18,20 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			editable: true,
 			selectable: true,
 			select: function(info) {
-				var start = info.start.toISOString().split("T")[0]+"T";
-				$("#prompt-submit").click(function(){
-					console.log($("#title").val())
-					console.log(start+$("#start").val())
-					console.log(new Date(start+$("#start").val()))
-					calendar.addEvent(
-						{
-							title: $("#title").val(),
-							start: new Date(start+$("#start").val()),
-							allDay: false
-						}
-					);
-					$("#dialog").dialog("close")
-				})
+				start = info.start.toISOString().split("T")[0]+"T";
+				end = info.end.toISOString().split("T")[0]+"T";
 				$("#dialog").dialog();
 				calendar.unselect();
 			},
@@ -69,5 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			setTimeout(getEvents, 1000);
 		}
 		
+
 		getEvents();
 });
