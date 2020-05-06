@@ -38,5 +38,10 @@ def dash():
     context = { 'server_time': format_server_time() }
     return render_template('dashboard.html', context=context)
 
+@app.route('/login')
+def dash():
+    context = { 'server_time': format_server_time() }
+    return render_template('login.html', context=context)
+
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
