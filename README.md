@@ -1,5 +1,5 @@
-<h1 align="center">Welcome to Spark 👋</h1>
-<p align="center">
+<h1>Welcome to Spark 👋</h1>
+<p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
@@ -7,7 +7,7 @@
   <img alt="Build" src="https://travis-ci.com/RGBHack/Spark.svg?token=yK4yfmRA1QdUzxuse6q8&branch=master">
 </p>
 
-> ⚡ A productivity web app forhelping people during the COVID-19 Pandemic
+> ⚡ A productivity web app for helping people during the COVID-19 Pandemic
 
 ### 🏠 [Homepage](https://www.sparkapp.cf)
 
