@@ -89,7 +89,7 @@
             const email = form['email'].value
             const password = form['password'].value
             auth.createUserWithEmailAndPassword(email, password).then(cred => {
-                db.collection("users").doc(cred.user.uid).set({}).then(function () {
+                db.collection("users").doc(cred.user.uid).set({sparkrooms: []}).then(function () {
                     window.location.pathname = '/dashboard'
                 }).catch(err => {
                     alert(err.code)
