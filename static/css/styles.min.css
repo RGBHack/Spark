@@ -99,11 +99,11 @@ a {
 .nav-link {
   color: rgba(255,255,255,0.5);
   font-family: 'Lexend Deca Regular';
-  font-size: 15vh;
+  font-size: 5vh;
 }
 
 .nav-link.active {
   color: rgba(255,255,255,0.9);
   font-family: 'Lexend Deca Regular';
- font-size: 15vh;
+  font-size: 5vh;
 }
