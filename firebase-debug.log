@@ -1,37 +1,33 @@
-[debug] [2020-05-07T00:51:24.866Z] ----------------------------------------------------------------------
-[debug] [2020-05-07T00:51:24.870Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
-[debug] [2020-05-07T00:51:24.870Z] CLI Version:   8.1.1
-[debug] [2020-05-07T00:51:24.870Z] Platform:      linux
-[debug] [2020-05-07T00:51:24.870Z] Node Version:  v12.16.1
-[debug] [2020-05-07T00:51:24.871Z] Time:          Wed May 06 2020 17:51:24 GMT-0700 (Pacific Daylight Time)
-[debug] [2020-05-07T00:51:24.872Z] ----------------------------------------------------------------------
-[debug] [2020-05-07T00:51:24.872Z] 
-[debug] [2020-05-07T00:51:24.887Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-05-07T00:51:24.888Z] > authorizing via signed-in user
-[debug] [2020-05-07T00:51:24.889Z] [iam] checking project spark-2121 for permissions ["firebase.projects.get"]
-[debug] [2020-05-07T00:51:24.894Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/spark-2121:testIamPermissions  
+[debug] [2020-05-07T01:11:36.112Z] ----------------------------------------------------------------------
+[debug] [2020-05-07T01:11:36.117Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2020-05-07T01:11:36.118Z] CLI Version:   8.1.1
+[debug] [2020-05-07T01:11:36.118Z] Platform:      linux
+[debug] [2020-05-07T01:11:36.118Z] Node Version:  v12.16.1
+[debug] [2020-05-07T01:11:36.119Z] Time:          Wed May 06 2020 18:11:36 GMT-0700 (Pacific Daylight Time)
+[debug] [2020-05-07T01:11:36.120Z] ----------------------------------------------------------------------
+[debug] [2020-05-07T01:11:36.120Z] 
+[debug] [2020-05-07T01:11:36.139Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-07T01:11:36.141Z] > authorizing via signed-in user
+[debug] [2020-05-07T01:11:36.141Z] [iam] checking project spark-2121 for permissions ["firebase.projects.get"]
+[debug] [2020-05-07T01:11:36.148Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/spark-2121:testIamPermissions  
  {"permissions":["firebase.projects.get"]}
-[debug] [2020-05-07T00:51:25.477Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 00:51:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=212","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-05-07T00:51:25.483Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/spark-2121  
+[debug] [2020-05-07T01:11:36.623Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 01:11:37 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=219","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-07T01:11:36.627Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/spark-2121  
  
-[debug] [2020-05-07T00:51:25.766Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 00:51:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-07T01:11:36.948Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 01:11:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] 
 [info] === Serving from '/mnt/c/Users/raad1/Documents/GitHub/Spark'...
 [info] 
-[debug] [2020-05-07T00:51:25.774Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/spark-2121/webApps/-/config  
+[debug] [2020-05-07T01:11:36.966Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/spark-2121/webApps/-/config  
  
-[debug] [2020-05-07T00:51:26.390Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 00:51:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-07T01:11:37.541Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 01:11:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] i  hosting: Serving hosting files from: static
 [info] ✔  hosting: Local server: http://localhost:5000
 [info] [hosting] Cloud Run rewrite {"source":"**","run":{"serviceId":"spark-2121","region":"us-central1"}} triggered
 [info] [hosting] Looking up Cloud Run service "/v1alpha1/projects/spark-2121/locations/us-central1/services/spark-2121" for its URL
-[debug] [2020-05-07T00:51:28.394Z] >>> HTTP REQUEST GET https://run.googleapis.com/v1alpha1/projects/spark-2121/locations/us-central1/services/spark-2121  
+[debug] [2020-05-07T01:11:44.313Z] >>> HTTP REQUEST GET https://run.googleapis.com/v1alpha1/projects/spark-2121/locations/us-central1/services/spark-2121  
  
-[debug] [2020-05-07T00:51:28.905Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 00:51:30 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[info] [hosting] Rewriting /dashboard to https://spark-2121-pvbbkv4aza-uc.a.run.app for Cloud Run service "spark-2121" for region "us-central1"
+[debug] [2020-05-07T01:11:44.860Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 07 May 2020 01:11:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] [hosting] Rewriting /login to https://spark-2121-pvbbkv4aza-uc.a.run.app for Cloud Run service "spark-2121" for region "us-central1"
 [info] [hosting] Cloud Run rewrite {"source":"**","run":{"serviceId":"spark-2121","region":"us-central1"}} triggered
-[info] [hosting] Rewriting /calendar to https://spark-2121-pvbbkv4aza-uc.a.run.app for Cloud Run service "spark-2121" for region "us-central1"
-[info] [hosting] Cloud Run rewrite {"source":"**","run":{"serviceId":"spark-2121","region":"us-central1"}} triggered
-[info] [hosting] Rewriting /static/js/calendar.js to https://spark-2121-pvbbkv4aza-uc.a.run.app for Cloud Run service "spark-2121" for region "us-central1"
-[info] [hosting] Cloud Run rewrite {"source":"**","run":{"serviceId":"spark-2121","region":"us-central1"}} triggered
-[info] [hosting] Rewriting /static/css/calendar.css to https://spark-2121-pvbbkv4aza-uc.a.run.app for Cloud Run service "spark-2121" for region "us-central1"
+[info] [hosting] Rewriting / to https://spark-2121-pvbbkv4aza-uc.a.run.app for Cloud Run service "spark-2121" for region "us-central1"
