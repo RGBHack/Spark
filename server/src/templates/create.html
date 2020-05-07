@@ -2,57 +2,122 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Spark</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Spark</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.min.css">
 </head>
 
-<body style="background-color: #26262b;"><nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #26262B;height: 15vh;">
-    <div class="container-fluid" stle="height:15vh;text-align center"><a class="navbar-brand" href="#" style="color: #26262B">Spark</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-1" style="width:100vw; margin: none;">
-                <ul class="nav navbar-nav navbar-center" style="width:100vw;text-align:center;margin: 0 auto;width: fit-content;">
-                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" href="#" style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">SPARK</a></li>
-                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
-                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">DASHBOARD</a></li>
-                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
-                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">LOG IN</a></li>
-                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
-                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">ABOUT</a></li>
-                </ul>
-        </div>
+<body style="background-color: #26262b;">
+  <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #26262B;height: 15vh;">
+    <div class="container-fluid" stle="height:15vh;text-align center"><a class="navbar-brand" href="#"
+        style="color: #26262B">Spark</a><button data-toggle="collapse" data-target="#navcol-1"
+        class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navcol-1" style="width:100vw; margin: none;">
+        <ul class="nav navbar-nav navbar-center"
+          style="width:100vw;text-align:center;margin: 0 auto;width: fit-content;">
+          <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" href="#"
+              style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">SPARK</a></li>
+          <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active"
+              style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
+          <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="#"
+              style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">DASHBOARD</a></li>
+          <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active"
+              style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
+          <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="#"
+              style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">LOG IN</a></li>
+          <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active"
+              style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
+          <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="#"
+              style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">ABOUT</a></li>
+        </ul>
+      </div>
     </div>
-</nav><div style="width: 100vw;height: 85vh;position: relative;">
-    <span style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-        <img src="./img/spark_dark.png" style="width: 20vw;" />
-        <br><br>
-        <div class="wrapper" id="create">
-            <div id="formContent">
-              
-                <h2>CREATE A SPARKROOM</h2>
+  </nav>
+  <div style="width: 100vw;height: 85vh;position: relative;">
+    <span
+      style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+      <img src="./img/spark_dark.png" style="width: 20vw;" />
+      <br><br>
+      <div class="wrapper" id="create">
+        <div id="formContent">
+
+          <h2>CREATE A SPARKROOM</h2>
 
 
-              <!-- Login Form -->
-              <form>
-                <div class="row" id="loginForm">
-                  <table style="vertical-align: center; text-align: center; margin: 0 auto;">
-                    <tr>
-                      <td style="vertical-align: middle;">www.sparkapp.cf/join/</td>
-                      <td style="vertical-align: middle;" variant="label-hidden"><input type="text" id="login" name="login" placeholder="Room" class="form-control" style="margin:0 auto;"></td>
-                   </tr>
-                 </table>
-              </div>
-                <input type="password" id="password" name="login" placeholder="Password" class="form-control">
-                <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh">Join</button>
-              </form>
-          
+          <!-- Login Form -->
+          <form id="formEE">
+            <div class="row" id="loginForm">
+              <table style="vertical-align: center; text-align: center; margin: 0 auto;">
+                <tr>
+                  <td style="vertical-align: middle;">www.sparkapp.cf/join/</td>
+                  <td style="vertical-align: middle;" variant="label-hidden"><input type="text" id="name" name="name"
+                      placeholder="Room" class="form-control" style="margin:0 auto;"></td>
+                </tr>
+              </table>
             </div>
+            <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+            <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Create">
+          </form>
+
         </div>
+      </div>
     </span>
-</div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+      authDomain: "httpsspark-2121.web.app/",
+      databseURL: "https://spark-2121.firebaseio.com/",
+      projectId: "spark-2121"
+    }
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(config)
+      console.log("worked")
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    auth.onAuthStateChanged(function (user) {
+      if (user === null) {
+        window.location.pathname = '/login'
+      }
+      else {
+        var form = document.getElementById("formEE")
+        form.onsubmit = function (e) {
+          e.preventDefault()
+          const name = form['name'].value
+          const password = form['password'].value
+          console.log(name)
+          console.log(password)
+          db.collection("sparkrooms").doc(name).set({ password: password }).then(function () {
+            var docRef2 = db.collection("users").doc(user.uid);
+            docRef2.get().then(function (doc) {
+              if (doc.exists) {
+                var rooms = doc.data().sparkrooms;
+                rooms.push(name)
+                db.collection("users").doc(user.uid).update({ sparkrooms: rooms }).then(function () {
+                  window.location.pathname = '/dashboard'
+                }, { merge: true })
+              }
+            })
+          })
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>
