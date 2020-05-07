@@ -100,20 +100,31 @@
           e.preventDefault()
           const name = form['name'].value
           const password = form['password'].value
-          console.log(name)
-          console.log(password)
-          db.collection("sparkrooms").doc(name).set({ password: password }).then(function () {
-            var docRef2 = db.collection("users").doc(user.uid);
-            docRef2.get().then(function (doc) {
-              if (doc.exists) {
-                var rooms = doc.data().sparkrooms;
-                rooms.push(name)
-                db.collection("users").doc(user.uid).update({ sparkrooms: rooms }).then(function () {
-                  window.location.pathname = '/dashboard'
-                }, { merge: true })
-              }
+          if (password === "") {
+            alert("Please fill in a password!")
+            return;
+          }
+          var docRef = db.collection("sparkrooms").doc(name)
+          docRef.get().then(function (doc){
+            if (doc.exists) {
+              alert("Name taken")
+            }
+            else {
+              db.collection("sparkrooms").doc(name).set({ password: password }).then(function () {
+              var docRef2 = db.collection("users").doc(user.uid);
+              docRef2.get().then(function (doc) {
+                if (doc.exists) {
+                  var rooms = doc.data().sparkrooms;
+                  rooms.push(name)
+                  db.collection("users").doc(user.uid).update({ sparkrooms: rooms }).then(function () {
+                    window.location.pathname = '/dashboard'
+                  }, { merge: true })
+                }
+              })
             })
+            }
           })
+          
         }
       }
     })
