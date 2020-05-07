@@ -114,14 +114,11 @@
               var password2 = doc.data().password;
               if (password === password2) {
                 var docRef2 = db.collection("users").doc(user.uid);
-                docRef2.get().then(function (doc) {
-                  if (doc.exists) {
-                    var rooms = doc.data().sparkrooms;
-                    rooms.push(name)
-                    db.collection("users").doc(user.uid).update({ sparkrooms: rooms }).then(function () { 
-                      window.location.pathname = '/dashboard'
-                    }, { merge: true })
-                  }
+                docRef2.update({
+                  sparkrooms : firebase.firestore.FieldValue.arrayUnion(name)
+                }).then(function () {
+                  console.log("hi")
+                  window.location.pathname = '/dashboard'
                 })
               }
               else {
