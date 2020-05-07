@@ -52,6 +52,11 @@ def join():
     context = { 'server_time': format_server_time() }
     return render_template('join.html', context=context)
 
+@app.route('/join/<id>')
+def joinlink():
+    context = { 'server_time': format_server_time() }
+    return render_template('join.html', context=context, id=id)
+
 @app.route('/create')
 def create():
     context = { 'server_time': format_server_time() }
