@@ -1,6 +1,112 @@
 <!DOCTYPE html>
-<p>Note, this is a test template!!!</p>
-<p>Your session is: {{ id }}</p>
-<input type="text" placeholder="username">
-<input type="password" placeholder="password">
-<input type="submit" value="submit">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Spark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.min.css">
+    <link rel="shortcut icon" type="image" href="./img/favicon.ico" />
+</head>
+
+<body style="background-color: #26262b;">
+    <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #26262b;height: 15vh;">
+        <div class="collapse navbar-collapse" id="navcol-1" style="width:100vw; margin: none;">
+            <ul class="nav navbar-nav navbar-center"
+                style="width:100vw;text-align:center;margin: 0 auto;width: fit-content;">
+                <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link"
+                        href="/index">SPARK</a></li>
+                <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">&#183;</a></li>
+                <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link"
+                        href="/about">ABOUT</a></li>
+                <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">&#183;</a></li>
+                <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active"
+                        href="/login">LOGIN</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div style="width: 100vw;height: 85vh;position: relative;">
+        <span
+            style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <img src="./img/spark_dark.png" style="width: 20vw;" />
+            <br><br>
+            <div class="wrapper">
+                <div id="formContent">
+
+                    <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh">Log In with
+                        Google</button>
+                    <div class="separator">
+                        <h2>OR</h2>
+                    </div>
+
+
+                    <!-- Login Form -->
+                    <form id="formEE">
+                        <input type="text" id="email" name="email" placeholder="Username" class="form-control">
+                        <input type="password" id="password" name="password" placeholder="Password"
+                            class="form-control">
+                        <input class="btn btn-primary loginbtn" style="margin-bottom:2vh" type="submit">
+                    </form>
+
+                    <!-- Remind Passowrd -->
+                    <div id="formFooter">
+                        <a class="underlineHover" href="#">Forgot Password?</a>
+                        <a class="underlineHover" href="/login">Login</a>
+                    </div>
+
+                </div>
+            </div>
+        </span>
+    </div>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
+    <script>
+        var config = {
+            apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+            authDomain: "httpsspark-2121.web.app/",
+            databseURL: "https://spark-2121.firebaseio.com/",
+            projectId: "spark-2121"
+        }
+        if (firebase.apps.length === 0) {
+            firebase.initializeApp(config)
+            console.log("worked")
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        var form = document.getElementById("formEE")
+        var submit = document.getElementById("submit")
+        form.onsubmit = function (e) {
+            e.preventDefault()
+            const email = form['email'].value
+            const password = form['password'].value
+            auth.createUserWithEmailAndPassword(email, password).then(cred => {
+                db.collection("users").doc(cred.user.uid).set({}).then(function () {
+                    window.location.pathname = '/dashboard'
+                }).catch(err => {
+                    alert(err.code)
+                })
+            }).catch(err => {
+                if (err.code === "auth/email-already-in-use") {
+                    alert("Email is already in use")
+                }
+                else if (err.code === "auth/invalid-email") {
+                    alert("Email is formatted incorrectly")
+                }
+                else {
+                    alert(err.code)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
