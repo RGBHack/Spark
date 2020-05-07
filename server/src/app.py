@@ -47,5 +47,10 @@ def about():
     context = { 'server_time': format_server_time() }
     return render_template('about.html', context=context)
 
+@app.route('/join')
+def about():
+    context = { 'server_time': format_server_time() }
+    return render_template('join.html', context=context)
+
 if __name__ == '__main__':
     app.run(debug=True,host='127.0.0.1',port=int(os.environ.get('PORT', 5004)))
