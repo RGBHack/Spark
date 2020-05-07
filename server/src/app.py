@@ -48,11 +48,16 @@ def about():
     return render_template('about.html', context=context)
 
 @app.route('/join')
-def about():
+def join():
     context = { 'server_time': format_server_time() }
     return render_template('join.html', context=context)
 
-@app.route('/join')
+@app.route('/create')
+def create():
+    context = { 'server_time': format_server_time() }
+    return render_template('create.html', context=context)
+
+@app.route('/chat')
 def chat():
     context = { 'server_time': format_server_time() }
     return render_template('chat.html', context=context)
