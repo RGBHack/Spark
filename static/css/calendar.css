@@ -60,13 +60,13 @@ body {
     box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
 }*/
 .fc-view-container {
-    background: #0e0e0e;
+    background: #26262b;
 }
 .fc-unthemed td.fc-today {
     background: #333959;
 }
 body {
-    background: #0e0e0e;
+    background: #26262b;
 }
 
 td.fc-today fc-event {

@@ -1,48 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-        <title>Calendar</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <link href="https://bootswatch.com/4/darkly/bootstrap.min.css" type="text/css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
-        <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <!--<link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
-        <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-        <script type='text/javascript' src='fullcalendar/packages/core/main.js'></script>
-        <script  type='text/javascript' src='fullcalendar/packages/daygrid/main.js'></script>-->
-        <script src='https://unpkg.com/@fullcalendar/core@4.4.0/main.min.js'></script>
-        <link href='https://unpkg.com/@fullcalendar/core@4.4.0/main.min.css' rel='stylesheet'/>
-        <script src='https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.js'></script>
-        <link href='https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.css' rel='stylesheet'/>
-        <link href='https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.css' rel='stylesheet'/>
-        <script src='https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.js'></script>
-        <script src='https://unpkg.com/@fullcalendar/interaction@4.4.0/main.min.js'></script>
-        <link href='https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.css' rel='stylesheet'/>
-        <script src='https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.js'></script>
-        <script type='text/javascript' src="./js/calendar.js"></script>
-        <link href='./css/calendar.css' rel='stylesheet'/>
-        <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
-    </head>
-    <body>
-        <div id='wrap'>
-            <div id='calendar'></div>
-            
-            <div style='clear:both'></div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Spark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
+</head>
+<body>
+    <div class="container-fluid" stle="height:15vh;text-align center"><a class="navbar-brand" href="#" style="color: rgba(14,14,14,0.9);">Spark</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1" style="width:100vw; margin: none;">
+                <ul class="nav navbar-nav navbar-center" style="width:100vw;text-align:center;margin: 0 auto;width: fit-content;">
+                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/" style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">SPARK</a></li>
+                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
+                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" href="#" style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">ABOUT</a></li>
+                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" style="color: rgba(255,255,255,0.9);font-family: 'Lexend Deca Regular';font-size: 5vh;">&#183;</a></li>
+                    <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/login" style="color: rgba(255,255,255,0.5);font-family: 'Lexend Deca Regular';font-size: 5vh;">LOG IN</a></li>
+                </ul>
         </div>
-        <div id="dialog" title="Basic dialog" style="display: none">
-            <p>Please enter the title of your event here:</p>
-            <input type="text" id="title">
-            <p>Please enter the start time for your event here:</p>
-            <input type="text" id="start">
-            <p>Please enter the end time for your event here:</p>
-            <input type="text" id="end">
-            <br>
-            <input type="submit" id="prompt-submit" onclick="addDate()">
-        </div>
-    </body>
+    </div>
+    </nav>
+        <iframe src="/calendar" style='border-radius: 20px; overflow: hidden; width: 60vw; height: 110vh; flex: 1 0 auto;'></iframe>
+</body>
 </html>
