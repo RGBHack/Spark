@@ -7,7 +7,7 @@
   <img alt="Build" src="https://travis-ci.com/RGBHack/Spark.svg?token=yK4yfmRA1QdUzxuse6q8&branch=master">
 </p>
 
-> ⚡ A productivity web app forhelping people during the COVID-19 Pandemic
+> ⚡ A productivity web app for helping people during the COVID-19 Pandemic
 
 ### 🏠 [Homepage](https://www.sparkapp.cf)
 
