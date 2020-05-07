@@ -55,7 +55,7 @@ def join():
 @app.route('/join/<name>:<password>')
 def joinlink(name, password):
     context = { 'server_time': format_server_time() }
-    return render_template('join.html', context=context, name=name, password=password)
+    return render_template('join.html', context=context, name=name, password=password, extra=".")
 
 @app.route('/create')
 def create():
