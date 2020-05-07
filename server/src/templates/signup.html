@@ -88,8 +88,9 @@
             e.preventDefault()
             const email = form['email'].value
             const password = form['password'].value
+            const name = form['name'].value
             auth.createUserWithEmailAndPassword(email, password).then(cred => {
-                db.collection("users").doc(cred.user.uid).set({sparkrooms: []}).then(function () {
+                db.collection("users").doc(cred.user.uid).set({sparkrooms: [], name: name}).then(function () {
                     window.location.pathname = '/dashboard'
                 }).catch(err => {
                     alert(err.code)
