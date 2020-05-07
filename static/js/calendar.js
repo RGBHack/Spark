@@ -36,6 +36,7 @@ function addDate () {
 	$("#dialog").dialog("close")
 }
 document.addEventListener('DOMContentLoaded', function() {
+		console.log("dahelloasfdasdfasdfasdfd")
 		var date = new Date();
 		var calendarEl = document.getElementById('calendar');
 		console.log(calendarEl)
