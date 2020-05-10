@@ -52,7 +52,7 @@ ul li {
 
 /* Set all odd list items to a different color (zebra-stripes) */
 ul li:nth-child(odd) {
-  background: #dde9f8;
+  background: #fff;
 }
 
 /* Darker background-color on hover */
@@ -171,8 +171,9 @@ input {
 
         <div id="myDIV" class="header">
             <h1 style="margin:5px; margin-bottom: 25px; margin-top: 0px; color: #dde9f8;font-size: 2.5rem;">Task List:</h1>
-            <input style="background-color: #dee2e6;" type="text" id="myInput" placeholder="Task...">
-            <span onclick="newElement()" class="addBtn">Add</span>
+            <form id="formEE">
+              <input style="background-color: #dee2e6;" type="text" id="myInput" placeholder="Task..."><input type="submit" class="addBtn" value="Add">
+            </form>
         </div>
 
         <ul id="myUL">
@@ -226,6 +227,9 @@ auth.onAuthStateChanged(function (user) {
         })
       }
     })
+    document.getElementById("formEE").onsubmit = function (e) {
+      newElement(e)
+    }
   }
 })
 
@@ -298,7 +302,8 @@ list.addEventListener('click', function(ev) {
 }, false);
 
 // Create a new list item when clicking on the "Add" button
-function newElement() {
+function newElement(e) {
+  e.preventDefault()
   if (uid === null) {
     return;
   }
