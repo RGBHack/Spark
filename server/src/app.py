@@ -36,6 +36,11 @@ def dashboard():
 def calendar():
     context = { 'server_time': format_server_time() }
     return render_template('calendar.html', context=context)
+    
+@app.route('/tasks')
+def tasks():
+    context = { 'server_time': format_server_time() }
+    return render_template('tasks.html', context=context)
 
 @app.route('/login')
 def login():
