@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <title>Spark</title>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"> -->
+</head>
+  <style>
+    html {
+      background-color: #36393f;
+    }
+    /* This is based on the work of Joshua Saunders */
+.board-layout {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    display: grid;
+    grid-template-rows: max-content auto;
+    grid-gap: 10px;
+    padding: 10px;
+    height:800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+  }
+.list-layout {
+    display: grid;
+    grid-gap: 10px;
+   
+  }
+.board-text {
+    font-weight: bold;
+    font-size: 28px;
+    padding-top: 0px;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+  }
+.board-lists {
+    display: grid;
+    grid-auto-columns: 275px;
+    grid-auto-flow: column;
+    grid-gap: 10px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .board-list {
+    background-color: rgb(235, 236, 240);
+    border-radius: 3px;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-gap: 10px;
+    /* Chrome use a fixed height */
+    height: max-content;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  .list-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+.card {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    padding: 10px;
+    cursor:pointer;
+  }
+
+  svg {
+    fill: white;
+    size: 20px;
+  }
+  </style>
+
+<body>
+  <svg style="display:none;">
+    <symbol viewBox="0 0 512 512" id="plus">
+      <path d="M241.992 407.91v-97.46h-97.265v-16.016h97.265v-97.07h15.625v97.07h97.656v16.015h-97.656v97.461h-15.625z" font-size="431.924" font-weight="400" font-family="Bitstream Vera Sans"></path>
+    </symbol>
+  </svg>
+
+<div class="board-layout">
+  <div>
+    <div class="board-text">
+      <h1 style="display: inline-block; margin-top: 0px;">Projects</h1>
+      <button onclick="addcard()" style="background-color: #36393f; border-radius: 100px; display: inline-block; margin-left: 20px;">
+      <svg width="30" height="30">
+        <use xlink:href="#plus"></use>
+      </svg>
+    </button>
+    </div>
+   
+  </div>
+ 
+<div id='boardlists' class="board-lists">
+  <div id='list1' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
+    <div class="list-title">
+      To Do
+    </div>
+    
+    
+   
+  </div>
+  <div  id='list2' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
+    <div  class="list-title">
+    In Progress
+    </div>
+    
+    
+  </div>
+  <div  id='list3' class="board-list"  ondrop="dropIt(event)" ondragover="allowDrop(event)">
+    <div  class="list-title">
+      Done
+      </div>
+       
+      </div>
+</div>
+</div>
+<script>
+  var cardnum = 0;
+  function allowDrop(ev) {
+    ev.preventDefault();  // default is not to allow drop
+  }
+  function dragStart(ev) {
+    // The 'text/plain' is referring the Data Type (DOMString) 
+    // of the Object being dragged.
+    // ev.target.id is the id of the Object being dragged
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+  }
+  function dropIt(ev) {
+    ev.preventDefault();  // default is not to allow drop
+    let sourceId = ev.dataTransfer.getData("text/plain");
+    let sourceIdEl=document.getElementById(sourceId);
+    let sourceIdParentEl=sourceIdEl.parentElement;
+    // ev.target.id here is the id of target Object of the drop
+    let targetEl=document.getElementById(ev.target.id)
+    let targetParentEl=targetEl.parentElement;
+  
+    // Compare List names to see if we are going between lists
+    // or within the same list
+    if (targetParentEl.id!==sourceIdParentEl.id){
+// If the source and destination have the same 
+        // className (card), then we risk dropping a Card in to a Card
+        // That may be a cool feature, but not for us!
+        if (targetEl.className === sourceIdEl.className ){
+          // Append to parent Object (list), not to a 
+          // Card in the list
+          // This is in case you drag and drop a Card on top 
+          // of a Card in a different list
+           targetParentEl.appendChild(sourceIdEl);
+         
+        }else{
+            // Append to the list
+             targetEl.appendChild(sourceIdEl);
+           
+        }
+       
+    }else{
+        // Same list. Swap the text of the two cards
+        // Just like swapping the values in two variables
+      
+        // Temporary holder of the destination Object
+        let holder=targetEl;
+        // The text of the destination Object. 
+        // We are really just moving the text, not the Card
+        let holderText=holder.textContent;
+        // Replace the destination Objects text with the sources text
+        targetEl.textContent=sourceIdEl.textContent;
+        // Replace the sources text with the original destinations
+        sourceIdEl.textContent=holderText;
+        holderText='';
+}
+    
+  }
+function addcard () {
+  cardnum = cardnum + 1;
+  var name = prompt("Please enter a task name")
+  document.getElementById("list1").innerHTML += "<div id='card" + cardnum.toString() + "' class='card' draggable='true' ondragstart='dragStart(event)'>" + name + "</div>";
+}
+</script>
+</body>
+</html>
