@@ -1,1 +1,129 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <style>
+        @font-face {
+        font-family: "Lexend Deca Regular";
+        src: url(../fonts/LexendDecaRegular.woff) format("woff");
+        font-weight: 400;
+        font-style: normal;
+        }
+
+        html {
+            background-color: #36393f;
+            font-family: "Lexend Deca Regular";
+        }
+
+        body {
+        margin: 0;
+        min-width: 250px;
+        font-family: "Lexend Deca Regular";
+        }
+
+        /* Include the padding and border in an element's total width and height */
+        * {
+        box-sizing: border-box;
+        }
+
+        /* Remove margins and padding from the list */
+        ul {
+        margin: 0;
+        padding: 0;
+        }
+
+        /* Style the list items */
+        ul li {
+        color: #36393f;
+        cursor: pointer;
+        position: relative;
+        padding: 12px 8px 12px 40px;
+        list-style-type: none;
+        background: #eee;
+        font-size: 18px;
+        transition: 0.2s;
+        
+        /* make the list items unselectable */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        ul li:nth-child(odd) {
+        background: #dde9f8;
+        }
+
+        /* Darker background-color on hover */
+        ul li:hover {
+        background: #ddd;
+        }
+
+        /* When clicked on, add a background color and strike out text */
+        ul li.checked {
+        background: #888;
+        color: #fff;
+        text-decoration: line-through;
+        }
+
+        /* Add a "checked" mark when clicked on */
+        ul li.checked::before {
+        content: '';
+        position: absolute;
+        border-color: #fff;
+        border-style: solid;
+        border-width: 0 2px 2px 0;
+        top: 10px;
+        left: 16px;
+        transform: rotate(45deg);
+        height: 15px;
+        width: 7px;
+        }
+       
+        .meeting-input {
+            border-radius: 5px 0px 0px 5px;
+            margin-right: 0px;
+            width: 25%;
+            padding: 10px;
+        }
+
+        .submit-btn {
+            border-radius: 0px 5px 5px 0px;
+            margin-left: 0px;
+            width: 100px;
+            background: linear-gradient(
+                90deg,
+              rgba(255, 93, 0, 1) 0,
+              rgba(255, 217, 25, 1) 100%
+            );
+            color: white;
+            padding: 10px;
+        }
+    </style>
+    <!--display input here-->
+    <div id="inputform" style="text-align: center;">
+        <h1 style="color: white;">Join a Zoom Meeting With the Meeting id:</h1>
+        <form id="formEE">
+            <input class="meeting-input" type="text" id="input" placeholder="Zoom Meeting id...">
+            <input class="submit-btn" type="submit" value="Join Meeting!">
+        </form>
+    </div>
+    
+    <iframe src="https://success.zoom.us/wc/join/{{ meetingid }}" id="meetings-iframe" allow="microphone; camera" style="display:none; border: 5; border-color: white; height: 900px; position: relative; top: 0; width: 90%; margin-left: 5%; margin-right: 5%; margin-top:2%; margin-bottom: 2%; overflow: none;" frameborder="0"></iframe>
+</body>
+<script>
+    if ("{{ meetingid }}" !== "") {
+        document.getElementById("meetings-iframe").display = 'block'
+        document.getElementById("inputform").display = 'none'
+    }
+    document.getElementById("formEE").onsubmit = function (e) {
+        e.preventDefault()
+        var id = document.getElementById("input").value
+        window.location.pathname = '/meetings/'+id
+    }
+</script>
+</html>
