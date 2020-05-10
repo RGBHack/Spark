@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <div id="messages">
-    <p>Bot: hi</p>
+    
 </div> 
-<input type="text" id="chat-input">
+<input type="text" id="chat-input"><br>
+<button onclick="submit()">Submit Message!</button>
 
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
 <script>
-    //run every 1 second
-        //get all chat data from database
-        //messagediv.innerHTML = 
-        //for each message
-            //messagediv.innerHTML +=
+    var config = {
+      apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+      authDomain: "httpsspark-2121.web.app/",
+      databaseURL: "https://spark-2121.firebaseio.com/",
+      projectId: "spark-2121"
+    }
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(config)
+    }
+    var group = "cyberaegis"
+    var database = firebase.database()
+    const auth = firebase.auth();
+    var theuser = null
+    var chatRef2 = null
+    auth.onAuthStateChanged(function (user) {
+      if (user !== null) {
+        theuser = user
+        var chatRef = firebase.database().ref('chat/' + group);
+        chatRef2 = chatRef
+        chatRef.on('child_added', function(data) {
+            console.log(data.val())
+            document.getElementById("messages").innerHTML += "<p>" + data.val().text + "</p>"
+        });
+      }
+      else {
+        window.location.pathname = '/login'
+      }
+    })
+    function submit () {
+        if (theuser === null) {
+            return;
+        }
+        if (chatRef2 === null) {
+            return;
+        }
+        var text = theuser.email + ": " + document.getElementById("chat-input").value;
+        console.log("text")
+        var newchatref = chatRef2.push()
+        newchatref.set({
+            text: text
+        })
+    }
 </script>
