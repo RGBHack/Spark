@@ -88,6 +88,8 @@
     box-shadow: 0 1px 0 rgba(9,30,66,.25);
     padding: 10px;
     cursor:pointer;
+    display: flex;
+    justify-content: space-between;
   }
 
   svg {
@@ -114,6 +116,18 @@
       rgba(255, 217, 25, 1) 100%
     );
     border-radius: 10px;
+  }
+
+  .close {
+  position: relative;
+  right: 0;
+  top: 0;
+  padding: 5px 7px 5px 7px;
+  }
+
+  .close:hover {
+    background-color: #f44336;
+    color: white;
   }
 </style>
 
@@ -220,7 +234,9 @@
 function addcard () {
   cardnum = cardnum + 1;
   var name = prompt("Please enter a task name")
-  document.getElementById("list1").innerHTML += "<div id='card" + cardnum.toString() + "' class='card' draggable='true' ondragstart='dragStart(event)'>" + name + "</div>";
+  var bediv = '<div style="display: table; height: 25px; width: 150px; overflow: hidden;"><div style="display: table-cell; vertical-align: middle;"><div>'
+  var afdiv = '</div></div></div>'
+  document.getElementById("list1").innerHTML += "<div id='card" + cardnum.toString() + "' class='card' draggable='true' ondragstart='dragStart(event)'>" + bediv + name + afdiv + "<span class='close'>×</span>" +"</div>";
 }
 </script>
 </body>
