@@ -14,6 +14,7 @@
         :root {
         --page-header-bgColor: #26262b;
         --page-header-bgColor-hover: #1d2636;
+        --page-header-bgColorRed-hover: rgb(53, 0, 0);
         --page-header-txtColor: #dde9f8;
         --page-header-headingColor: #7889a4;
         --page-header-width: 220px;
@@ -165,6 +166,24 @@
         .page-header .admin-menu button:hover svg,
         .page-header .admin-menu button:focus svg {
         fill: var(--blue);
+        }
+
+        .page-header .admin-menu .red a:hover,
+        .page-header .admin-menu .red a:focus,
+        .page-header .admin-menu .red button:hover,
+        .page-header .admin-menu .red button:focus {
+        background: var(--page-header-bgColorRed-hover);
+        color: var(--red);
+        outline: none;
+        }
+        .page-header .admin-menu .red a:hover svg,
+        .page-header .admin-menu .red a:focus svg,
+        .page-header .admin-menu .red button:hover svg,
+        .page-header .admin-menu .red button:focus svg {
+        fill: var(--red);
+        }
+        .page-header .admin-menu .red svg {
+            fill: var(--red)
         }
         /* PAGE CONTENT STYLES
         –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -451,6 +470,10 @@
             <symbol viewBox="0 0 512 512" id="discussions">
                 <path d="M477 119.517h-66.5v-55c0-19.299-15.701-35-35-35h-239c-19.299 0-35 15.701-35 35v134H35c-19.299 0-35 15.701-35 35v159c0 19.299 15.701 35 35 35h38v29.943c0 9.543 5.305 18.116 13.846 22.374a25.017 25.017 0 0 0 11.181 2.649c5.31 0 10.576-1.71 15.018-5.058l66.235-49.909H274c19.299 0 35-15.701 35-35v-44h23.72l66.234 49.909c4.444 3.349 9.708 5.059 15.019 5.058a25.04 25.04 0 0 0 11.181-2.649C433.695 396.576 439 388.003 439 378.46v-29.943h38c19.299 0 35-15.701 35-35v-159c0-19.299-15.701-35-35-35zm5 194c0 2.757-2.243 5-5 5h-53c-8.284 0-15 6.716-15 15v34.915l-62.234-46.895a15.001 15.001 0 0 0-9.027-3.021H238c-2.757 0-5-2.243-5-5v-159c0-2.757 2.243-5 5-5h239c2.757 0 5 2.243 5 5zm-208 84h-99.739a15.001 15.001 0 0 0-9.027 3.021L103 447.432v-34.915c0-8.284-6.716-15-15-15H35c-2.757 0-5-2.243-5-5v-159c0-2.757 2.243-5 5-5h168v85c0 19.299 15.701 35 35 35h41v44c0 2.756-2.243 5-5 5zm-137.5-338h239c2.757 0 5 2.243 5 5v55H238c-19.299 0-35 15.701-35 35v44h-71.5v-134c0-2.757 2.243-5 5-5z"></path>
             </symbol>
+            <symbol viewBox="0 0 512 512" id="logout">
+                <path d="M255.15 468.625H63.787c-11.737 0-21.262-9.526-21.262-21.262V64.638c0-11.737 9.526-21.262 21.262-21.262H255.15c11.758 0 21.262-9.504 21.262-21.262S266.908.85 255.15.85H63.787C28.619.85 0 29.47 0 64.638v382.724c0 35.168 28.619 63.787 63.787 63.787H255.15c11.758 0 21.262-9.504 21.262-21.262 0-11.758-9.504-21.262-21.262-21.262z"></path>
+                <path d="M505.664 240.861L376.388 113.286c-8.335-8.25-21.815-8.143-30.065.213s-8.165 21.815.213 30.065l92.385 91.173H191.362c-11.758 0-21.262 9.504-21.262 21.262 0 11.758 9.504 21.263 21.262 21.263h247.559l-92.385 91.173c-8.377 8.25-8.441 21.709-.213 30.065a21.255 21.255 0 0 0 15.139 6.336c5.401 0 10.801-2.041 14.926-6.124l129.276-127.575A21.303 21.303 0 0 0 512 255.998c0-5.696-2.275-11.118-6.336-15.137z"></path>
+            </symbol>
         </svg>
         <header class="page-header">
             <nav>
@@ -488,6 +511,22 @@
                                 <use xlink:href="#comments"></use>
                             </svg>
                             <span>Messages</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                            <svg>
+                                <use xlink:href="#users"></use>
+                            </svg>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="red">
+                        <a class="red" href="#0">
+                            <svg>
+                                <use xlink:href="#logout"></use>
+                            </svg>
+                            <span style="color: var(--red);">Log Out</span>
                         </a>
                     </li>
                     <li class="menu-heading">
