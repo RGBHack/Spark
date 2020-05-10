@@ -72,6 +72,11 @@ def chat():
     context = { 'server_time': format_server_time() }
     return render_template('chat.html', context=context)
 
+@app.route('/projects')
+def projects():
+    context = { 'server_time': format_server_time() }
+    return render_template('projects.html', context=context)
+
 @app.route('/signup')
 def signup():
     context = { 'server_time': format_server_time() }
