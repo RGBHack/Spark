@@ -119,12 +119,22 @@
         <form id="formEE">
             <input class="meeting-input" type="text" id="input" placeholder="Zoom Meeting ID..."><input class="submit-btn" type="submit" value="Join Meeting!">
         </form>
+        <h1 style="color: #dee2e6; font-size: 2.5rem;">OR</h1>
+        <h1 style="color: #dee2e6; margin-top: 0px; font-size: 2.5rem;">Create a Zoom Meeting:</h1>
+        <form id="form2">
+            <input style="width: 100%; border-radius: 20px;" class="submit-btn" type="submit" value="Create Meeting!">
+        </form>
     </div>
     
     <iframe src="https://success.zoom.us/wc/join/{{ meetingid }}" id="meetings-iframe" allow="microphone; camera" style="display:none; border: 5; border-color: white; height: 900px; position: relative; top: 0; width: 100%; overflow: none;" frameborder="0"></iframe>
+    <iframe src="https://zoom.us/start/webmeeting" id="start-iframe" allow="microphone; camera" style="display:none; border: 5; border-color: white; height: 900px; position: relative; top: 0; width: 100%; overflow: none;" frameborder="0"></iframe>
 </body>
 <script>
-    if ("{{ meetingid }}" !== "") {
+    if ("{{ meetingid }}" === "new") {
+        document.getElementById("start-iframe").style.display = 'block'
+        document.getElementById("inputform").style.display = 'none'
+    }
+    else if ("{{ meetingid }}" !== "") {
         document.getElementById("meetings-iframe").style.display = 'block'
         document.getElementById("inputform").style.display = 'none'
     }
@@ -138,6 +148,10 @@
         else {
             window.location.pathname = '/meetings/'+id
         }
+    }
+    document.getElementById("form2").onsubmit = function (e) {
+        e.preventDefault()
+        window.location.pathname = '/meetings/new'
     }
 </script>
 </html>
