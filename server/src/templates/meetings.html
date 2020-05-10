@@ -88,16 +88,18 @@
             border-radius: 5px 0px 0px 5px;
             margin: 0px;
             border-radius: 10px 0px 0px 10px;
-            width: 25%;
+            width: 75%;
             padding: 10px;
             border: none;
             background-color: #dee2e6;
+            display: inline-block;
+            font-size: 16px;
         }
 
         .submit-btn {
             border-radius: 0px 10px 10px 0px;
             margin: 0px;
-            width: 100px;
+            width: 25%;
             background: linear-gradient(
                 90deg,
               rgba(255, 93, 0, 1) 0,
@@ -107,14 +109,15 @@
             padding: 10px;
             border: none;
             transition: 0.3s;
+            display: inline-block;
+            font-size: 16px;
         }
     </style>
     <!--display input here-->
-    <div id="inputform" style="text-align: center;">
-        <h1 style="color: #dee2e6;">Join a Zoom Meeting With the Meeting id:</h1>
+    <div id="inputform" style="text-align: center; background-color: #26262b; margin-top: 0px; padding: 10px 10px 20px;">
+        <h1 style="color: #dee2e6; margin-top: 0px; font-size: 2.5rem;">Join a Zoom Meeting With the Meeting ID:</h1>
         <form id="formEE">
-            <input class="meeting-input" type="text" id="input" placeholder="Zoom Meeting id...">
-            <input class="submit-btn" type="submit" value="Join Meeting!">
+            <input class="meeting-input" type="text" id="input" placeholder="Zoom Meeting ID..."><input class="submit-btn" type="submit" value="Join Meeting!">
         </form>
     </div>
     
@@ -122,13 +125,19 @@
 </body>
 <script>
     if ("{{ meetingid }}" !== "") {
-        document.getElementById("meetings-iframe").display = 'block'
-        document.getElementById("inputform").display = 'none'
+        document.getElementById("meetings-iframe").style.display = 'block'
+        document.getElementById("inputform").style.display = 'none'
     }
     document.getElementById("formEE").onsubmit = function (e) {
         e.preventDefault()
         var id = document.getElementById("input").value
-        window.location.pathname = '/meetings/'+id
+        id = id.replace(/\s/g, '');
+        if (id.length !== 10 && id.length !== 9 && id.length !== 11) {
+            alert("This meeting ID is not in the valid format! It should be 9-11 numbers long.")
+        }
+        else {
+            window.location.pathname = '/meetings/'+id
+        }
     }
 </script>
 </html>
