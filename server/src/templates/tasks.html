@@ -244,9 +244,25 @@ list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
     var docRef = firestore.collection("users").doc(uid);
-    docRef.get().then(function (doc) {
-      
-    })
+    var taskname = ev.target.innerHTML
+    if (ev.target.classList.contains('checked')) {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : false})
+      }).then(
+        docRef.update({
+          tasks : firebase.firestore.FieldValue.arrayUnion({text : taskname, checked : true})
+        })
+      )
+    }
+    else {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : true})
+      }).then(
+        docRef.update({
+          tasks : firebase.firestore.FieldValue.arrayUnion({text : taskname, checked : false})
+        })
+      )
+    }
   }
 }, false);
 
