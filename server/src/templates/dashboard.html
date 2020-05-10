@@ -572,8 +572,8 @@
             <!-- add iframes here -->
 
             <iframe src="/tasks" id="tasks-iframe" style="display: none;border-radius: 20px; overflow: auto; width: 100%; height: 128vh; flex: 1 0 auto;"></iframe>
-            <iframe src="/calendar" id="calendar-iframe" style="border-radius: 20px; overflow: hidden; width: 100%; height: 128vh; flex: 1 0 auto;"></iframe>
-            <iframe src="/chat" id="messages-iframe" style="display: none;border-radius: 20px; overflow: auto; width: 100%; height: 128vh; flex: 1 0 auto;"></iframe>
+            <iframe src="/calendar" id="calendar-iframe" style="border-radius: 20px; overflow: hidden; width: 100%; height: 129vh; flex: 1 0 auto;"></iframe>
+            <iframe src="/chat" id="messages-iframe" style="display: none;border-radius: 20px; overflow: auto; width: 100%; height: 129vh; flex: 1 0 auto;"></iframe>
             
             <!-- end iframes -->
 
@@ -650,16 +650,21 @@
                 if (calendarElement.style.display == "none") {
                     calendarElement.style.display = "inline-block";
                     tasksElement.style.display = "none";
-                } else {
-                    tasksElement.style.display = "none";
+                    messagesElement.style.display = "none";
                 }
             }
             function renderTasks() {
                 if (tasksElement.style.display == "none") {
                     tasksElement.style.display = "inline-block";
                     calendarElement.style.display = "none";
-                } else {
+                    messagesElement.style.display = "none";
+                }
+            }
+            function renderMessages() {
+                if (messagesElement.style.display == "none") {
+                    messagesElement.style.display = "inline-block";
                     calendarElement.style.display = "none";
+                    tasksElement.style.display = "none";
                 }
             }
         </script>
