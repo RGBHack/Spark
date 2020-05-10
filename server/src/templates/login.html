@@ -15,7 +15,8 @@
         <div class="collapse navbar-collapse" id="navcol-1" style="width:100vw; margin: none;">
             <ul class="nav navbar-nav navbar-center"
                 style="width:100vw;text-align:center;margin: 0 auto;width: fit-content;">
-                <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/">SPARK</a></li>
+                <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/">SPARK</a>
+                </li>
                 <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">&#183;</a></li>
                 <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link"
                         href="/about">ABOUT</a></li>
@@ -58,15 +59,15 @@
             </div>
         </span>
     </div>
-   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
-   <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
 
-   <!-- Add Firebase products that you want to use -->
-   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 
     <script>
         var config = {
@@ -94,6 +95,11 @@
                 alert("Please check your email and password")
             })
         }
+        auth.onAuthStateChanged(function (user) {
+        if (user !== null) {
+            window.location.pathname = '/dashboard'
+        }
+        })
     </script>
 </body>
 

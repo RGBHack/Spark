@@ -506,7 +506,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a href="javascript:renderCalendar();">
                             <svg>
                                 <use xlink:href="#calendar"></use>
                             </svg>
@@ -522,7 +522,7 @@
                         </a>
                     </li>
                     <li class="red">
-                        <a class="red" href="#0">
+                        <a class="red" href="javascript:logout();">
                             <svg>
                                 <use xlink:href="#logout"></use>
                             </svg>
@@ -568,17 +568,46 @@
             </nav>
         </header>
         <section class="page-content">
-            <iframe src="/calendar" style="border-radius: 20px; overflow: hidden; width: 75vw; height: 128vh; flex: 1 0 auto;"></iframe>
+
+            <!-- add iframes here -->
+
+            <iframe src="/calendar" id="calendar" style="display:inline-block; border-radius: 20px; overflow: hidden; width: 75vw; height: 128vh; flex: 1 0 auto;"></iframe>
+
+            
+            <!-- end iframes -->
+
             <footer class="page-footer">
                 <small style="color: white;">&copy; Copyright 2020, RGBHack</small>
             </footer>
         </section>
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
         <script>
             const body = document.body;
             const menuLinks = document.querySelectorAll(".admin-menu a");
             const collapseBtn = document.querySelector(".admin-menu .collapse-btn");
             const toggleMobileMenu = document.querySelector(".toggle-mob-menu");
             const collapsedClass = "collapsed";
+
+            var config = {
+                apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+                authDomain: "httpsspark-2121.web.app/",
+                databseURL: "https://spark-2121.firebaseio.com/",
+                projectId: "spark-2121"
+            }
+            if (firebase.apps.length === 0) {
+                firebase.initializeApp(config)
+                console.log("worked")
+            }
+            const auth = firebase.auth();
+            const db = firebase.firestore();
             
             collapseBtn.addEventListener("click", function() {
             this.getAttribute("aria-expanded") == "true"
@@ -607,6 +636,18 @@
               ? this.setAttribute("title", this.textContent)
               : this.removeAttribute("title");
             });
+            }
+            function logout () {
+                auth.signOut()
+                window.location.pathname = '/'
+            }
+            function renderCalendar() {
+                var x = document.getElementById("calendar");
+                if (x.style.display === "none") {
+                    x.style.display = "inline-block";
+                } else {
+                    x.style.display = "none";
+                }
             }
         </script>
     </body>

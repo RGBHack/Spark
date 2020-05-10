@@ -25,5 +25,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+      authDomain: "httpsspark-2121.web.app/",
+      databseURL: "https://spark-2121.firebaseio.com/",
+      projectId: "spark-2121"
+    }
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(config)
+      console.log("worked")
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    auth.onAuthStateChanged(function (user) {
+      if (user !== null) {
+        window.location.pathname = '/dashboard'
+      }
+    })
+   </script>
 </html>
