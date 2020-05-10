@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+@font-face {
+  font-family: "Lexend Deca Regular";
+  src: url(../fonts/LexendDecaRegular.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+    background-color: #36393f;
+    font-family: "Lexend Deca Regular";
+}
+
 body {
   margin: 0;
   min-width: 250px;
+  font-family: "Lexend Deca Regular";
 }
 
 /* Include the padding and border in an element's total width and height */
@@ -82,7 +95,7 @@ ul li.checked::before {
 
 /* Style the header */
 .header {
-  background-color: #f44336;
+  background: #26262b;
   padding: 30px 40px;
   color: white;
   text-align: center;
@@ -97,6 +110,7 @@ ul li.checked::before {
 
 /* Style the input */
 input {
+  color: #dde9f8;
   margin: 0;
   border: none;
   border-radius: 0;
@@ -110,11 +124,16 @@ input {
 .addBtn {
   padding: 10px;
   width: 25%;
-  background: #d9d9d9;
-  color: #555;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 93, 0, 1) 0,
+    rgba(255, 217, 25, 1) 100%
+  );;
+  color: #dde9f8;
   float: left;
   text-align: center;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
   border-radius: 0;
@@ -124,19 +143,19 @@ input {
   background-color: #bbb;
 }
 </style>
-</head>
-<body>
+    </head>
+    <body>
 
-<div id="myDIV" class="header">
-  <h2 style="margin:5px">My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
+        <div id="myDIV" class="header">
+            <h2 style="margin:5px; color: #dde9f8;">Task List:</h2>
+            <input type="text" id="myInput" placeholder="Task...">
+            <span onclick="newElement()" class="addBtn">Add</span>
+        </div>
 
-<ul id="myUL">
-</ul>
+        <ul id="myUL">
+        </ul>
 
-<script>
+        <script>
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 var i;
@@ -193,6 +212,5 @@ function newElement() {
   }
 }
 </script>
-
-</body>
+    </body>
 </html>
