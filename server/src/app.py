@@ -32,11 +32,6 @@ def dashboard():
     context = { 'server_time': format_server_time() }
     return render_template('dashboard.html', context=context)
 
-@app.route('/dashboard-testing')
-def dashboard_testing():
-    context = { 'server_time': format_server_time() }
-    return render_template('dashboard-testing.html', context=context)
-
 @app.route('/calendar')
 def calendar():
     context = { 'server_time': format_server_time() }
