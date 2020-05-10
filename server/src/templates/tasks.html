@@ -170,7 +170,7 @@ input {
     <body>
 
         <div id="myDIV" class="header">
-            <h1 style="margin:5px; margin-bottom: 25px; margin-top: 0px; color: #dde9f8;">Task List:</h1>
+            <h1 style="margin:5px; margin-bottom: 25px; margin-top: 0px; color: #dde9f8;font-size: 2.5rem;">Task List:</h1>
             <input type="text" id="myInput" placeholder="Task...">
             <span onclick="newElement()" class="addBtn">Add</span>
         </div>
@@ -211,6 +211,21 @@ auth.onAuthStateChanged(function (user) {
   }
   else {
     uid = user.uid;
+    var docRef = firestore.collection("users").doc(uid);
+    docRef.get().then(function (doc) {
+      console.log("made it")
+      if (doc.data().tasks !== undefined) {
+        for (var i = 0; i<doc.data().tasks.length; i++) {
+          console.log(doc.data().tasks[i].text)
+          newElementByValue(doc.data().tasks[i].text)
+        }
+      }
+      else {
+        docRef.update({
+          tasks : []
+        })
+      }
+    })
   }
 })
 
@@ -232,6 +247,21 @@ for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
     div.style.display = "none";
+    var taskname = div.innerHTML.split("<span")[0]
+    if (uid === null) {
+      return;
+    }
+    var docRef = firestore.collection("users").doc(uid);
+    if (div.classList.contains('checked')) {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : true})
+      })
+    }
+    else {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : false})
+      })
+    }
   }
 }
 
@@ -244,7 +274,8 @@ list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
     var docRef = firestore.collection("users").doc(uid);
-    var taskname = ev.target.innerHTML
+    var taskname = ev.target.innerHTML.split("<span")[0]
+    console.log(taskname)
     if (ev.target.classList.contains('checked')) {
       docRef.update({
         tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : false})
@@ -290,25 +321,43 @@ function newElement() {
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
+    var div = this.parentElement;
+    div.style.display = "none";
+    var taskname = div.innerHTML.split("<span")[0]
+    if (uid === null) {
+      return;
+    }
+    var docRef = firestore.collection("users").doc(uid);
+    if (div.classList.contains('checked')) {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : true})
+      })
+    }
+    else {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : false})
+      })
     }
   }
+  }
   var docRef = firestore.collection("users").doc(uid);
+  console.log("added element!")
   docRef.get().then(function (doc) {
     if (doc.data().tasks === undefined) {
+      console.log("update1")
       docRef.update({
+
         tasks : [{text : inputValue, checked : false}]
       })
     }
     else {
+      console.log("update2")
       docRef.update({
         tasks : firebase.firestore.FieldValue.arrayUnion({text : inputValue, checked : false})
       })
     }
   })
 }
-
 
 function newElementByValue(inputValue) {
   var li = document.createElement("li");
@@ -329,9 +378,24 @@ function newElementByValue(inputValue) {
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
+    var div = this.parentElement;
+    div.style.display = "none";
+    var taskname = div.innerHTML.split("<span")[0]
+    if (uid === null) {
+      return;
     }
+    var docRef = firestore.collection("users").doc(uid);
+    if (div.classList.contains('checked')) {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : true})
+      })
+    }
+    else {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayRemove({text : taskname, checked : false})
+      })
+    }
+  }
   }
 }
 </script>
