@@ -217,7 +217,7 @@ auth.onAuthStateChanged(function (user) {
       if (doc.data().tasks !== undefined) {
         for (var i = 0; i<doc.data().tasks.length; i++) {
           console.log(doc.data().tasks[i].text)
-          newElementByValue(doc.data().tasks[i].text)
+          newElementByValue(doc.data().tasks[i].text,doc.data().tasks[i].checked)
         }
       }
       else {
@@ -358,15 +358,17 @@ function newElement() {
     }
   })
 }
-
-function newElementByValue(inputValue) {
+function newElementByValue(inputValue, checked) {
   var li = document.createElement("li");
-  var t = document.createTextNode(inputValue);
+  var t = document.createTextNode(inputValue)
   li.appendChild(t);
   if (inputValue === '') {
     alert("You can't add a blank task, sorry.");
   } else {
-    document.getElementById("myUL").appendChild(li);
+    child = document.getElementById("myUL").appendChild(li);
+  }
+  if (checked) {
+    child.classList.toggle("checked")
   }
   document.getElementById("myInput").value = "";
 
