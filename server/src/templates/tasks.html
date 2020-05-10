@@ -97,7 +97,8 @@ ul li.checked::before {
 /* Style the header */
 .header {
   background: #26262b;
-  padding: 30px 40px;
+  padding: 10px;
+  padding-bottom: 20px;
   color: white;
   text-align: center;
 }
@@ -169,7 +170,7 @@ input {
     <body>
 
         <div id="myDIV" class="header">
-            <h2 style="margin:5px; margin-bottom: 25px; color: #dde9f8;">Task List:</h2>
+            <h1 style="margin:5px; margin-bottom: 25px; margin-top: 0px; color: #dde9f8;">Task List:</h1>
             <input type="text" id="myInput" placeholder="Task...">
             <span onclick="newElement()" class="addBtn">Add</span>
         </div>
@@ -177,7 +178,42 @@ input {
         <ul id="myUL">
         </ul>
 
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 <script>
+
+var config = {
+  apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+  authDomain: "httpsspark-2121.web.app/",
+  databaseURL: "https://spark-2121.firebaseio.com/",
+  projectId: "spark-2121"
+}
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(config)
+}
+var group = "cyberaegis"
+var database = firebase.database()
+var firestore = firebase.firestore()
+const auth = firebase.auth();
+var uid = null
+auth.onAuthStateChanged(function (user) {
+  if (user === null) {
+    window.location.pathname = '/'
+  }
+  else {
+    uid = user.uid;
+  }
+})
+
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 var i;
@@ -202,15 +238,64 @@ for (i = 0; i < close.length; i++) {
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
+  if (uid === null) {
+    return;
+  }
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
+    var docRef = firestore.collection("users").doc(uid);
+    docRef.get().then(function (doc) {
+      
+    })
   }
 }, false);
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
+  if (uid === null) {
+    return;
+  }
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You can't add a blank task, sorry.");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+  var docRef = firestore.collection("users").doc(uid);
+  docRef.get().then(function (doc) {
+    if (doc.data().tasks === undefined) {
+      docRef.update({
+        tasks : [{text : inputValue, checked : false}]
+      })
+    }
+    else {
+      docRef.update({
+        tasks : firebase.firestore.FieldValue.arrayUnion({text : inputValue, checked : false})
+      })
+    }
+  })
+}
+
+
+function newElementByValue(inputValue) {
+  var li = document.createElement("li");
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
