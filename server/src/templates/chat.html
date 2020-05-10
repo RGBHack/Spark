@@ -38,6 +38,7 @@
 
   .main-content {
     text-align: center;
+    margin-top: 5px;
   }
 
   .your-msg {
@@ -90,7 +91,7 @@
 
 <body>
 <div class="main-content">
-<h1 style="color:#dde9f8;padding: 5px;">Chat:</h1>
+<h1 style="color:#dde9f8;margin-bottom: 25px; margin-top: 0px;">Messages:</h1>
 <div class="messages" id="messages"></div>
 <form id="formEE">
   <input style="display:inline-block;background: #dde9f8;width: 60%;" type="text" id="chat-input">
@@ -171,5 +172,15 @@
       newchatref.set({
           text: text
       })
+    }
+
+    // Click on a close button to hide the current list item
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+      }
     }
 </script>
