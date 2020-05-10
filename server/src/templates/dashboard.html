@@ -1,26 +1,574 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Spark</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
-</head>
-<body style="background-color: #26262b;"><nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #26262b;height: 15vh;">
-    <div class="collapse navbar-collapse" id="navcol-1" style="width:100vw; margin: none;">
-        <ul class="nav navbar-nav navbar-center" style="width:100vw;text-align:center;margin: 0 auto;width: fit-content;">
-            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/">SPARK</a></li>
-            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">&#183;</a></li>
-            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
-            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">&#183;</a></li>
-            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/login">LOGIN</a></li>
-        </ul>
-    </div>
-</nav>
-     
-    <iframe src="/calendar" style='border-radius: 20px; overflow: hidden; width: 60vw; height: 110vh; flex: 1 0 auto;'></iframe>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Spark</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/styles.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
+    </head>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+        :root {
+        --page-header-bgColor: #26262b;
+        --page-header-bgColor-hover: #1d2636;
+        --page-header-txtColor: #dde9f8;
+        --page-header-headingColor: #7889a4;
+        --page-header-width: 220px;
+        /* --page-content-bgColor: #f0f1f6; */
+        --page-content-bgColor: #36393f;
+        --page-content-txtColor: #171616;
+        --page-content-blockColor: #fff;
+        --white: #fff;
+        --black: #333;
+        --blue: #00b9eb;
+        --red: #ec1848;
+        --border-radius: 4px;
+        --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.075);
+        }
+        * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        }
+        ul {
+        list-style: none;
+        }
+        a,
+        button {
+        color: inherit;
+        }
+        a {
+        text-decoration: none;
+        }
+        button {
+        background: none;
+        cursor: pointer;
+        }
+        input {
+        -webkit-appearance: none;
+        }
+        button,
+        input {
+        border: none;
+        }
+        svg {
+        display: block;
+        }
+        body {
+        font: 16px/1.5 "Lato", sans-serif;
+        }
+        /* HEADER STYLES
+        –––––––––––––––––––––––––––––––––––––––––––––––––– */
+        .page-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
+        padding-top: 20px;
+        width: var(--page-header-width);
+        color: var(--page-header-txtColor);
+        background: var(--page-header-bgColor);
+        }
+        /*In case you prefer an absolutely positioned header that covers the full page height, add these styles*/
+        /*body {
+        position: relative;
+        }
+        .page-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        }*/
+        /*remove these styles*/
+        /*.page-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
+        }*/
+        .page-header nav {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        }
+        .page-header .logo {
+        display: block;
+        max-width: 150px;
+        margin: 20px;
+        }
+        .page-header .toggle-mob-menu {
+        display: none;
+        margin-left: 5px;
+        padding: 4px;
+        background: var(--page-content-blockColor);
+        border-radius: var(--border-radius);
+        }
+        .page-header .toggle-mob-menu svg {
+        fill: var(--black);
+        transition: transform 0.2s;
+        }
+        .page-header .admin-menu {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin-top: 35px;
+        }
+        .page-header .admin-menu li:nth-last-child(2) {
+        margin-bottom: 35px;
+        }
+        .page-header .admin-menu li:last-child {
+        margin-top: auto;
+        margin-bottom: 20px;
+        }
+        .page-header .admin-menu li > * {
+        width: 100%;
+        padding: 12px 15px;
+        }
+        .page-header .admin-menu .menu-heading h3 {
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 12px;
+        margin-top: 12px;
+        color: var(--page-header-headingColor);
+        }
+        .page-header .admin-menu svg {
+        width: 20px;
+        height: 20px;
+        fill: var(--page-header-txtColor);
+        margin-right: 10px;
+        transition: fill 0.2s;
+        }
+        .page-header .admin-menu a,
+        .page-header .admin-menu button {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        transition: background 0.2s, color 0.2s;
+        }
+        .page-header .admin-menu a:hover,
+        .page-header .admin-menu a:focus,
+        .page-header .admin-menu button:hover,
+        .page-header .admin-menu button:focus {
+        background: var(--page-header-bgColor-hover);
+        color: var(--blue);
+        outline: none;
+        }
+        .page-header .admin-menu a:hover svg,
+        .page-header .admin-menu a:focus svg,
+        .page-header .admin-menu button:hover svg,
+        .page-header .admin-menu button:focus svg {
+        fill: var(--blue);
+        }
+        /* PAGE CONTENT STYLES
+        –––––––––––––––––––––––––––––––––––––––––––––––––– */
+        .page-content {
+        position: relative;
+        left: var(--page-header-width);
+        width: calc(100% - var(--page-header-width));
+        min-height: 100vh;
+        padding: 30px;
+        color: var(--page-content-txtColor);
+        background: var(--page-content-bgColor);
+        }
+        .search-and-user {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-column-gap: 50px;
+        align-items: center;
+        background: var(--page-content-bgColor);
+        margin-bottom: 30px;
+        }
+        .search-and-user form {
+        position: relative;
+        }
+        .search-and-user input[type="search"] {
+        width: 100%;
+        height: 50px;
+        font-size: 1.5rem;
+        padding-left: 15px;
+        background: var(--page-content-blockColor);
+        color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .search-and-user ::placeholder {
+        color: var(--page-content-txtColor);
+        }
+        .search-and-user form svg {
+        width: 26px;
+        height: 26px;
+        fill: var(--page-content-txtColor);
+        }
+        .search-and-user form button {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        }
+        .search-and-user .admin-profile {
+        display: flex;
+        align-items: center;
+        }
+        .search-and-user .admin-profile .greeting {
+        margin: 0 10px 0 20px;
+        }
+        .search-and-user .admin-profile svg {
+        width: 30px;
+        height: 30px;
+        }
+        .search-and-user .admin-profile .notifications {
+        position: relative;
+        }
+        .search-and-user .admin-profile .badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -10px;
+        right: -3px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        font-size: 10px;
+        color: var(--white);
+        background: var(--red);
+        }
+        .page-content .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 30px;
+        }
+        .page-content .grid > article {
+        display: flex;
+        height: 300px;
+        background: var(--page-content-blockColor);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        }
+        .page-content .grid > article:first-child,
+        .page-content .grid > article:last-child {
+        grid-column: 1 / -1;
+        }
+        /* MQ RULES
+        –––––––––––––––––––––––––––––––––––––––––––––––––– */
+        @media screen and (max-width: 767px) {
+        .page-header,
+        .page-content {
+        position: static;
+        width: 100%;
+        }
+        .page-header {
+        padding: 10px;
+        }
+        .page-header nav {
+        flex-direction: row;
+        }
+        .page-header .logo {
+        margin: 0;
+        height: 50px;
+        }
+        .page-header .toggle-mob-menu {
+        display: block;
+        }
+        .page-header .admin-menu {
+        position: absolute;
+        left: 98px;
+        top: 57px;
+        margin-top: 0;
+        z-index: 2;
+        border-radius: var(--border-radius);
+        background: var(--page-header-bgColor);
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: all 0.2s;
+        }
+        .page-header .admin-menu li:nth-last-child(2) {
+        margin-bottom: 12px;
+        }
+        .page-header .admin-menu li:last-child,
+        .search-and-user .admin-profile .greeting {
+        display: none;
+        }
+        .page-content {
+        min-height: 0;
+        padding: 10px;
+        }
+        .page-content .grid {
+        grid-gap: 10px;
+        }
+        .search-and-user {
+        position: absolute;
+        left: 131px;
+        top: 10px;
+        padding: 0;
+        grid-column-gap: 5px;
+        width: calc(100% - 141px);
+        border-radius: var(--border-radius);
+        background: transparent;
+        }
+        .search-and-user input[type="search"] {
+        font-size: 1rem;
+        height: 35px;
+        }
+        .search-and-user form svg {
+        width: 18px;
+        height: 18px;
+        }
+        .search-and-user .admin-profile svg {
+        fill: var(--white);
+        }
+        }
+        @media screen and (max-width: 400px) {
+        .page-content .grid > article {
+        grid-column: 1 / -1;
+        }
+        }
+        /* BODY CLASSES
+        –––––––––––––––––––––––––––––––––––––––––––––––––– */
+        .mob-menu-opened .toggle-mob-menu svg {
+        transform: rotate(180deg);
+        }
+        .mob-menu-opened .page-header .admin-menu {
+        transform: scale(1);
+        visibility: visible;
+        opacity: 1;
+        }
+        @media screen and (min-width: 768px) {
+        .collapsed .page-header {
+        width: 40px;
+        }
+        .collapsed .page-header .admin-menu li > * {
+        padding: 10px;
+        }
+        .collapsed .page-header .logo,
+        .collapsed .page-header .admin-menu span,
+        .collapsed .page-header .admin-menu .menu-heading {
+        display: none;
+        }
+        .collapsed .page-header .admin-menu svg {
+        margin-right: 0;
+        }
+        .collapsed .page-header .collapse-btn svg {
+        transform: rotate(180deg);
+        }
+        .collapsed .page-content {
+        left: 40px;
+        width: calc(100% - 40px);
+        }
+        }
+        /* FOOTER
+        –––––––––––––––––––––––––––––––––––––––––––––––––– */
+        .page-footer {
+        font-size: 0.85rem;
+        text-align: right;
+        margin-top: 10px;
+        }
+        .page-footer span {
+        color: var(--red);
+        }
+    </style>
+    <body style="background-color: #26262b;">
+        <svg style="display:none;">
+            <symbol id="down" viewBox="0 0 16 16">
+                <polygon points="3.81 4.38 8 8.57 12.19 4.38 13.71 5.91 8 11.62 2.29 5.91 3.81 4.38" />
+            </symbol>
+            <symbol id="users" viewBox="0 0 16 16">
+                <path d="M8,0a8,8,0,1,0,8,8A8,8,0,0,0,8,0ZM8,15a7,7,0,0,1-5.19-2.32,2.71,2.71,0,0,1,1.7-1,13.11,13.11,0,0,0,1.29-.28,2.32,2.32,0,0,0,.94-.34,1.17,1.17,0,0,0-.27-.7h0A3.61,3.61,0,0,1,5.15,7.49,3.18,3.18,0,0,1,8,4.07a3.18,3.18,0,0,1,2.86,3.42,3.6,3.6,0,0,1-1.32,2.88h0a1.13,1.13,0,0,0-.27.69,2.68,2.68,0,0,0,.93.31,10.81,10.81,0,0,0,1.28.23,2.63,2.63,0,0,1,1.78,1A7,7,0,0,1,8,15Z" />
+            </symbol>
+            <symbol id="collection" viewBox="0 0 16 16">
+                <rect width="7" height="7" />
+                <rect y="9" width="7" height="7" />
+                <rect x="9" width="7" height="7" />
+                <rect x="9" y="9" width="7" height="7" />
+            </symbol>
+            <symbol id="charts" viewBox="0 0 16 16">
+                <polygon points="0.64 7.38 -0.02 6.63 2.55 4.38 4.57 5.93 9.25 0.78 12.97 4.37 15.37 2.31 16.02 3.07 12.94 5.72 9.29 2.21 4.69 7.29 2.59 5.67 0.64 7.38" />
+                <rect y="9" width="2" height="7" />
+                <rect x="12" y="8" width="2" height="8" />
+                <rect x="8" y="6" width="2" height="10" />
+                <rect x="4" y="11" width="2" height="5" />
+            </symbol>
+            <symbol id="comments" viewBox="0 0 16 16">
+                <path d="M0,16.13V2H15V13H5.24ZM1,3V14.37L5,12h9V3Z"/>
+                <rect x="3" y="5" width="9" height="1"/>
+                <rect x="3" y="7" width="7" height="1"/>
+                <rect x="3" y="9" width="5" height="1"/>
+            </symbol>
+            <symbol id="pages" viewBox="0 0 16 16">
+                <rect x="4" width="12" height="12" transform="translate(20 12) rotate(-180)"/>
+                <polygon points="2 14 2 2 0 2 0 14 0 16 2 16 14 16 14 14 2 14"/>
+            </symbol>
+            <symbol id="appearance" viewBox="0 0 16 16">
+                <path d="M3,0V7A2,2,0,0,0,5,9H6v5a2,2,0,0,0,4,0V9h1a2,2,0,0,0,2-2V0Zm9,7a1,1,0,0,1-1,1H9v6a1,1,0,0,1-2,0V8H5A1,1,0,0,1,4,7V6h8ZM4,5V1H6V4H7V1H9V4h1V1h2V5Z"/>
+            </symbol>
+            <symbol id="trends" viewBox="0 0 16 16">
+                <polygon points="0.64 11.85 -0.02 11.1 2.55 8.85 4.57 10.4 9.25 5.25 12.97 8.84 15.37 6.79 16.02 7.54 12.94 10.2 9.29 6.68 4.69 11.76 2.59 10.14 0.64 11.85"/>
+            </symbol>
+            <symbol id="settings" viewBox="0 0 16 16">
+                <rect x="9.78" y="5.34" width="1" height="7.97"/>
+                <polygon points="7.79 6.07 10.28 1.75 12.77 6.07 7.79 6.07"/>
+                <rect x="4.16" y="1.75" width="1" height="7.97"/>
+                <polygon points="7.15 8.99 4.66 13.31 2.16 8.99 7.15 8.99"/>
+                <rect x="1.28" width="1" height="4.97"/>
+                <polygon points="3.28 4.53 1.78 7.13 0.28 4.53 3.28 4.53"/>
+                <rect x="12.84" y="11.03" width="1" height="4.97"/>
+                <polygon points="11.85 11.47 13.34 8.88 14.84 11.47 11.85 11.47"/>
+            </symbol>
+            <symbol id="options" viewBox="0 0 16 16">
+                <path d="M8,11a3,3,0,1,1,3-3A3,3,0,0,1,8,11ZM8,6a2,2,0,1,0,2,2A2,2,0,0,0,8,6Z"/>
+                <path d="M8.5,16h-1A1.5,1.5,0,0,1,6,14.5v-.85a5.91,5.91,0,0,1-.58-.24l-.6.6A1.54,1.54,0,0,1,2.7,14L2,13.3a1.5,1.5,0,0,1,0-2.12l.6-.6A5.91,5.91,0,0,1,2.35,10H1.5A1.5,1.5,0,0,1,0,8.5v-1A1.5,1.5,0,0,1,1.5,6h.85a5.91,5.91,0,0,1,.24-.58L2,4.82A1.5,1.5,0,0,1,2,2.7L2.7,2A1.54,1.54,0,0,1,4.82,2l.6.6A5.91,5.91,0,0,1,6,2.35V1.5A1.5,1.5,0,0,1,7.5,0h1A1.5,1.5,0,0,1,10,1.5v.85a5.91,5.91,0,0,1,.58.24l.6-.6A1.54,1.54,0,0,1,13.3,2L14,2.7a1.5,1.5,0,0,1,0,2.12l-.6.6a5.91,5.91,0,0,1,.24.58h.85A1.5,1.5,0,0,1,16,7.5v1A1.5,1.5,0,0,1,14.5,10h-.85a5.91,5.91,0,0,1-.24.58l.6.6a1.5,1.5,0,0,1,0,2.12L13.3,14a1.54,1.54,0,0,1-2.12,0l-.6-.6a5.91,5.91,0,0,1-.58.24v.85A1.5,1.5,0,0,1,8.5,16ZM5.23,12.18l.33.18a4.94,4.94,0,0,0,1.07.44l.36.1V14.5a.5.5,0,0,0,.5.5h1a.5.5,0,0,0,.5-.5V12.91l.36-.1a4.94,4.94,0,0,0,1.07-.44l.33-.18,1.12,1.12a.51.51,0,0,0,.71,0l.71-.71a.5.5,0,0,0,0-.71l-1.12-1.12.18-.33a4.94,4.94,0,0,0,.44-1.07l.1-.36H14.5a.5.5,0,0,0,.5-.5v-1a.5.5,0,0,0-.5-.5H12.91l-.1-.36a4.94,4.94,0,0,0-.44-1.07l-.18-.33L13.3,4.11a.5.5,0,0,0,0-.71L12.6,2.7a.51.51,0,0,0-.71,0L10.77,3.82l-.33-.18a4.94,4.94,0,0,0-1.07-.44L9,3.09V1.5A.5.5,0,0,0,8.5,1h-1a.5.5,0,0,0-.5.5V3.09l-.36.1a4.94,4.94,0,0,0-1.07.44l-.33.18L4.11,2.7a.51.51,0,0,0-.71,0L2.7,3.4a.5.5,0,0,0,0,.71L3.82,5.23l-.18.33a4.94,4.94,0,0,0-.44,1.07L3.09,7H1.5a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5H3.09l.1.36a4.94,4.94,0,0,0,.44,1.07l.18.33L2.7,11.89a.5.5,0,0,0,0,.71l.71.71a.51.51,0,0,0,.71,0Z"/>
+            </symbol>
+            <symbol id="collapse" viewBox="0 0 16 16">
+                <polygon points="11.62 3.81 7.43 8 11.62 12.19 10.09 13.71 4.38 8 10.09 2.29 11.62 3.81"/>
+            </symbol>
+            <symbol id="search" viewBox="0 0 16 16">
+                <path d="M6.57,1A5.57,5.57,0,1,1,1,6.57,5.57,5.57,0,0,1,6.57,1m0-1a6.57,6.57,0,1,0,6.57,6.57A6.57,6.57,0,0,0,6.57,0Z"/>
+                <rect x="11.84" y="9.87" width="2" height="5.93" transform="translate(-5.32 12.84) rotate(-45)"/>
+            </symbol>
+            <symbol viewBox="0 0 512 512" id="list">
+                <path d="M440.749 118.535L332.466 10.253C325.855 3.641 317.066 0 307.716 0H96C76.701 0 61 15.701 61 35v442c0 19.299 15.701 35 35 35h320c19.299 0 35-15.701 35-35V143.284c0-9.347-3.64-18.136-10.251-24.749zM399.787 120H336c-2.757 0-5-2.243-5-5V51.214zM416 482H96c-2.757 0-5-2.243-5-5V35c0-2.757 2.243-5 5-5h205v85c0 19.299 15.701 35 35 35h85v327c0 2.757-2.243 5-5 5z"></path>
+                <path d="M272.1 229h95.571c8.284 0 15-6.716 15-15s-6.716-15-15-15H272.1c-8.284 0-15 6.716-15 15s6.715 15 15 15zm0 100h95.571c8.284 0 15-6.716 15-15s-6.716-15-15-15H272.1c-8.284 0-15 6.716-15 15s6.715 15 15 15zm96 70h-96c-8.284 0-15 6.716-15 15s6.716 15 15 15h96c8.284 0 15-6.716 15-15s-6.716-15-15-15zM197.256 173.157l-34.592 34.591-8.157-8.157c-5.857-5.858-15.355-5.858-21.213 0s-5.858 15.355 0 21.213l18.764 18.764c2.929 2.929 6.768 4.394 10.606 4.394s7.678-1.464 10.606-4.394l45.198-45.198c5.858-5.858 5.858-15.355 0-21.213-5.857-5.858-15.355-5.858-21.212 0zm0 107.637l-34.592 34.592-8.157-8.157c-5.857-5.857-15.355-5.858-21.213 0s-5.858 15.355 0 21.213l18.764 18.763c2.929 2.929 6.768 4.393 10.606 4.393s7.678-1.464 10.606-4.394l45.198-45.198c5.858-5.858 5.858-15.355 0-21.213-5.857-5.857-15.355-5.857-21.212.001zm0 100l-34.592 34.592-8.157-8.157c-5.857-5.857-15.355-5.858-21.213 0s-5.858 15.355 0 21.213l18.764 18.763c2.929 2.929 6.768 4.393 10.606 4.393s7.678-1.464 10.606-4.394l45.198-45.198c5.858-5.858 5.858-15.355 0-21.213-5.857-5.857-15.355-5.857-21.212.001z"></path>
+            </symbol>
+            <symbol viewBox="0 0 512 512" id="calendar">
+                <path d="M453.332 512H58.668C26.305 512 0 485.695 0 453.332v-352c0-32.363 26.305-58.664 58.668-58.664h394.664c32.363 0 58.668 26.3 58.668 58.664v352C512 485.695 485.695 512 453.332 512zM58.668 74.668C43.968 74.668 32 86.633 32 101.332v352C32 468.032 43.969 480 58.668 480h394.664c14.7 0 26.668-11.969 26.668-26.668v-352c0-14.7-11.969-26.664-26.668-26.664zm0 0"></path>
+                <path d="M496 202.668H16c-8.832 0-16-7.168-16-16s7.168-16 16-16h480c8.832 0 16 7.168 16 16s-7.168 16-16 16zM122.668 128c-8.832 0-16-7.168-16-16V16c0-8.832 7.168-16 16-16s16 7.168 16 16v96c0 8.832-7.168 16-16 16zm266.664 0c-8.832 0-16-7.168-16-16V16c0-8.832 7.168-16 16-16s16 7.168 16 16v96c0 8.832-7.168 16-16 16zm0 0"></path>
+            </symbol>
+            <symbol viewBox="0 0 512 512" id="projects">
+                <path d="M255.985 59.99c-8.284 0-15 6.716-15 15s6.716 15 15 15c49.634 0 90.015 40.374 90.015 90 0 8.284 6.716 15 15 15s15-6.716 15-15c0-66.168-53.838-120-120.015-120z"></path>
+                <path d="M217.335 4.03c-67.77 14.161-122.72 68.585-137.179 136.776-12.209 57.582 2.836 115.392 41.277 158.607C140.224 320.536 151 348.419 151 375.99v30c0 19.96 13.067 36.917 31.093 42.79 5.928 35.025 36.328 63.209 73.907 63.209 37.569 0 67.977-28.175 73.907-63.209C347.933 442.907 361 425.95 361 405.989v-30c0-27.625 10.812-55.173 30.442-77.569A179.6 179.6 0 0 0 436 179.99C436 66.425 332.051-19.936 217.335 4.03zM256 481.99c-19.282 0-36.188-13.268-42.431-31.1h84.861c-6.242 17.832-23.148 31.1-42.43 31.1zm75-76c0 8.271-6.729 15-15 15H196c-8.271 0-15-6.729-15-15v-15h150v15zm37.882-127.343c-20.92 23.867-33.791 52.647-37.057 82.343H180.178c-3.262-29.712-16.1-58.775-36.328-81.516-32.038-36.016-44.557-84.291-34.346-132.445C121.423 90.815 167.223 45.15 223.472 33.397 319.496 13.33 406 85.442 406 179.99a149.619 149.619 0 0 1-37.118 98.657zM45 179.99H15c-8.284 0-15 6.716-15 15s6.716 15 15 15h30c8.284 0 15-6.716 15-15s-6.716-15-15-15zm6.213-75L30 83.777c-5.857-5.858-15.355-5.858-21.213 0-5.858 5.858-5.858 15.355 0 21.213L30 126.203c5.857 5.858 15.355 5.859 21.213 0 5.858-5.858 5.858-15.355 0-21.213zm0 158.787c-5.858-5.858-15.356-5.858-21.213 0L8.787 284.99c-5.858 5.858-5.858 15.355 0 21.213 5.857 5.858 15.355 5.859 21.213 0l21.213-21.213c5.858-5.858 5.858-15.355 0-21.213zM497 179.99h-30c-8.284 0-15 6.716-15 15s6.716 15 15 15h30c8.284 0 15-6.716 15-15s-6.716-15-15-15zm6.213-96.213c-5.857-5.858-15.355-5.858-21.213 0l-21.213 21.213c-5.858 5.858-5.858 15.355 0 21.213 5.857 5.857 15.355 5.858 21.213 0l21.213-21.213c5.858-5.858 5.858-15.355 0-21.213zm0 201.213L482 263.777c-5.857-5.858-15.355-5.858-21.213 0-5.858 5.858-5.858 15.355 0 21.213L482 306.203c5.857 5.857 15.355 5.858 21.213 0 5.858-5.858 5.858-15.355 0-21.213z"></path>
+            </symbol>
+            <symbol viewBox="0 0 24 24" id="meetings">
+                <path d="M12 10h-.028a.753.753 0 0 1-.572-.3L10.125 8H7.75C6.785 8 6 7.215 6 6.25v-4.5C6 .785 6.785 0 7.75 0h8.5C17.215 0 18 .785 18 1.75v4.5C18 7.215 17.215 8 16.25 8h-2.16l-1.526 1.744A.748.748 0 0 1 12 10zM7.75 1.5a.25.25 0 0 0-.25.25v4.5c0 .138.112.25.25.25h2.75a.75.75 0 0 1 .6.3l.945 1.26 1.141-1.303a.745.745 0 0 1 .564-.257h2.5a.25.25 0 0 0 .25-.25v-4.5a.25.25 0 0 0-.25-.25zM20 11h-.029a.75.75 0 0 1-.572-.301l-.79-1.06a.75.75 0 1 1 1.203-.897l.235.316 1.139-1.301a.745.745 0 0 1 .564-.257h.5c.136 0 .25-.114.25-.25v-4.5a.253.253 0 0 0-.25-.25h-1.5a.75.75 0 0 1 0-1.5h1.5c.965 0 1.75.785 1.75 1.75v4.5C24 8.215 23.215 9 22.25 9h-.16l-1.526 1.744A.748.748 0 0 1 20 11zM4 11a.748.748 0 0 1-.564-.256L1.91 9h-.16C.785 9 0 8.215 0 7.25v-4.5C0 1.785.785 1 1.75 1h1.5a.75.75 0 0 1 0 1.5h-1.5a.253.253 0 0 0-.25.25v4.5c0 .136.114.25.25.25h.5c.216 0 .422.093.564.256l1.139 1.301.235-.316a.75.75 0 1 1 1.203.897l-.79 1.06a.748.748 0 0 1-.572.302H4zm16 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm0-2.5a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm3.25 7.5a.75.75 0 0 1-.75-.75v-.5c0-.689-.561-1.25-1.25-1.25h-2.5a.75.75 0 0 1 0-1.5h2.5A2.752 2.752 0 0 1 24 20.75v.5a.75.75 0 0 1-.75.75zM4 17c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zm0-2.5a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zM.75 22a.75.75 0 0 1-.75-.75v-.5A2.752 2.752 0 0 1 2.75 18h2.5a.75.75 0 0 1 0 1.5h-2.5c-.689 0-1.25.561-1.25 1.25v.5a.75.75 0 0 1-.75.75zM12 17.5c-1.654 0-3-1.346-3-3s1.346-3 3-3 3 1.346 3 3-1.346 3-3 3zm0-4.5c-.827 0-1.5.673-1.5 1.5S11.173 16 12 16s1.5-.673 1.5-1.5S12.827 13 12 13zm4.75 11a.75.75 0 0 1-.75-.75v-1.5c0-.689-.561-1.25-1.25-1.25h-5.5c-.689 0-1.25.561-1.25 1.25v1.5a.75.75 0 0 1-1.5 0v-1.5A2.752 2.752 0 0 1 9.25 19h5.5a2.752 2.752 0 0 1 2.75 2.75v1.5a.75.75 0 0 1-.75.75z"></path>
+            </symbol>
+            <symbol viewBox="0 0 512 512" id="discussions">
+                <path d="M477 119.517h-66.5v-55c0-19.299-15.701-35-35-35h-239c-19.299 0-35 15.701-35 35v134H35c-19.299 0-35 15.701-35 35v159c0 19.299 15.701 35 35 35h38v29.943c0 9.543 5.305 18.116 13.846 22.374a25.017 25.017 0 0 0 11.181 2.649c5.31 0 10.576-1.71 15.018-5.058l66.235-49.909H274c19.299 0 35-15.701 35-35v-44h23.72l66.234 49.909c4.444 3.349 9.708 5.059 15.019 5.058a25.04 25.04 0 0 0 11.181-2.649C433.695 396.576 439 388.003 439 378.46v-29.943h38c19.299 0 35-15.701 35-35v-159c0-19.299-15.701-35-35-35zm5 194c0 2.757-2.243 5-5 5h-53c-8.284 0-15 6.716-15 15v34.915l-62.234-46.895a15.001 15.001 0 0 0-9.027-3.021H238c-2.757 0-5-2.243-5-5v-159c0-2.757 2.243-5 5-5h239c2.757 0 5 2.243 5 5zm-208 84h-99.739a15.001 15.001 0 0 0-9.027 3.021L103 447.432v-34.915c0-8.284-6.716-15-15-15H35c-2.757 0-5-2.243-5-5v-159c0-2.757 2.243-5 5-5h168v85c0 19.299 15.701 35 35 35h41v44c0 2.756-2.243 5-5 5zm-137.5-338h239c2.757 0 5 2.243 5 5v55H238c-19.299 0-35 15.701-35 35v44h-71.5v-134c0-2.757 2.243-5 5-5z"></path>
+            </symbol>
+        </svg>
+        <header class="page-header">
+            <nav>
+                <a href="/">
+                <img class="logo" src="./img/spark_dark.png" alt="spark logo">
+                </a>
+                <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
+                    <svg width="20" height="20" aria-hidden="true">
+                        <use xlink:href="#down"></use>
+                    </svg>
+                </button>
+                <ul class="admin-menu">
+                    <li class="menu-heading">
+                        <h3>FOR ME</h3>
+                    </li>
+                    <li>
+                        <a href="#0">
+                            <svg>
+                                <use xlink:href="#list"></use>
+                            </svg>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                            <svg>
+                                <use xlink:href="#calendar"></use>
+                            </svg>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                            <svg>
+                                <use xlink:href="#comments"></use>
+                            </svg>
+                            <span>Messages</span>
+                        </a>
+                    </li>
+                    <li class="menu-heading">
+                        <h3>MY TEAM</h3>
+                    </li>
+                    <li>
+                        <a href="#0">
+                            <svg>
+                                <use xlink:href="#projects"></use>
+                            </svg>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                            <svg>
+                                <use xlink:href="#meetings"></use>
+                            </svg>
+                            <span>Meetings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                            <svg>
+                                <use xlink:href="#discussions"></use>
+                            </svg>
+                            <span>Discussions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu" style="float: center;">
+                            <svg aria-hidden="true">
+                                <use xlink:href="#collapse"></use>
+                            </svg>
+                            <!-- <span>Collapse</span> -->
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="page-content">
+            <iframe src="/calendar" style="border-radius: 20px; overflow: hidden; width: 75vw; height: 128vh; flex: 1 0 auto;"></iframe>
+            <footer class="page-footer">
+                <small style="color: white;">&copy; Copyright 2020, RGBHack</small>
+            </footer>
+        </section>
+        <script>
+            const body = document.body;
+            const menuLinks = document.querySelectorAll(".admin-menu a");
+            const collapseBtn = document.querySelector(".admin-menu .collapse-btn");
+            const toggleMobileMenu = document.querySelector(".toggle-mob-menu");
+            const collapsedClass = "collapsed";
+            
+            collapseBtn.addEventListener("click", function() {
+            this.getAttribute("aria-expanded") == "true"
+            ? this.setAttribute("aria-expanded", "false")
+            : this.setAttribute("aria-expanded", "true");
+            this.getAttribute("aria-label") == "collapse menu"
+            ? this.setAttribute("aria-label", "expand menu")
+            : this.setAttribute("aria-label", "collapse menu");
+            body.classList.toggle(collapsedClass);
+            });
+            
+            toggleMobileMenu.addEventListener("click", function() {
+            this.getAttribute("aria-expanded") == "true"
+            ? this.setAttribute("aria-expanded", "false")
+            : this.setAttribute("aria-expanded", "true");
+            this.getAttribute("aria-label") == "open menu"
+            ? this.setAttribute("aria-label", "close menu")
+            : this.setAttribute("aria-label", "open menu");
+            body.classList.toggle("mob-menu-opened");
+            });
+            
+            for (const link of menuLinks) {
+            link.addEventListener("mouseenter", function() {
+            body.classList.contains(collapsedClass) &&
+            window.matchMedia("(min-width: 768px)").matches
+              ? this.setAttribute("title", this.textContent)
+              : this.removeAttribute("title");
+            });
+            }
+        </script>
+    </body>
 </html>
