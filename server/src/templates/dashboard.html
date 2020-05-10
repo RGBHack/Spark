@@ -687,6 +687,10 @@
                     projectsElement.style.display = "none";
                 }
             }
+            auth.onAuthStateChanged(function (user) {
+            if (user === null) {
+                window.location.pathname = '/login'
+            }})
         </script>
     </body>
 </html>
