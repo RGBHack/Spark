@@ -514,6 +514,21 @@ textarea.form-control {
 .fade:not(.show) {
   opacity: 0;
 }
+button#modal {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 93, 0, 1) 0,
+      rgba(255, 217, 25, 1) 100%
+    );
+    border-color: white !important;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color:#36393f;
+    border-style: none;
+    outline-style: none;
+  }
 </style>
 
 <body>
@@ -524,7 +539,7 @@ textarea.form-control {
   </svg>
 
 <div class="board-layout">
-  <div>
+  <div style="width: fit-content; margin: 0 auto;">
     <div class="board-text">
       <h1 style="display: inline-block; margin-top: 0px;">Projects</h1>
       <button data-toggle="modal" data-target="#exampleModal" style="background-color: #36393f; border-radius: 100px; display: inline-block; margin-left: 20px;">
@@ -537,41 +552,35 @@ textarea.form-control {
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
-              <p>Please enter a task name:</p>
+              <p style="color:#36393f;">Please enter a task name:</p>
               <input id="projName" class="form-control" style="max-width:70%; margin: 0 auto;">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" onclick="addcard()" data-dismiss="modal">Add</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" onclick="addcard()" id="modal" data-dismiss="modal">Add</button>
             </div>
           </div>
         </div>
       </div>
    
   </div>
- 
-<div id='boardlists' class="board-lists">
+
+<div id='boardlists' class="board-lists" style="margin: 0 auto !important">
   <div id='list1' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
     <div class="list-title">
       To Do
     </div>
-    
-    
-   
   </div>
   <div  id='list2' class="board-list" ondrop="dropIt(event)" ondragover="allowDrop(event)">
     <div  class="list-title">
     In Progress
     </div>
-    
-    
   </div>
   <div  id='list3' class="board-list"  ondrop="dropIt(event)" ondragover="allowDrop(event)">
     <div  class="list-title">
       Done
-      </div>
-       
-      </div>
+    </div>
+  </div>
 </div>
 </div>
 <script>
