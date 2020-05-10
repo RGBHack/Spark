@@ -12,7 +12,7 @@
   }
 
   html {
-      background-color: #36393f;
+      background-color: #26262b;
       font-family: "Lexend Deca Regular";
   }
 
@@ -20,25 +20,67 @@
     margin: 0;
     min-width: 250px;
     font-family: "Lexend Deca Regular";
-    background-color: #36393f;
+    background-color: #26262b;
   }
 
-  #messages {
+  .messages {
     color: #dde9f8;
   }
+  
+  .txt-msg {
+    background-color: #36393f;
+    border-radius: 10px;
+  }
 
-  #main-content {
+  .main-content {
     margin-left: auto;
     margin-right: auto;
   }
+  
+  input {
+    background: linear-gradient(
+    90deg,
+    rgba(255, 93, 0, 1) 0,
+    rgba(255, 217, 25, 1) 100%
+  );
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 93, 0, 1) 0,
+    rgba(255, 217, 25, 1) 100%
+  );
+  border-radius: 10px;
+}
 </style>
 
 <body>
 <div class="main-content">
 <div class="messages" id="messages"></div>
 <form id="formEE">
-  <input style="display:inline-block;" type="text" id="chat-input">
-  <input style="display:inline-block; margin-left:10px;" type="submit" value="Submit Message!">
+  <input style="display:inline-block;background: #dde9f8;" type="text" id="chat-input">
+  <input class="submit-btn" style="display:inline-block; margin-left:10px; color: #dde9f8;" type="submit" value="Submit Message!">
 </form> 
 
 </div>
@@ -79,7 +121,7 @@
         chatRef2 = chatRef
         chatRef.on('child_added', function(data) {
             console.log(data.val())
-            document.getElementById("messages").innerHTML += "<p>" + data.val().text + "</p>"
+            document.getElementById("messages").innerHTML += "<p class='txt-msg'>" + data.val().text + "</p>"
         });
         var docRef = firestore.collection("users").doc(user.uid);
         docRef.get().then(function (doc) {

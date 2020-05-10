@@ -92,7 +92,28 @@
     fill: white;
     size: 20px;
   }
-  </style>
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      0deg,
+      rgba(255, 93, 0, 1) 0,
+      rgba(255, 217, 25, 1) 100%
+    );
+    border-radius: 10px;
+  }
+</style>
 
 <body>
   <svg style="display:none;">
