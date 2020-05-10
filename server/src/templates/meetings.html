@@ -138,6 +138,11 @@
         document.getElementById("meetings-iframe").style.display = 'block'
         document.getElementById("inputform").style.display = 'none'
     }
+    else {
+        document.getElementById("meetings-iframe").style.display = 'none'
+        document.getElementById("start-iframe").style.display = 'none'
+        document.getElementById("inputform").style.display = 'block'
+    }
     document.getElementById("formEE").onsubmit = function (e) {
         e.preventDefault()
         var id = document.getElementById("input").value
