@@ -87,5 +87,10 @@ def meetings():
     context = { 'server_time': format_server_time() }
     return render_template('meetings.html', context=context)
 
+@app.route('/meetings/<meetingid>')
+def meetingid(meetingid):
+    context = { 'server_time': format_server_time() }
+    return render_template('meetings.html', context=context, meetingid=meetingid)
+
 if __name__ == '__main__':
     app.run(debug=True,host='127.0.0.1',port=int(os.environ.get('PORT', 5004)))
