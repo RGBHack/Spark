@@ -7,6 +7,12 @@ div.wrapper#create {
   vertical-align: middle;
   text-align: center;
 }
+
+
+* {
+  transition: all 0.5s;
+}
+
 @font-face {
   font-family: "Lexend Deca Regular";
   src: url(../fonts/LexendDecaRegular.woff) format("woff");
