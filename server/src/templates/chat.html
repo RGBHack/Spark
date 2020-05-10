@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<div id="messages">
-    
-</div> 
-<input type="text" id="chat-input"><br>
-<button onclick="submit()">Submit Message!</button>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
 
+<style>
+  @font-face {
+  font-family: "Lexend Deca Regular";
+  src: url(../fonts/LexendDecaRegular.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  }
+
+  html {
+      background-color: #36393f;
+      font-family: "Lexend Deca Regular";
+  }
+
+  body {
+    margin: 0;
+    min-width: 250px;
+    font-family: "Lexend Deca Regular";
+    background-color: #36393f;
+  }
+
+  #messages {
+    color: #dde9f8;
+  }
+
+  #main-content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<body>
+<div class="main-content">
+<div class="messages" id="messages"></div>
+<form id="formEE">
+  <input style="display:inline-block;" type="text" id="chat-input">
+  <input style="display:inline-block; margin-left:10px;" type="submit" value="Submit Message!">
+</form> 
+
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
@@ -14,6 +55,7 @@
 <!-- Add Firebase products that you want to use -->
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 <script>
     var config = {
       apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
@@ -28,7 +70,7 @@
     var database = firebase.database()
     var firestore = firebase.firestore()
     const auth = firebase.auth();
-    var theuser = null
+    var username = null
     var chatRef2 = null
     auth.onAuthStateChanged(function (user) {
       if (user !== null) {
@@ -39,23 +81,34 @@
             console.log(data.val())
             document.getElementById("messages").innerHTML += "<p>" + data.val().text + "</p>"
         });
+        var docRef = firestore.collection("users").doc(user.uid);
+        docRef.get().then(function (doc) {
+          if (doc.exists) {
+            if (doc.data().name !== undefined) {
+              username = doc.data().name
+            }
+          }
+        })
       }
       else {
         window.location.pathname = '/login'
       }
     })
-    function submit () {
-        if (theuser === null) {
-            return;
-        }
-        if (chatRef2 === null) {
-            return;
-        }
-        var text = theuser.email + ": " + document.getElementById("chat-input").value;
-        console.log("text")
-        var newchatref = chatRef2.push()
-        newchatref.set({
-            text: text
-        })
+    var form = document.getElementById("formEE")
+    form.onsubmit = function submit (e) {
+      e.preventDefault()
+      if (username === null) {
+          return;
+      }
+      if (chatRef2 === null) {
+          return;
+      }
+      var text = username + ": " + document.getElementById("chat-input").value;
+      document.getElementById("chat-input").value = ''
+      console.log("text")
+      var newchatref = chatRef2.push()
+      newchatref.set({
+          text: text
+      })
     }
 </script>
