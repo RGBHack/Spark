@@ -571,7 +571,7 @@
 
             <!-- add iframes here -->
 
-            <iframe src="/calendar" id="calendar" style="display:inline-block; border-radius: 20px; overflow: hidden; width: 75vw; height: 128vh; flex: 1 0 auto;"></iframe>
+            <iframe src="/calendar" id="calendar-iframe" style="border-radius: 20px; overflow: hidden; width: 75vw; height: 128vh; flex: 1 0 auto;"></iframe>
 
             
             <!-- end iframes -->
@@ -642,8 +642,8 @@
                 window.location.pathname = '/'
             }
             function renderCalendar() {
-                var x = document.getElementById("calendar");
-                if (x.style.display === "none") {
+                var x = document.getElementById("calendar-iframe");
+                if (x.style.display == "none") {
                     x.style.display = "inline-block";
                 } else {
                     x.style.display = "none";
