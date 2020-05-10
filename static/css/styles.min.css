@@ -8,17 +8,20 @@ div.wrapper#create {
   text-align: center;
 }
 
-
-* {
-  transition: all 0.5s;
-}
-
 @font-face {
   font-family: "Lexend Deca Regular";
   src: url(../fonts/LexendDecaRegular.woff) format("woff");
   font-weight: 400;
   font-style: normal;
 }
+
+* {
+  transition: all 0.5s;
+  font-family: "Lexend Deca Regular";
+}
+
+
+
 .navbar-nav.navbar-center {
   position: absolute;
   left: 50%;
