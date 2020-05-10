@@ -522,7 +522,7 @@
                         </a>
                     </li>
                     <li class="menu-heading">
-                        <h3>MY TEAM</h3>
+                        <a href="#" data-toggle="popover" data-placement="bottom" title="Popover Header" data-content="Some content inside the popover"><h3>SPARKROOM ></h3></a>
                     </li>
                     <li>
                         <a href="javascript:renderProjects();">
@@ -575,6 +575,8 @@
                 <small style="display:block;color: white;">&copy; Copyright 2020, RGBHack</small>
             </footer>
         </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
@@ -691,6 +693,10 @@
             if (user === null) {
                 window.location.pathname = '/login'
             }})
+            
+            $(document).ready(function(){
+                $('[data-toggle="popover"]').popover();   
+            });
         </script>
     </body>
 </html>
