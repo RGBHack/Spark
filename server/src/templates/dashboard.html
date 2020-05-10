@@ -498,19 +498,19 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:renderTasks();">
-                            <svg>
-                                <use xlink:href="#list"></use>
-                            </svg>
-                            <span>Tasks</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="javascript:renderCalendar();">
                             <svg>
                                 <use xlink:href="#calendar"></use>
                             </svg>
                             <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:renderTasks();">
+                            <svg>
+                                <use xlink:href="#list"></use>
+                            </svg>
+                            <span>Tasks</span>
                         </a>
                     </li>
                     <li>
@@ -571,8 +571,8 @@
 
             <!-- add iframes here -->
 
-            <iframe src="/tasks" id="tasks-iframe" style="display: none;border-radius: 20px; overflow: auto; width: 100%; height: 128vh; flex: 1 0 auto;"></iframe>
             <iframe src="/calendar" id="calendar-iframe" style="display:inline-block;border-radius: 20px; overflow: auto; width: 100%; height: 130vh; flex: 1 0 auto;"></iframe>
+            <iframe src="/tasks" id="tasks-iframe" style="display: none;border-radius: 20px; overflow: auto; width: 100%; height: 128vh; flex: 1 0 auto;"></iframe>
             <iframe src="/chat" id="messages-iframe" style="display: none;border-radius: 20px; overflow: auto; width: 100%; height: 800px; flex: 1 0 auto;"></iframe>
             <iframe src="/projects" id="projects-iframe" style="display: none;border-radius: 20px; overflow: none; width: 100%; height: 900px; flex: 1 0 auto;"></iframe>
             
@@ -644,8 +644,8 @@
                 window.location.pathname = '/'
             }
 
-            var tasksElement = document.getElementById("tasks-iframe");
             var calendarElement = document.getElementById("calendar-iframe");
+            var tasksElement = document.getElementById("tasks-iframe");
             var messagesElement = document.getElementById("messages-iframe");
             var projectsElement = document.getElementById("projects-iframe");
             function renderCalendar() {
