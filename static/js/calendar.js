@@ -33,7 +33,7 @@ function addDate () {
 	$("#title").val("")
 	$("#start").val("")
 	$("#end").val("")
-	$("#dialog").dialog("close")
+	$("#dialog").modal('hide')
 }
 document.addEventListener('DOMContentLoaded', function() {
 		console.log("dahelloasfdasdfasdfasdfd")
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			select: function(info) {
 				start = info.start.toISOString().split("T")[0]+"T";
 				end = info.end.toISOString().split("T")[0]+"T";
-				$("#dialog").dialog();
+				$("#dialog").modal('show');
 				calendar.unselect();
 			},
 			droppable: true,

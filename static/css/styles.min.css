@@ -17,7 +17,7 @@ div.wrapper#create {
 
 * {
   transition: all 0.5s;
-  font-family: "Lexend Deca Regular";
+  font-family: "Lexend Deca Regular" !important;
 }
 
 

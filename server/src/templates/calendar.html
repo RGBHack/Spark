@@ -36,15 +36,37 @@
             
             <div style='clear:both'></div>
         </div>
-        <div id="dialog" title="Basic dialog" style="display: none">
+        <!--<div id="dialog" title="Basic dialog" style="display: none">
             <p>Please enter the title of your event here:</p>
             <input type="text" id="title">
-            <p>Please enter the start time for your event here:</p>
+            <p>Please enter the start time for your event here (HH:MM -- 24 Hour Format):</p>
             <input type="text" id="start">
-            <p>Please enter the end time for your event here:</p>
+            <p>Please enter the end time for your event here (HH:MM -- 24 Hour Format):</p>
             <input type="text" id="end">
             <br>
             <input type="submit" id="prompt-submit" onclick="addDate()">
-        </div>
+        </div>-->
+
+        <!--MODAL-->
+          <!-- Modal -->
+          <div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                    <p>Please enter the title of your event here:</p>
+                    <input type="text" id="title" class="form-control" style="max-width:70%; margin: 0 auto;">
+                    <p>Please enter the start time for your event here (HH:MM -- 24 Hour Format):</p>
+                    <input type="text" id="start" class="form-control" style="max-width:70%; margin: 0 auto;">
+                    <p>Please enter the end time for your event here (HH:MM -- 24 Hour Format):</p>
+                    <input type="text" id="end" class="form-control" style="max-width:70%; margin: 0 auto;">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" onclick="addDate()" id="modal" data-dismiss="modal">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
     </body>
 </html>
