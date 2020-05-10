@@ -72,7 +72,7 @@
     <script>
         var config = {
             apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-            authDomain: "httpsspark-2121.web.app/",
+            auithDomain: "httpsspark-2121.web.app/",
             databseURL: "https://spark-2121.firebaseio.com/",
             projectId: "spark-2121"
         }
@@ -91,6 +91,7 @@
             const name = form['name'].value
             auth.createUserWithEmailAndPassword(email, password).then(cred => {
                 db.collection("users").doc(cred.user.uid).set({sparkrooms: [], name: name}).then(function () {
+                    console.log("signed up successfully")
                     window.location.pathname = '/dashboard'
                 }).catch(err => {
                     alert(err.code)
