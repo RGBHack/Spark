@@ -237,6 +237,9 @@ function addcard () {
   var bediv = '<div style="display: table; height: 25px; width: 150px; overflow: hidden;"><div style="display: table-cell; vertical-align: middle;"><div>'
   var afdiv = '</div></div></div>'
   document.getElementById("list1").innerHTML += "<div id='card" + cardnum.toString() + "' class='card' draggable='true' ondragstart='dragStart(event)'>" + bediv + name + afdiv + "<span class='close' id='close"+cardnum.toString()+"'>×</span>" +"</div>";
+  document.getElementById("close"+cardnum.toString()).onclick = function () {
+    document.getElementById("close"+cardnum.toString()).parentNode.style.display = 'none'
+  }
 }
 </script>
 </body>
