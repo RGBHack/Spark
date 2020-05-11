@@ -35,7 +35,7 @@ def dashboard():
 @app.route('/dashboard/<sparkroom>')
 def sparkroom(sparkroom):
     context = { 'server_time': format_server_time() }
-    return render_template('dashboard.html', context=context, sparkroom=sparkroom)
+    return render_template('dashboard.html', context=context, sparkroom=sparkroom, extra=".")
 
 @app.route('/calendar')
 def calendar():

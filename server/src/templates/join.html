@@ -118,7 +118,7 @@
                   sparkrooms : firebase.firestore.FieldValue.arrayUnion(name)
                 }).then(function () {
                   console.log("hi")
-                  window.location.pathname = '/dashboard'
+                  window.location.pathname = '/dashboard/'+name
                 })
               }
               else {

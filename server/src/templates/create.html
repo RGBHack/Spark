@@ -117,7 +117,7 @@
                   var rooms = doc.data().sparkrooms;
                   rooms.push(name)
                   db.collection("users").doc(user.uid).update({ sparkrooms: rooms }).then(function () {
-                    window.location.pathname = '/dashboard'
+                    window.location.pathname = '/dashboard/'+name
                   }, { merge: true })
                 }
               })
