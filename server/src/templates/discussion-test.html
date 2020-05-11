@@ -2,8 +2,60 @@
 <html>
 	<head>
 		<title>test</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	
+		<script>
+			$(document).ready(function() {
+				$("#subDisc").click(function() {
+					var title = $("#title").val();
+					var content = $("#content").val();
+					var today = new Date();
+					var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+					var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+					var dateTime = date+' '+time;
+					post = document.createElement("div")
+					post.innerHTML = '<h1 style="display:inline;">'+title+'</h1> <p style="display:inline;"><i>&nbsp;'+dateTime+'</i></p> <p>'+content+'</p> <h3>Reply</h3> <div id="comments"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> <button class="btn btn-danger" id="delpost">Delete Post</button> <br> <br> <hr>'
+					$("#postarea").prepend(post);
+				});
+				
+			});
+			$(document).on("click","#subCmt", function(){
+				getbox = $(this).parent().parent().children()[0]
+				var cmt = $(getbox).val();
+				var user = "User 1"
+				comment = document.createElement("div")
+				comment.innerHTML = '<p class="text-muted">'+user+': '+cmt+'</p>'
+				cmtParent = $(this).parent().parent().parent().children()[4]
+				console.log(cmtParent)
+				$(cmtParent).prepend(comment);
+			});
+			var interval
+			interval = setInterval(function(){
+				$("#delpost").click(function() {
+					$(this).parent().detach();
+				});
+				// 
+			},2000);
+		</script>
+
 	</head>
-	<body>
-        TODO
+	<body style="width: 60vw; margin: 0 auto; margin-top: 5vh;">
+		<h1>Add a post</h1>
+		<hr>
+		<h4>Title</h4>
+		<input class="form-control" id="title">
+		<br>
+		<h4>Content</h4>
+		<textarea class="form-control" id="content" rows="5"></textarea>
+		<br>
+		<input class="btn btn-primary form-control" type="submit" id="subDisc">
+		<hr>
+		<div id="postarea">
+			<h1>Welcome to Discussions!</h1>
+			<p>(THIS NEEDS TO BE HERE OR ELSE JS BREAKS) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec elit libero. Mauris a aliquam tortor. Cras et lacus elit. Sed eros sapien, bibendum in congue eget, pulvinar sit amet nulla. Ut iaculis ac purus a porttitor. Quisque consectetur magna ex, eu dapibus risus venenatis non. In venenatis ex eget feugiat sodales. Praesent nisi velit, aliquet in rutrum gravida, bibendum eu quam. Pellentesque nec eros eu urna viverra pulvinar vitae quis sapien. Fusce suscipit metus sed velit imperdiet bibendum. Etiam quis libero tincidunt, dictum dolor eu, accumsan nisl. Donec convallis, ligula eget consectetur fringilla, lectus dolor bibendum mauris, eu lobortis mi ante non purus. Praesent eu iaculis augue. Etiam finibus ultrices condimentum.</p>
+		</div>
 	</body>
 </html>
