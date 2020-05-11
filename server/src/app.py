@@ -32,6 +32,11 @@ def dashboard():
     context = { 'server_time': format_server_time() }
     return render_template('dashboard.html', context=context)
 
+@app.route('/dashboard/<sparkroom>')
+def sparkroom(sparkroom):
+    context = { 'server_time': format_server_time() }
+    return render_template('dashboard.html', context=context, sparkroom=sparkroom)
+
 @app.route('/calendar')
 def calendar():
     context = { 'server_time': format_server_time() }

@@ -526,14 +526,6 @@
                             <span>Tasks</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:renderMessages();">
-                            <svg>
-                                <use xlink:href="#comments"></use>
-                            </svg>
-                            <span>Messages</span>
-                        </a>
-                    </li>
                     <li class="red">
                         <a class="red" href="javascript:logout();">
                             <svg>
@@ -545,7 +537,7 @@
                     <li class="menu-heading">
                         <h3><a data-toggle="modal" data-target="#sparkModal">SPARKROOM &#x25b6;</a></h3>
                           <!-- Modal -->
-                    <li>
+                    <li class="group-elem" style="display: none;">
                         <a href="javascript:renderProjects();">
                             <svg>
                                 <use xlink:href="#projects"></use>
@@ -553,7 +545,15 @@
                             <span>Projects</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="group-elem" style="display: none;">
+                        <a href="javascript:renderMessages();">
+                            <svg>
+                                <use xlink:href="#comments"></use>
+                            </svg>
+                            <span>Messages</span>
+                        </a>
+                    </li>
+                    <li class="group-elem" style="display: none;">
                         <a href="javascript:renderMeetings();">
                             <svg>
                                 <use xlink:href="#meetings"></use>
@@ -561,7 +561,7 @@
                             <span>Meetings</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="group-elem" style="display: none;">
                         <a href="#0">
                             <svg>
                                 <use xlink:href="#discussions"></use>
@@ -639,6 +639,13 @@
             const collapseBtn = document.querySelector(".admin-menu .collapse-btn");
             const toggleMobileMenu = document.querySelector(".toggle-mob-menu");
             const collapsedClass = "collapsed";
+            const sparkroom = "{{ sparkroom }}"
+            if (sparkroom !== "") {
+                var groupelem = document.getElementsByClassName("group-elem");
+                for (var i = 0; i < groupelem.length; i++) {
+                    groupelem[i].style.display = 'list-item'
+                }
+            }
 
             var config = {
                 apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
@@ -744,7 +751,7 @@
             }
             auth.onAuthStateChanged(function (user) {
             if (user === null) {
-                // window.location.pathname = '/login'
+                window.location.pathname = '/login'
             }})
             
             $(document).ready(function(){

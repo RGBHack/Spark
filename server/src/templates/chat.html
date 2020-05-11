@@ -131,10 +131,12 @@
     var firestore = firebase.firestore()
     const auth = firebase.auth();
     var username = null
+    var uid = null
     var chatRef2 = null
     auth.onAuthStateChanged(function (user) {
       if (user !== null) {
         theuser = user
+        uid = user.uid
         var chatRef = firebase.database().ref('chat/' + group);
         chatRef2 = chatRef
         var docRef = firestore.collection("users").doc(user.uid);
@@ -146,7 +148,7 @@
           }
           chatRef.on('child_added', function(data) {
             console.log(data.val())
-            if (data.val().text.split(":")[0] === username) {
+            if (data.val().id === uid) {
               document.getElementById("messages").innerHTML += "<p class='txt-msg your-msg'>" + data.val().text + "</p><br>"
             }
             else {
@@ -173,6 +175,7 @@
       console.log("text")
       var newchatref = chatRef2.push()
       newchatref.set({
+          id : uid,
           text: text
       })
     }
