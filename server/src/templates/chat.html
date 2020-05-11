@@ -161,7 +161,7 @@
             if (data.val().id === uid) {
               msg_p = document.createElement("p")
               msg_p.className = "txt-msg your-msg";
-              my_msg.innerHTML = data.val().text
+              msg_p.innerHTML = data.val().text
               $("#messages").append(my_msg);
               msg_br = document.createElement("br")
               $("#messages").append(msg_br);
@@ -169,7 +169,7 @@
             else {
               msg_p = document.createElement("p")
               msg_p.className = "txt-msg";
-              my_msg.innerHTML = data.val().text
+              msg_p.innerHTML = data.val().text
               $("#messages").append(my_msg);
               msg_br = document.createElement("br")
               $("#messages").append(msg_br);
