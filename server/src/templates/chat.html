@@ -27,27 +27,27 @@
     color: #dde9f8;
     text-align: left;
   }
+  .main-content {
+    text-align: center;
+    margin-top: 5px;
+    width: 60vw;
+    margin: 0 auto;
+  }
   
   .txt-msg {
     background-color: #36393F;
     border-radius: 10px;
     display: inline-block;
     padding: 10px;
-    margin-left: 30%;
-  }
-
-  .main-content {
-    text-align: center;
-    margin-top: 5px;
+    margin:10px;
   }
 
   .your-msg {
-    float: right;
     background:rgba(255, 93, 0, 1);
-    margin-right: 30%;
+    float:right;
   }
   
-  input {
+  /* input {
     background: linear-gradient(
       90deg,
       rgba(255, 93, 0, 1) 0,
@@ -62,7 +62,7 @@
     margin-right: auto;
     border-style:none;
     outline-style:none;
-  }
+  } */
 
   form {
     text-align: center;
@@ -95,10 +95,29 @@
 <body>
 <div class="main-content">
 <h1 style="color:#dde9f8;margin-bottom: 25px; margin-top: 0px;font-weight: bold;">Messages</h1>
-<div class="messages" id="messages"></div>
-<form id="formEE">
-  <input style="display:inline-block;background: #dde9f8;width: 60%;" type="text" id="chat-input">
-  <input class="submit-btn" style="display:inline-block; margin-left:10px; color: #dde9f8;" type="submit" value="Submit Message!">
+<div class="messages" id="messages">
+  <p class='txt-msg your-msg'>hi</p><br>
+  <p class='txt-msg'>hi</p><br>
+  <p class='txt-msg your-msg'>hi</p><br>
+  <p class='txt-msg'>hi</p><br>
+  <p class='txt-msg your-msg'>hi</p><br>
+  <p class='txt-msg'>hi</p><br>
+  <p class='txt-msg your-msg'>hi</p><br>
+  <p class='txt-msg'>hi</p><br>
+  <p class='txt-msg your-msg'>hi</p><br>
+  <p class='txt-msg'>hi</p><br>
+  <p class='txt-msg your-msg'>hi</p><br>
+  <p class='txt-msg'>hi</p><br>
+</div>
+<form id="formEE" style="margin-top:20px">
+  <div class="input-group mb-3"  style="margin: 0 auto;">
+    <input type="text" class="form-control"  style="background: #dde9f8;width: 100%;" type="text" id="chat-input">
+    <div class="input-group-append">
+      <input class="btn btn-dark" style=" color: #dde9f8;" type="submit" value="Send" type="button"></button>
+    </div>
+  </div>
+  
+  
 </form> 
 
 </div>
@@ -158,7 +177,7 @@
         })
       }
       else {
-        window.location.pathname = '/login'
+        // window.location.pathname = '/login'
       }
     })
     var form = document.getElementById("formEE")
