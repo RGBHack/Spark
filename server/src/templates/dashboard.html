@@ -4,7 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>Spark</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+        <link href="https://bootswatch.com/4/darkly/bootstrap.min.css" type="text/css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"> -->
         <link rel="stylesheet" href="./css/styles.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
         <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
@@ -394,6 +397,23 @@
         color: var(--red);
         }
     </style>
+    <style>
+        ul.roomswitch > li {
+            background-color: #262626;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            padding-top: 10px;
+            padding-bottom:10px;
+            border-radius: 4px;
+        }
+        ul.roomswitch > li:hover {
+            background-color: #36393F !important;
+        }
+        h3 > a:hover {
+            background-color: transparent !important;
+            cursor: pointer;
+        }
+    </style>
     <body style="background-color: #26262b;">
         <svg style="display:none;">
             <symbol id="down" viewBox="0 0 16 16">
@@ -522,8 +542,8 @@
                         </a>
                     </li>
                     <li class="menu-heading">
-                        <h3>SPARKROOM</h3>
-                    </li>
+                        <h3><a data-toggle="modal" data-target="#sparkModal">SPARKROOM &#x25b6;</a></h3>
+                          <!-- Modal -->
                     <li>
                         <a href="javascript:renderProjects();">
                             <svg>
@@ -559,6 +579,32 @@
                 </ul>
             </nav>
         </header>
+        <div class="modal fade" id="sparkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="z-index: 9999;">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Switch Sparkrooms</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="roomswitch" style="text-align: center;">
+                        <li>Room1</li>
+                        <li>Room2</li>
+                        <li>Room3</li>
+                        <li>Room4</li>
+                        <li>Room5</li>
+                        <li>Room6</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Create</button>
+                    <button type="button" class="btn btn-secondary">Join</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         <section class="page-content" style="background-color: #36393f !important;">
 
             <!-- add iframes here -->
@@ -691,7 +737,7 @@
             }
             auth.onAuthStateChanged(function (user) {
             if (user === null) {
-                window.location.pathname = '/login'
+                // window.location.pathname = '/login'
             }})
             
             $(document).ready(function(){
