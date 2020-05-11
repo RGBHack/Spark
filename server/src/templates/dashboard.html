@@ -765,10 +765,11 @@
                                 for (var i = 0; i<doc.data().sparkrooms.length; i++) {
                                     roomnum++;
                                     console.log(doc.data().sparkrooms[i])
-                                    document.getElementById("rooms").innerHTML += "<li id='room"+roomnum.toString()+"'>"+doc.data().sparkrooms[i]+"</li>"
-                                    var a = doc.data().sparkrooms[i]
-                                    document.getElementById("room"+roomnum.toString()).onclick = function (e) {
-                                        window.location.pathname = '/dashboard/'+a
+                                    var li = document.createElement("li");
+                                    li.innerHTML = doc.data().sparkrooms[i];
+                                    document.getElementById("rooms").appendChild(li)
+                                    li.onclick = function (e) {
+                                        window.location.pathname = '/dashboard/'+e.target.innerHTML;
                                     }
                                 }
                             }
