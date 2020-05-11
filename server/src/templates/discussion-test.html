@@ -28,7 +28,7 @@
 				var user = "User 1"
 				comment = document.createElement("div")
 				comment.innerHTML = '<p class="text-muted">'+user+': '+cmt+'</p>'
-				cmtParent = $(this).parent().parent().parent().children()[3]
+				cmtParent = $(this).parent().parent().parent().children()[4]
 				console.log(cmtParent)
 				$(cmtParent).prepend(comment);
 			});
