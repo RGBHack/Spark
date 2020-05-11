@@ -499,7 +499,7 @@
         <header class="page-header">
             <nav>
                 <a href="/">
-                <img class="logo" src="./img/spark_dark.png" alt="spark logo">
+                <img class="logo" src="{{ extra }}./img/spark_dark.png" alt="spark logo">
                 </a>
                 <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
                     <svg width="20" height="20" aria-hidden="true">
@@ -753,9 +753,23 @@
                 window.location.pathname = '/join'
             }
             auth.onAuthStateChanged(function (user) {
-            if (user === null) {
-                window.location.pathname = '/login'
-            }})
+                if (user === null) {
+                    window.location.pathname = '/login'
+                }
+                else {
+                    var docRef = db.collection("users").doc(user.uid)
+                    docRef.get().then(function (doc) {
+                        if (doc.exists) {
+                            if (doc.data().sparkrooms !== undefined) {
+                                for (var i = 0; i<doc.data().sparkrooms.length; i++) {
+                                    console.log(doc.data().sparkrooms[i])
+                                    document.getElementById("rooms").innerHTML += "<li>"+doc.data().sparkrooms[i]+"</li>"
+                                }
+                            }
+                        }
+                    })
+                }
+            })
             
             $(document).ready(function(){
                 $('[data-toggle="popover"]').popover();   
