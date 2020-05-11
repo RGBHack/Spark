@@ -41,11 +41,14 @@
     display: inline-block;
     padding: 10px;
     margin:10px;
+    clear:both;
+    
   }
 
   .your-msg {
     background:rgba(255, 93, 0, 1);
     float:right;
+    clear:both;
   }
   
   /* input {
@@ -96,9 +99,11 @@
 <body>
 <div class="main-content">
 <h1 style="color:#dde9f8;margin-bottom: 25px; margin-top: 0px;font-weight: bold;">Messages</h1>
-<div class="messages" id="messages">
+<div class="messages" id="messages" style="margin-bottom: 90px;">
   <p class='txt-msg'>This is a Test</p><br>
-  <p class='txt-msg'>Message to see if it worx</p><br>
+  <p class='txt-msg'>This is a Test</p><br>
+  <p class='txt-msg your-msg'>Message to see if it worx</p><br>
+  <p class='txt-msg your-msg'>Message to see if it worx</p><br>
 </div>
 <form id="formEE" style="margin-top:20px">
   <div class="input-group mb-3"  style="margin: 0 auto;">
