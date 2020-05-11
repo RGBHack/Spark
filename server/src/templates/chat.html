@@ -159,12 +159,20 @@
           chatRef.on('child_added', function(data) {
             console.log(data.val())
             if (data.val().id === uid) {
-              var my_msg = "<p class='txt-msg your-msg'>" + data.val().text + "</p><br>"
+              msg_p = document.createElement("p")
+              msg_p.className = "txt-msg your-msg";
+              my_msg.innerHTML = data.val().text
               $("#messages").append(my_msg);
+              msg_br = document.createElement("br")
+              $("#messages").append(msg_br);
             }
             else {
-              var my_msg = "<p class='txt-msg'>" + data.val().text + "</p><br>"
+              msg_p = document.createElement("p")
+              msg_p.className = "txt-msg";
+              my_msg.innerHTML = data.val().text
               $("#messages").append(my_msg);
+              msg_br = document.createElement("br")
+              $("#messages").append(msg_br);
             }
         });
         })
