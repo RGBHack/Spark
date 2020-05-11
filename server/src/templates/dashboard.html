@@ -643,6 +643,7 @@
             const toggleMobileMenu = document.querySelector(".toggle-mob-menu");
             const collapsedClass = "collapsed";
             const sparkroom = "{{ sparkroom }}"
+            var roomnum = 0
             if (sparkroom !== "") {
                 var groupelem = document.getElementsByClassName("group-elem");
                 for (var i = 0; i < groupelem.length; i++) {
@@ -762,8 +763,13 @@
                         if (doc.exists) {
                             if (doc.data().sparkrooms !== undefined) {
                                 for (var i = 0; i<doc.data().sparkrooms.length; i++) {
+                                    roomnum++;
                                     console.log(doc.data().sparkrooms[i])
-                                    document.getElementById("rooms").innerHTML += "<li>"+doc.data().sparkrooms[i]+"</li>"
+                                    document.getElementById("rooms").innerHTML += "<li id='room"+roomnum.toString()+"'>"+doc.data().sparkrooms[i]+"</li>"
+                                    var a = doc.data().sparkrooms[i]
+                                    document.getElementById("room"+roomnum.toString()).onclick = function (e) {
+                                        window.location.pathname = '/dashboard/'+a
+                                    }
                                 }
                             }
                         }
