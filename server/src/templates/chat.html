@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </head>
 
 <style>
@@ -158,10 +159,12 @@
           chatRef.on('child_added', function(data) {
             console.log(data.val())
             if (data.val().id === uid) {
-              document.getElementById("messages").innerHTML += "<p class='txt-msg your-msg'>" + data.val().text + "</p><br> "
+              var my_msg = "<p class='txt-msg your-msg'>" + data.val().text + "</p><br>"
+              $("#messages").append(my_msg);
             }
             else {
-              document.getElementById("messages").innerHTML += "<p class='txt-msg'>" + data.val().text + "</p><br> "
+              var my_msg = "<p class='txt-msg'>" + data.val().text + "</p><br>"
+              $("#messages").append(my_msg);
             }
         });
         })
