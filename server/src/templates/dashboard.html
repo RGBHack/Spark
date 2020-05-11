@@ -8,9 +8,9 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="./css/styles.min.css">
+        <link rel="stylesheet" href="{{ extra }}./css/styles.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
+        <link rel="shortcut icon" type="image" href="{{ extra }}./img/favicon.ico"/>
     </head>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
@@ -600,8 +600,8 @@
                     </ul>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary-dark">Create</button>
-                    <button type="button" class="btn btn-secondary">Join</button>
+                    <button onclick="create()" type="button" class="btn btn-primary-dark">Create</button>
+                    <button onclick="join()" type="button" class="btn btn-secondary">Join</button>
                   </div>
                 </div>
               </div>
@@ -735,6 +735,12 @@
                     messagesElement.style.display = "none";
                     projectsElement.style.display = "none";
                 }
+            }
+            function create () {
+                window.location.pathname = '/create'
+            }
+            function join () {
+                window.location.pathname = '/join'
             }
             auth.onAuthStateChanged(function (user) {
             if (user === null) {
