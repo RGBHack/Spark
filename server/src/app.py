@@ -72,10 +72,10 @@ def create():
     context = { 'server_time': format_server_time() }
     return render_template('create.html', context=context)
 
-@app.route('/chat')
-def chat():
+@app.route('/chat/<sparkroom>')
+def chat(sparkroom):
     context = { 'server_time': format_server_time() }
-    return render_template('chat.html', context=context)
+    return render_template('chat.html', context=context, sparkroom=sparkroom)
 
 @app.route('/projects')
 def projects():
