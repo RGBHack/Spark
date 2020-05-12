@@ -145,9 +145,15 @@
                 for (var i = 0; i < users.length; i++) {
                     var user = users[i]
                     var uname = user.uname
+                    var id = user.user
                     var admin = user.admin
+                    var creator = user.creator
                     var li = document.createElement("li");
-                    if (admin) {
+                    li.id = id
+                    if (creator !== undefined) {
+                        li.innerHTML = '<a>'+uname+' </a>'+'<span class="badge badge-success">ADMIN</span> <span class="badge badge-success">CREATOR</span>'
+                    }
+                    else if (admin) {
                         li.innerHTML = '<a>'+uname+' </a>'+'<span class="badge badge-success">ADMIN</span>'
                     }
                     else {

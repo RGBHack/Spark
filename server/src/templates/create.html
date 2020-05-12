@@ -113,7 +113,7 @@
               var docRef2 = db.collection("users").doc(user.uid);
               docRef2.get().then(function (doc) {
                 if (doc.exists) {
-                  db.collection("sparkrooms").doc(name).set({ password: password, users : [{user : user.uid, uname : doc.data().name, admin : true}] }).then(function () {
+                  db.collection("sparkrooms").doc(name).set({ password: password, users : [{user : user.uid, uname : doc.data().name, admin : true, creator : true}] }).then(function () {
                     var rooms = doc.data().sparkrooms;
                     rooms.push(name)
                     db.collection("users").doc(user.uid).update({ sparkrooms: rooms }).then(function () {
