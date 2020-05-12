@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/darkly/bootstrap.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @font-face {
+        font-family: "Lexend Deca Regular";
+        src: url(../fonts/LexendDecaRegular.woff) format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      html {
+        background-color: #26262b;
+        font-family: "Lexend Deca Regular";
+      }
+
+      body {
+        margin: 0;
+        min-width: 250px;
+        font-family: "Lexend Deca Regular";
+        background-color: #26262b;
+      }
+
+      li:nth-child(odd) {
+        background: #414141;
+      }
+
+      li:nth-child(even) {
+        background: #303030;
+      }
+
+      li {
+        vertical-align: middle;
+      }
+
+      li.badge {
+        vertical-align: middle;
+        margin-top: -0.5em;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .invite-btn {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 93, 0, 1) 0,
+          rgba(255, 217, 25, 1) 100%
+        );
+        border-radius: 0px 10px 10px 0px;
+        color: #dde9f8;
+        display: inline;
+      }
+
+      svg {
+          fill: white;
+          width: 25px;
+          height: 25px;
+          float: right;
+          visibility: hidden;
+      }
+
+      li:hover svg {
+        visibility:visible;
+        cursor: pointer;
+      }
+      #modal-mem {
+        text-align:center;
+      }
+      .modal-body > button {
+        margin:5px;
+      }
+    </style>
+    
+  </head>
+
+  <body>
+    <svg class="hidden">
+        <symbol viewBox="0 0 32 32" id="settings" style="width: 2px; height:2px">
+            <path fill="none" stroke="#dde9f8" stroke-miterlimit="10" stroke-width="2" d="M16 12a4 4 0 1 0 0 8 4 4 0 1 0 0-8z"></path>
+            <path fill="none" stroke="#dde9f8" stroke-miterlimit="10" stroke-width="2" d="M25 16c0-.677-.081-1.335-.223-1.97l2.615-2.298-2-3.464-3.304 1.118a8.984 8.984 0 0 0-3.407-1.979L18 4h-4l-.681 3.406a8.976 8.976 0 0 0-3.407 1.979L6.608 8.268l-2 3.464 2.615 2.298C7.081 14.665 7 15.323 7 16s.081 1.335.223 1.97l-2.615 2.298 2 3.464 3.304-1.118a8.984 8.984 0 0 0 3.407 1.979L14 28h4l.681-3.406a8.976 8.976 0 0 0 3.407-1.979l3.304 1.118 2-3.464-2.615-2.298A9.028 9.028 0 0 0 25 16z"></path>
+        </symbol>
+    </svg>
+    <div class="b-cont" style="width: 60vw; margin: 0 auto; margin-top: 10px;">
+      <h1 align="center" style="color: #dde9f8; font-size: 2.5rem;">
+        Team
+      </h1>
+      <div class="input-group">
+        <input
+          id="myInput"
+          type="text"
+          onkeyup="myFunction()"
+          class="form-control"
+          style="border-radius: 10px 0px 0px 10px; background-color: #dde9f8; color: #36393f; display: inline;"
+          placeholder="Search by keyword..."
+        />
+        <span class="input-group-btn">
+          <button
+            class="btn btn-primary invite-btn"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            Invite Members
+          </button>
+        </span>
+      </div>
+      <br />
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Invite a User!
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <textarea
+                class="form-control"
+                rows="4"
+                id="ctext"
+                readonly
+              ></textarea>
+              <br />
+              <div
+                class="alert alert-dismissible alert-primary hidden"
+                id="alrt"
+              >
+                <button type="button" class="close" id="dismiss">
+                  &times;
+                </button>
+                <strong>Copied Successfully!</strong>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="copy">
+                Copy
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul id="myUL" class="list-group">
+        <li class="list-group-item"><a>Name1 </a><span class="badge badge-success">ADMIN</span><span class="badge badge-success">CREATOR</span><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name2 </a><span class="badge badge-success">ADMIN</span><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name3 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name4 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name5 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name6 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name7 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name8 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name9 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+        <li class="list-group-item"><a>Name10 </a><span id="svg"><svg><use xlink:href='#settings'></use></svg></span></li>
+      </ul>
+      
+      <div class="modal fade" id="modal-mem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  Hi
+                </div>
+                <div class="modal-body">
+                  <button class="btn btn-primary">Promote to Administrator</button><br>
+                  <button class="btn btn-success">Demote to Standard User</button><br>
+                  <button class="btn btn-danger">Remove User</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+            $(document).on("click","svg", function(){
+              // name = 
+              var nameEl = $(this).parent().parent().children()[0];
+              console.log(nameEl);
+              
+              console.log("hi")
+              $('#modal-mem').modal('toggle')
+              $(".modal-header").html($(nameEl).clone())
+            });
+          </script>
+    </div>
+    <div class="modal fade" id="modal-mem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p style="margin-top: 10px; margin-bottom: 10px;">Title:</p>
+              <input type="text" id="title" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
+              <p style="margin-top: 10px; margin-bottom: 10px;">Start Time:</p>
+              <input type="text" id="start" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
+              <small id="emailHelp" class="form-text text-muted" style="margin-top: 5px;">24 Hour Format, HH:MM</small>
+              <p style="margin-top: 10px; margin-bottom: 10px;">End Time:</p>
+              <input type="text" id="end" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
+              <small id="emailHelp" class="form-text text-muted" style="margin-top: 5px;">24 Hour Format, HH:MM</small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="addDate()" id="modal" data-dismiss="modal">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script>
+      function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
+
+      var config = {
+        apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+        authDomain: "https://spark-2121.web.app/",
+        databseURL: "https://spark-2121.firebaseio.com/",
+        projectId: "spark-2121",
+      };
+
+      if (firebase.apps.length === 0) {
+        firebase.initializeApp(config);
+      }
+
+      const db = firebase.firestore();
+      const auth = firebase.auth();
+      const sparkroom = "{{ sparkroom }}";
+
+      auth.onAuthStateChanged(function (user) {
+        console.log(user);
+      });
+
+      $(document).ready(function () {
+        $("#copy").click(function () {
+          $("#alrt").toggleClass("hidden");
+          var copyText = document.getElementById("ctext");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999);
+          document.execCommand("copy");
+        });
+        $("#dismiss").click(function () {
+          $("#alrt").toggleClass("hidden");
+        });
+        var docRef = db.collection("sparkrooms").doc(sparkroom);
+        docRef.get().then(function (doc) {
+          var users = doc.data().users;
+          var password = doc.data().password;
+          $("#ctext").val(
+            "Hey there, want to join my SparkRoom?\nJust click this link and sign up! https://sparkapp.cf/join/" +
+              sparkroom +
+              ":" +
+              password +
+              ".\nThe room name is " +
+              sparkroom +
+              " and the password is " +
+              password+"."
+          );
+          for (var i = 0; i < users.length; i++) {
+            var user = users[i];
+            var uname = user.uname;
+            var id = user.user;
+            var admin = user.admin;
+            var creator = user.creator;
+            var li = document.createElement("li");
+            li.id = id;
+            if (creator !== undefined) {
+              li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span> <span class="badge badge-success">CREATOR</span>';
+            } else if (admin) {
+              li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span>';
+            } else {
+              li.innerHTML = "<a>" + uname + "<svg><use xlink:href='#settings'></use></svg></a>";
+            }
+            li.classList = "list-group-item";
+            document.getElementById("myUL").appendChild(li);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
