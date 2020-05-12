@@ -110,7 +110,7 @@
               alert("Name taken")
             }
             else {
-              db.collection("sparkrooms").doc(name).set({ password: password, users : [user.uid] }).then(function () {
+              db.collection("sparkrooms").doc(name).set({ password: password, users : [{user : user.uid, admin : false}] }).then(function () {
               var docRef2 = db.collection("users").doc(user.uid);
               docRef2.get().then(function (doc) {
                 if (doc.exists) {
