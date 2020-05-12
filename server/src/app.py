@@ -102,7 +102,7 @@ def discussions():
     context = { 'server_time': format_server_time() }
     return render_template('discussion-test.html', context=context)
 
-@app.route('/members')
+@app.route('/members/<sparkroom>')
 def members():
     context = { 'server_time': format_server_time() }
     return render_template('members.html', context=context)

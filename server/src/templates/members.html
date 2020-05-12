@@ -1,99 +1,148 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <style>
-            li:nth-child(odd) { background: #414141; }
-            li:nth-child(even) { background: #303030; }
-            li {
-                vertical-align:middle;
-            }
-            li.badge {
-                vertical-align:middle;
-                margin-top: -0.5em;
-            }
-            .hidden {
-                display:none;
-            }
-        </style>
-    </head>
-	<body>
-        <div class="b-cont" style="width: 60vw; margin: 0 auto; margin-top:10px;">
-            <h1 align="center">
-                Team
-            </h1>
-            <div class="input-group">
-                <input id="myInput" type="text" onkeyup="myFunction()" class="form-control" placeholder="Search by keyword...">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" style="border-radius: 0px 5px 5px 0px;" data-toggle="modal" data-target="#exampleModalCenter">Invite Members</button>
-                </span>
-            </div>
-            <br>
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
+
+<head>
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <style>
+        li:nth-child(odd) {
+            background: #414141;
+        }
+
+        li:nth-child(even) {
+            background: #303030;
+        }
+
+        li {
+            vertical-align: middle;
+        }
+
+        li.badge {
+            vertical-align: middle;
+            margin-top: -0.5em;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="b-cont" style="width: 60vw; margin: 0 auto; margin-top:10px;">
+        <h1 align="center">
+            Team
+        </h1>
+        <div class="input-group">
+            <input id="myInput" type="text" onkeyup="myFunction()" class="form-control"
+                placeholder="Search by keyword...">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" style="border-radius: 0px 5px 5px 0px;" data-toggle="modal"
+                    data-target="#exampleModalCenter">Invite Members</button>
+            </span>
+        </div>
+        <br>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Invite a User!</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Invite a User!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                      <textarea class="form-control" rows="4" id="ctext" readonly>Hey there, want to join my SparkSpace? Just click this link and sign up! https://sparkapp.cf/join/XXXXXXXX.</textarea>
-                      <br>
-                      <div class="alert alert-dismissible alert-primary hidden" id="alrt">
-                        <button type="button" class="close" id="dismiss">&times;</button>
-                        <strong>Copied Successfully!</strong>
-                      </div>
+                        <textarea class="form-control" rows="4" id="ctext"
+                            readonly>Hey there, want to join my SparkSpace? Just click this link and sign up! https://sparkapp.cf/join/XXXXXXXX.</textarea>
+                        <br>
+                        <div class="alert alert-dismissible alert-primary hidden" id="alrt">
+                            <button type="button" class="close" id="dismiss">&times;</button>
+                            <strong>Copied Successfully!</strong>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" id="copy">Copy</button>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="copy">Copy</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                  </div>
                 </div>
             </div>
-            <ul id="myUL" class="list-group">
-                <li class="list-group-item"><a>Safin Singh </a><span class="badge badge-success">ADMIN</span></li>
-                <li class="list-group-item"><a>Rohan Juneja</a></li>
-                <li class="list-group-item"><a>Raadwan Masum</a></li>
-                <li class="list-group-item"><a>Aadit Gupta</a></li>
-                <li class="list-group-item"><a>Test User</a></li>
-            </ul>
         </div>
-        <script>
-            function myFunction() {
-                var input, filter, ul, li, a, i, txtValue;
-                input = document.getElementById("myInput");
-                filter = input.value.toUpperCase();
-                ul = document.getElementById("myUL");
-                li = ul.getElementsByTagName("li");
-                for (i = 0; i < li.length; i++) {
-                    a = li[i].getElementsByTagName("a")[0];
-                    txtValue = a.textContent || a.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        li[i].style.display = "";
-                    } else {
-                        li[i].style.display = "none";
-                    }
+        <ul id="myUL" class="list-group">
+            <li class="list-group-item"><a>Safin Singh </a><span class="badge badge-success">ADMIN</span></li>
+            <li class="list-group-item"><a>Rohan Juneja</a></li>
+            <li class="list-group-item"><a>Raadwan Masum</a></li>
+            <li class="list-group-item"><a>Aadit Gupta</a></li>
+            <li class="list-group-item"><a>Test User</a></li>
+        </ul>
+    </div>
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
                 }
             }
-            
-            $(document).ready(function(){
-                $("#copy").click(function(){
-                    $( "#alrt" ).toggleClass( "hidden" );
-                    var copyText = document.getElementById("ctext");
-                    copyText.select();
-                    copyText.setSelectionRange(0, 99999)
-                    document.execCommand("copy");
-                });
-                $("#dismiss").click(function(){
-                    $( "#alrt" ).toggleClass( "hidden" );
-                });
+        }
+
+        $(document).ready(function () {
+            $("#copy").click(function () {
+                $("#alrt").toggleClass("hidden");
+                var copyText = document.getElementById("ctext");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999)
+                document.execCommand("copy");
             });
-        </script>
-	</body>
+            $("#dismiss").click(function () {
+                $("#alrt").toggleClass("hidden");
+            });
+        });
+
+        var config = {
+            apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+            authDomain: "https://spark-2121.web.app/",
+            databseURL: "https://spark-2121.firebaseio.com/",
+            projectId: "spark-2121"
+        }
+
+        const db = firebase.firestore()
+        const auth = firebase.auth()
+        const sparkroom = "{{ sparkroom }}"
+
+        auth.onAuthStateChanged(function (user) {
+            console.log(user)
+        })
+
+        var docRef = db.collection("sparkrooms").doc(sparkroom)
+        docRef.get().then(function (doc) {
+            var users = doc.data().users
+            for (var i = 0; i < users.length; i++) {
+                var user = users[i]
+                var hash = user.user
+                var docref2 = db.collection("users").doc(hash)
+                docRef2.get().then(function (doc) {
+                    var name = doc.data().name
+                })
+            }
+        })
+    </script>
+</body>
+
 </html>
