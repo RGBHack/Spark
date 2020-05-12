@@ -1031,6 +1031,7 @@
       function renderMessages() {
         if (messagesElement.style.display == "none") {
           messagesElement.style.display = "inline-block";
+          messagesElement.contentWindow.scrollTo( 0, 999999 );
           calendarElement.style.display = "none";
           tasksElement.style.display = "none";
           projectsElement.style.display = "none";
