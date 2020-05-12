@@ -6,6 +6,7 @@
     <title>Spark</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/styles.min.css">
+    <link rel="stylesheet" href="../../../css/styles.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
 </head>
@@ -13,43 +14,43 @@
 <body style="background-color: #26262b;"><nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #26262b;height: 15vh;">
     <div class="collapse navbar-collapse" id="navcol-1" style="width:100vw; margin: none;">
         <ul class="nav navbar-nav navbar-center" style="width:100vw;text-align:center;margin: 0 auto;width: fit-content;">
-            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/">SPARK</a></li>
+            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">SPARK</a></li>
             <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">&#183;</a></li>
-            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active" href="/about">ABOUT</a></li>
+            <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
             <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link active">&#183;</a></li>
             <li role="presentation" style="float: left;" class="nav-item"><a class="nav-link" href="/login">LOGIN</a></li>
         </ul>
     </div>
-</nav>
+</nav><div style="width: 100vw;height: 85vh;position: relative;"><span style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 60vw"><br><br><p style="color:white">Spark is a Firebase-hosted Flask app running on a Docker served by Google Cloud. It employs Cloud Firestore and Realtime Database to store information pertaining to users. Spark was created because we, RGBHack, (a team of middle and high school students) noticed the need for a platform that could bring increased productivity to teams during the quaratine due to COVID-19. This project is open source, so you can learn more by visiting our <a href="https://github.com/RGBHack/Spark">GitHub Repository</a>.</p></span></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
-  
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-    <script>
-      var config = {
-        apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-        authDomain: "httpsspark-2121.web.app/",
-        databseURL: "https://spark-2121.firebaseio.com/",
-        projectId: "spark-2121"
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+      authDomain: "httpsspark-2121.web.app/",
+      databseURL: "https://spark-2121.firebaseio.com/",
+      projectId: "spark-2121"
+    }
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(config)
+      console.log("worked")
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    auth.onAuthStateChanged(function (user) {
+      if (user !== null) {
+        window.location.pathname = '/dashboard'
       }
-      if (firebase.apps.length === 0) {
-        firebase.initializeApp(config)
-        console.log("worked")
-      }
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-      auth.onAuthStateChanged(function (user) {
-        if (user !== null) {
-          window.location.pathname = '/dashboard'
-        }
-      })
-     </script>
+    })
+   </script>
 </html>
