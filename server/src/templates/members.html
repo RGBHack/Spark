@@ -181,7 +181,25 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <div class="modal fade" id="modal-mem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            Hi
+          </div>
+          <div class="modal-body">
+            <button class="btn btn-primary">Promote to Administrator</button><br>
+            <button class="btn btn-success">Demote to Standard User</button><br>
+            <button class="btn btn-danger">Remove User</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
+      var curuid = null
       function myFunction() {
         var input, filter, ul, li, a, i, txtValue;
         input = document.getElementById("myInput");
@@ -214,9 +232,8 @@
       const auth = firebase.auth();
       const sparkroom = "{{ sparkroom }}";
 
-      auth.onAuthStateChanged(function (user) {
-        console.log(user);
-      });
+      var theuser = null
+
 
       $(document).ready(function () {
         $("#copy").click(function () {
@@ -229,39 +246,70 @@
         $("#dismiss").click(function () {
           $("#alrt").toggleClass("hidden");
         });
-        var docRef = db.collection("sparkrooms").doc(sparkroom);
-        docRef.get().then(function (doc) {
-          var users = doc.data().users;
-          var password = doc.data().password;
-          $("#ctext").val(
-            "Hey there, want to join my SparkRoom?\nJust click this link and sign up! https://sparkapp.cf/join/" +
-              sparkroom +
-              ":" +
-              password +
-              ".\nThe room name is " +
-              sparkroom +
-              " and the password is " +
-              password
-          );
-          for (var i = 0; i < users.length; i++) {
-            var user = users[i];
-            var uname = user.uname;
-            var id = user.user;
-            var admin = user.admin;
-            var creator = user.creator;
-            var li = document.createElement("li");
-            li.id = id;
-            if (creator !== undefined) {
-              li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span> <span class="badge badge-success">CREATOR</span>';
-            } else if (admin) {
-              li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span>';
-            } else {
-              li.innerHTML = "<a>" + uname + "<svg><use xlink:href='#settings'></use></svg></a>";
-            }
-            li.classList = "list-group-item";
-            document.getElementById("myUL").appendChild(li);
+        auth.onAuthStateChanged(function (user) {
+          if (user !== null) {
+              theuser = user
+              var docRef = db.collection("sparkrooms").doc(sparkroom);
+              docRef.get().then(function (doc) {
+              var users = doc.data().users;
+              var password = doc.data().password;
+              $("#ctext").val(
+                "Hey there, want to join my SparkRoom?\nJust sign up at https://sparkapp.cf and then click this link: https://sparkapp.cf/join/" +
+                  sparkroom +
+                  ":" +
+                  password +
+                  ".\nThe room name is " +
+                  sparkroom +
+                  " and the password is " +
+                  password
+              );
+              var settings1 = ''
+              var settings2 = ''
+              for (var i = 0; i < users.length; i++) {
+                if (users[i].user === theuser.uid) {
+                  if (users[i].admin) {
+                    settings1 = '<span id="svg' 
+                    settings2 = '"><svg><use xlink:href="#settings"></use></svg></span></li>'
+                  }
+                }
+              }
+              for (var i = 0; i < users.length; i++) {
+                var user = users[i];
+                var uname = user.uname;
+                var id = user.user;
+                var admin = user.admin;
+                var creator = user.creator;
+                var li = document.createElement("li");
+                li.id = id;
+                var setonclick = true;
+                if (creator !== undefined) {
+                  li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span> <span class="badge badge-success">CREATOR</span>';
+                  setonclick = false;
+                } else if (admin) {
+                  li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span>' + settings1 + i.toString() + settings2;
+                } else {
+                  li.innerHTML = "<a>" + uname + settings1 + i.toString() + settings2;
+                }
+                li.classList = "list-group-item";
+                document.getElementById("myUL").appendChild(li);
+                if (setonclick && settings1 !== '') {
+                  console.log("svg"+i.toString())
+                  document.getElementById("svg"+i.toString()).onclick = function (e) {
+                    var a = e.target;
+                    while (a.nodeName !== "LI") {
+                      a = a.parentElement;
+                    }
+                    var name = a.childNodes[0].innerHTML;       
+                    $('#modal-mem').modal('toggle')
+                    $(".modal-header").html(name)
+                    curuid = a.id
+                    console.log(curuid)
+                  }
+                }
+              }
+            });
           }
-        });
+        })
       });
     </script>
   </body>
