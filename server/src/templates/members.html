@@ -75,6 +75,12 @@
   </head>
 
   <body>
+    <svg width="0" height="0" class="hidden">
+        <symbol viewBox="0 0 32 32" id="settings" style="fill: red;">
+          <path stroke="#000" stroke-miterlimit="10" stroke-width="2" d="M16 12a4 4 0 1 0 0 8 4 4 0 1 0 0-8z"></path>
+          <path stroke="#000" stroke-miterlimit="10" stroke-width="2" d="M25 16c0-.677-.081-1.335-.223-1.97l2.615-2.298-2-3.464-3.304 1.118a8.984 8.984 0 0 0-3.407-1.979L18 4h-4l-.681 3.406a8.976 8.976 0 0 0-3.407 1.979L6.608 8.268l-2 3.464 2.615 2.298C7.081 14.665 7 15.323 7 16s.081 1.335.223 1.97l-2.615 2.298 2 3.464 3.304-1.118a8.984 8.984 0 0 0 3.407 1.979L14 28h4l.681-3.406a8.976 8.976 0 0 0 3.407-1.979l3.304 1.118 2-3.464-2.615-2.298A9.028 9.028 0 0 0 25 16z"></path>
+        </symbol>
+    </svg>
     <div class="b-cont" style="width: 60vw; margin: 0 auto; margin-top: 10px;">
       <h1 align="center" style="color: #dde9f8; font-size: 2.5rem;">
         Team
@@ -239,19 +245,11 @@
             var li = document.createElement("li");
             li.id = id;
             if (creator !== undefined) {
-              li.innerHTML =
-                "<a>" +
-                uname +
-                " </a>" +
-                '<span class="badge badge-success">ADMIN</span> <span class="badge badge-success">CREATOR</span>';
+              li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span> <span class="badge badge-success">CREATOR</span>';
             } else if (admin) {
-              li.innerHTML =
-                "<a>" +
-                uname +
-                " </a>" +
-                '<span class="badge badge-success">ADMIN</span>';
+              li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span>';
             } else {
-              li.innerHTML = "<a>" + uname + "</a>";
+              li.innerHTML = "<a>" + uname + "</a> <svg><use xlink:href:'#settings'></use></svg>";
             }
             li.classList = "list-group-item";
             document.getElementById("myUL").appendChild(li);
