@@ -102,5 +102,10 @@ def discussions():
     context = { 'server_time': format_server_time() }
     return render_template('discussion-test.html', context=context)
 
+@app.route('/members')
+def members():
+    context = { 'server_time': format_server_time() }
+    return render_template('members.html', context=context)
+
 if __name__ == '__main__':
     app.run(debug=True,host='127.0.0.1',port=int(os.environ.get('PORT', 5004)))
