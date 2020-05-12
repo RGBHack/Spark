@@ -108,7 +108,7 @@ def members(sparkroom):
     return render_template('members.html', context=context, sparkroom=sparkroom)
 
 @app.route('/members-test')
-def members(sparkroom):
+def members_test():
     context = { 'server_time': format_server_time() }
     return render_template('members-test.html', context=context)
 
