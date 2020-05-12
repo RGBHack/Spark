@@ -61,8 +61,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <textarea class="form-control" rows="4" id="ctext"
-                            readonly>Hey there, want to join my SparkSpace? Just click this link and sign up! https://sparkapp.cf/join/XXXXXXXX.</textarea>
+                        <textarea class="form-control" rows="4" id="ctext" readonly></textarea>
                         <br>
                         <div class="alert alert-dismissible alert-primary hidden" id="alrt">
                             <button type="button" class="close" id="dismiss">&times;</button>
@@ -77,13 +76,19 @@
             </div>
         </div>
         <ul id="myUL" class="list-group">
-            <li class="list-group-item"><a>Safin Singh </a><span class="badge badge-success">ADMIN</span></li>
-            <li class="list-group-item"><a>Rohan Juneja</a></li>
-            <li class="list-group-item"><a>Raadwan Masum</a></li>
-            <li class="list-group-item"><a>Aadit Gupta</a></li>
-            <li class="list-group-item"><a>Test User</a></li>
         </ul>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
     <script>
         function myFunction() {
             var input, filter, ul, li, a, i, txtValue;
@@ -102,6 +107,25 @@
             }
         }
 
+        var config = {
+            apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+            authDomain: "https://spark-2121.web.app/",
+            databseURL: "https://spark-2121.firebaseio.com/",
+            projectId: "spark-2121"
+        }
+
+        if (firebase.apps.length === 0) {
+            firebase.initializeApp(config)
+        }
+
+        const db = firebase.firestore()
+        const auth = firebase.auth()
+        const sparkroom = "{{ sparkroom }}"
+
+        auth.onAuthStateChanged(function (user) {
+            console.log(user)
+        })
+
         $(document).ready(function () {
             $("#copy").click(function () {
                 $("#alrt").toggleClass("hidden");
@@ -113,35 +137,29 @@
             $("#dismiss").click(function () {
                 $("#alrt").toggleClass("hidden");
             });
+            var docRef = db.collection("sparkrooms").doc(sparkroom)
+            docRef.get().then(function (doc) {
+                var users = doc.data().users
+                var password = doc.data().password
+                $("#ctext").val("Hey there, want to join my SparkRoom?\nJust click this link and sign up! https://sparkapp.cf/join/" + sparkroom + ":" + password + ".\nThe room name is " + sparkroom + " and the password is " + password)
+                for (var i = 0; i < users.length; i++) {
+                    var user = users[i]
+                    var uname = user.uname
+                    var admin = user.admin
+                    var li = document.createElement("li");
+                    if (admin) {
+                        li.innerHTML = '<a>'+uname+'</a>'+'<span class="badge badge-success">ADMIN</span>'
+                    }
+                    else {
+                        li.innerHTML = '<a>'+uname+'</a>'
+                    }
+                    li.classList = 'list-group-item'
+                    document.getElementById("myUL").appendChild(li)
+                }
+            })
         });
 
-        var config = {
-            apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-            authDomain: "https://spark-2121.web.app/",
-            databseURL: "https://spark-2121.firebaseio.com/",
-            projectId: "spark-2121"
-        }
 
-        const db = firebase.firestore()
-        const auth = firebase.auth()
-        const sparkroom = "{{ sparkroom }}"
-
-        auth.onAuthStateChanged(function (user) {
-            console.log(user)
-        })
-
-        var docRef = db.collection("sparkrooms").doc(sparkroom)
-        docRef.get().then(function (doc) {
-            var users = doc.data().users
-            for (var i = 0; i < users.length; i++) {
-                var user = users[i]
-                var hash = user.user
-                var docref2 = db.collection("users").doc(hash)
-                docRef2.get().then(function (doc) {
-                    var name = doc.data().name
-                })
-            }
-        })
     </script>
 </body>
 
