@@ -1,155 +1,99 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- linking font awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-        /* Whole html box designing */
-        html {
-            box-sizing: border-box;
-        }
-
-        /* Body width fixing */
-        body {
-            max-width: 100%
-        }
-
-        /* Box sizing depending on parent */
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit;
-        }
-
-        /* Styling column */
-        .column {
-            float: left;
-            width: 33%;
-            margin-bottom: 16px;
-            padding: 5px 10px;
-        }
-
-
-        /* Column width change depends on screen size */
-        @media screen and (max-width: 670px) {
-            .column {
-                width: 100%;
-                text-align: none;
+	<head>
+        <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <style>
+            li:nth-child(odd) { background: #414141; }
+            li:nth-child(even) { background: #303030; }
+            li {
+                vertical-align:middle;
             }
-        }
-
-        /* Card designing */
-        .card {
-            background-color: white;
-            border: 1px solid black;
-        }
-
-        .container {
-            padding: 0 16px;
-        }
-
-        /* Icon styling */
-        .fa {
-            margin: 10px;
-            font-size: 68px;
-
-        }
-
-        .fa:hover {
-            transform: rotateY(180deg);
-            transition: transform 0.8s;
-        }
-
-        .container::after,
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        /* Button designing */
-        .button {
-            border: none;
-            padding: 8px;
-            color: white;
-            background-color: #449D44;
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        /* Hover efect on button */
-        .button:hover {
-            background-color: green;
-        }
-
-        /* Margining first member of team */
-        #gfg {
-            float: none;
-            margin: auto;
-        }
-    </style>
-</head>
-
-<body>
-    <center>
-        <h1>Meet The Team Page</h1>
-        <hr>
-
-        <!-- First member of the team -->
-        <div class="row">
-            <div class="column" id="gfg">
-                <div class="card">
-                    <i class="fa fa-user-circle" style="font-size:68px;"></i>
-                    <div class="container">
-                        <h2>Aadit Gupta</h2>
-                        <p>Work</p>
-                        <button class="button">Remove</button>
+            li.badge {
+                vertical-align:middle;
+                margin-top: -0.5em;
+            }
+            .hidden {
+                display:none;
+            }
+        </style>
+    </head>
+	<body>
+        <div class="b-cont" style="width: 60vw; margin: 0 auto; margin-top:10px;">
+            <h1 align="center">
+                Team
+            </h1>
+            <div class="input-group">
+                <input id="myInput" type="text" onkeyup="myFunction()" class="form-control" placeholder="Search by keyword...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" style="border-radius: 0px 5px 5px 0px;" data-toggle="modal" data-target="#exampleModalCenter">Invite Members</button>
+                </span>
+            </div>
+            <br>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Invite a User!</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
+                    <div class="modal-body">
+                      <textarea class="form-control" rows="4" id="ctext" readonly>Hey there, want to join my SparkSpace? Just click this link and sign up! https://sparkapp.cf/join/XXXXXXXX.</textarea>
+                      <br>
+                      <div class="alert alert-dismissible alert-primary hidden" id="alrt">
+                        <button type="button" class="close" id="dismiss">&times;</button>
+                        <strong>Copied Successfully!</strong>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id="copy">Copy</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
                 </div>
             </div>
+            <ul id="myUL" class="list-group">
+                <li class="list-group-item"><a>Safin Singh </a><span class="badge badge-success">ADMIN</span></li>
+                <li class="list-group-item"><a>Rohan Juneja</a></li>
+                <li class="list-group-item"><a>Raadwan Masum</a></li>
+                <li class="list-group-item"><a>Aadit Gupta</a></li>
+                <li class="list-group-item"><a>Test User</a></li>
+            </ul>
         </div>
-
-        <!-- Other members of the team -->
-        <div class="row">
-            <div class="column">
-                <div class="card">
-                    <i class="fa fa-user-circle" style="font-size:68px;"></i>
-                    <div class="container">
-                        <h2>Raadwan Masum</h2>
-                        <p>Work</p>
-                        <button class="button">Remove</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-                    <i class="fa fa-user-circle" style="font-size:68px;"></i>
-                    <div class="container">
-                        <h2>Safin Singh</h2>
-                        <p>Work</p>
-                        <button class="button">Remove</button>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <i class="fa fa-user-circle" style="font-size:68px;"></i>
-                    <div class="container">
-                        <h2>Rohan Juneja</h2>
-                        <p>Work</p>
-                        <button class="button">Remove</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </center>
-</body>
-
+        <script>
+            function myFunction() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+            
+            $(document).ready(function(){
+                $("#copy").click(function(){
+                    $( "#alrt" ).toggleClass( "hidden" );
+                    var copyText = document.getElementById("ctext");
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999)
+                    document.execCommand("copy");
+                });
+                $("#dismiss").click(function(){
+                    $( "#alrt" ).toggleClass( "hidden" );
+                });
+            });
+        </script>
+	</body>
 </html>
