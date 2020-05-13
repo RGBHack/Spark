@@ -24,15 +24,8 @@
 
           <!-- Login Form -->
           <form id="formEE">
-            <div class="row" id="loginForm">
-              <table style="vertical-align: center; text-align: center; margin: 0 auto;">
-                <tr>
-                  <td style="vertical-align: middle;">www.sparkapp.cf/join/</td>
-                  <td style="vertical-align: middle;" variant="label-hidden"><input type="text" id="name" name="name"
-                      placeholder="Room" class="form-control" style="margin:0 auto;" value="{{ name }}"></td>
-                </tr>
-              </table>
-            </div>
+            <input type="text" id="name" name="name"
+                      placeholder="Room Name" class="form-control" style="margin:0 auto;" value="{{ name }}">
             <input type="password" id="password" name="password" placeholder="Password" class="form-control"
               value="{{ password }}">
             <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Join">
