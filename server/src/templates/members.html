@@ -385,17 +385,35 @@
                 li.classList = "list-group-item";
                 document.getElementById("myUL").appendChild(li);
                 if (setonclick && settings1 !== '' && id !== user.uid) {
-                  console.log("svg"+i.toString())
-                  document.getElementById("svg"+i.toString()).onclick = function (e) {
-                    var a = e.target;
-                    while (a.nodeName !== "LI") {
-                      a = a.parentElement;
+                  if (admin) {
+                    document.getElementById("svg"+i.toString()).onclick = function (e) {
+                      var a = e.target;
+                      while (a.nodeName !== "LI") {
+                        a = a.parentElement;
+                      }
+                      var name = a.childNodes[0].innerHTML;       
+                      $('#modal-mem').modal('toggle')
+                      $(".modal-header").html(name)
+                      $("#promote").attr("disabled",true)
+                      $("#demote").attr("disabled",false)
+                      curuid = a.id
+                      console.log(curuid)
                     }
-                    var name = a.childNodes[0].innerHTML;       
-                    $('#modal-mem').modal('toggle')
-                    $(".modal-header").html(name)
-                    curuid = a.id
-                    console.log(curuid)
+                  }
+                  else {
+                    document.getElementById("svg"+i.toString()).onclick = function (e) {
+                      var a = e.target;
+                      while (a.nodeName !== "LI") {
+                        a = a.parentElement;
+                      }
+                      var name = a.childNodes[0].innerHTML;       
+                      $('#modal-mem').modal('toggle')
+                      $(".modal-header").html(name)
+                      $("#promote").attr("disabled",false)
+                      $("#demote").attr("disabled",true)
+                      curuid = a.id
+                      console.log(curuid)
+                    }
                   }
                 }
               }
