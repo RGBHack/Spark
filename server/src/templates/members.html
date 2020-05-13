@@ -195,7 +195,7 @@
     <div class="modal fade" id="modal-mem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header" id="name-header">
             Hi
           </div>
           <div class="modal-body">
@@ -393,7 +393,7 @@
                       }
                       var name = a.childNodes[0].innerHTML;       
                       $('#modal-mem').modal('toggle')
-                      $(".modal-header").html(name)
+                      $("#name-header").html(name)
                       $("#promote").attr("disabled",true)
                       $("#demote").attr("disabled",false)
                       curuid = a.id
