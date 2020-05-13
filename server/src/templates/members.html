@@ -71,12 +71,23 @@
         color: #dde9f8;
         display: inline;
       }
-
       svg {
           fill: white;
           width: 25px;
           height: 25px;
           float: right;
+          visibility: hidden;
+      }
+
+      li:hover svg {
+        visibility:visible;
+        cursor: pointer;
+      }
+      #modal-mem {
+        text-align:center;
+      }
+      .modal-body > button {
+        margin:5px;
       }
     </style>
   </head>
@@ -188,9 +199,9 @@
             Hi
           </div>
           <div class="modal-body">
-            <button class="btn btn-primary">Promote to Administrator</button><br>
-            <button class="btn btn-success">Demote to Standard User</button><br>
-            <button class="btn btn-danger">Remove User</button>
+            <button id="promote" class="btn btn-primary">Promote to Administrator</button><br>
+            <button id="demote" class="btn btn-success">Demote to Standard User</button><br>
+            <button id="remove" class="btn btn-danger">Remove User</button>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal" id="modal">Close</button>
@@ -246,6 +257,69 @@
         $("#dismiss").click(function () {
           $("#alrt").toggleClass("hidden");
         });
+        $("#promote").click(function () {
+          if (curuid !== null) {
+            var docRef = db.collection("sparkrooms").doc(sparkroom)
+            docRef.get().then(function (doc) {
+              var usersarr = doc.data().users;
+              console.log(usersarr)
+              for (var i = 0; i<usersarr.length; i++) {
+                console.log(doc.data().users[i].user)
+                console.log(curuid)
+                if (doc.data().users[i].user === curuid) {
+                  console.log(curuid+"upgraded to admin")
+                  usersarr[i].admin = true;
+                }
+              }
+              docRef.update({users : usersarr}).then(function () {
+                window.location.pathname = window.location.pathname
+              })
+            })
+          }
+        })
+        $("#demote").click(function () {
+          if (curuid !== null) {
+            var docRef = db.collection("sparkrooms").doc(sparkroom)
+            docRef.get().then(function (doc) {
+              var usersarr = doc.data().users;
+              for (var i = 0; i<usersarr.length; i++) {
+                if (doc.data().users[i].user === curuid) {
+                  usersarr[i].admin = false;
+                }
+              }
+              docRef.update({users : usersarr}).then(function () {
+                window.location.pathname = window.location.pathname
+              })
+            })
+          }
+        })
+        $("#remove").click(function () {
+          if (curuid !== null) {
+            var docRef = db.collection("sparkrooms").doc(sparkroom)
+            docRef.get().then(function (doc) {
+              var usersarr = []
+              for (var i = 0; i<doc.data().users.length; i++) {
+                if (doc.data().users[i].user !== curuid) {
+                  usersarr.push(doc.data().users[i])
+                }
+              }
+              docRef.update({users : usersarr}).then(function () {
+                var docRef2 = db.collection("users").doc(curuid)
+                docRef2.get().then(function (doc) {
+                  var sparkrooms = []
+                  for (var i = 0; i<doc.data().sparkrooms.length; i++) {
+                    if (doc.data().sparkrooms[i] !== sparkroom) {
+                      workspaces.push(doc.data().sparkrooms[i])
+                    }
+                  }
+                  docRef2.update({ sparkrooms : sparkrooms }).then(function () {
+                    window.location.pathname = window.location.pathname
+                  })
+                })
+              })
+            })
+          }
+        })
         auth.onAuthStateChanged(function (user) {
           if (user !== null) {
               theuser = user
@@ -274,11 +348,11 @@
                 }
               }
               for (var i = 0; i < users.length; i++) {
-                var user = users[i];
-                var uname = user.uname;
-                var id = user.user;
-                var admin = user.admin;
-                var creator = user.creator;
+                var user1 = users[i];
+                var uname = user1.uname;
+                var id = user1.user;
+                var admin = user1.admin;
+                var creator = user1.creator;
                 var li = document.createElement("li");
                 li.id = id;
                 var setonclick = true;
@@ -286,13 +360,31 @@
                   li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span> <span class="badge badge-success">CREATOR</span>';
                   setonclick = false;
                 } else if (admin) {
-                  li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span>' + settings1 + i.toString() + settings2;
+                  var a = i.toString()
+                  if (settings1 === '') {
+                    a = ''
+                  }
+                  if (id === user.uid) {
+                    li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span>';
+                  }
+                  else {
+                    li.innerHTML = "<a>" + uname + " </a>" + '<span class="badge badge-success">ADMIN</span>' + settings1 + a + settings2;
+                  }
                 } else {
-                  li.innerHTML = "<a>" + uname + settings1 + i.toString() + settings2;
+                  var a = i.toString()
+                  if (settings1 === '') {
+                    a = ''
+                  }
+                  if (id === user.uid) {
+                    li.innerHTML = "<a>" + uname;
+                  }
+                  else {
+                    li.innerHTML = "<a>" + uname + settings1 + a + settings2;
+                  }
                 }
                 li.classList = "list-group-item";
                 document.getElementById("myUL").appendChild(li);
-                if (setonclick && settings1 !== '') {
+                if (setonclick && settings1 !== '' && id !== user.uid) {
                   console.log("svg"+i.toString())
                   document.getElementById("svg"+i.toString()).onclick = function (e) {
                     var a = e.target;
