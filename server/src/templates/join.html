@@ -99,7 +99,12 @@
     const db = firebase.firestore();
     auth.onAuthStateChanged(function (user) {
       if (user === null) {
-        window.location.pathname = '/login'
+        if ("{{ name }}" !== "") {
+          window.location.pathname = '/login/{{ name }}:{{ password }}'
+        }
+        else {
+          window.location.pathname = '/login'
+        }
       }
       else {
         var form = document.getElementById("formEE")

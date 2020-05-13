@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Spark</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles.min.css">
-    <link rel="shortcut icon" type="image" href="./img/favicon.ico" />
+    <link rel="stylesheet" href="{{ extra }}./css/styles.min.css">
+    <link rel="shortcut icon" type="image" href="{{ extra }}./img/favicon.ico" />
 </head>
 
 <body style="background-color: #26262b;">
@@ -29,7 +29,7 @@
     <div style="width: 100vw;height: 85vh;position: relative;">
         <span
             style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-            <img src="./img/spark_dark.png" style="width: 20vw;" />
+            <img src="{{ extra }}./img/spark_dark.png" style="width: 20vw;" />
             <br><br>
             <div class="wrapper">
                 <div id="formContent">
@@ -52,7 +52,7 @@
 
                     <!-- Remind Passowrd -->
                     <div id="formFooter">
-                        <a class="underlineHover" href="/login">Log In</a>
+                        <a class="underlineHover" href="/login" id="loginlink">Log In</a>
                     </div>
 
                 </div>
@@ -84,6 +84,11 @@
         const db = firebase.firestore();
         var form = document.getElementById("formEE")
         var submit = document.getElementById("submit")
+
+        if ("{{ join }}" !== "") {
+            document.getElementById("loginlink").setAttribute("href","/signup/{{ join }}")
+        }
+
         form.onsubmit = function (e) {
             e.preventDefault()
             const email = form['email'].value
@@ -92,7 +97,12 @@
             auth.createUserWithEmailAndPassword(email, password).then(cred => {
                 db.collection("users").doc(cred.user.uid).set({sparkrooms: [], name: name}).then(function () {
                     console.log("signed up successfully")
-                    window.location.pathname = '/dashboard'
+                    if ("{{ join }}" !== "") {
+                        window.location.pathname = '/join/{{ join }}'
+                    }
+                    else {
+                        window.location.pathname = '/dashboard'
+                    }
                 }).catch(err => {
                     alert(err.code)
                 })

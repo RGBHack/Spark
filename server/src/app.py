@@ -52,6 +52,11 @@ def login():
     context = { 'server_time': format_server_time() }
     return render_template('login.html', context=context)
 
+@app.route('/login/<join>')
+def loginjoin(join):
+    context = { 'server_time': format_server_time() }
+    return render_template('login.html', context=context,join=join,extra=".")
+
 @app.route('/about')
 def about():
     context = { 'server_time': format_server_time() }
@@ -86,6 +91,11 @@ def projects():
 def signup():
     context = { 'server_time': format_server_time() }
     return render_template('signup.html', context=context)
+
+@app.route('/signup/<join>')
+def signupjoin(join):
+    context = { 'server_time': format_server_time() }
+    return render_template('signup.html', context=context, join=join, extra=".")
 
 @app.route('/meetings')
 def meetings():
