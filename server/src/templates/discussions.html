@@ -161,7 +161,34 @@
         color: #dde9f8;
       }
     </style>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
     <script>
+    var config = {
+      apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+      authDomain: "httpsspark-2121.web.app/",
+      databaseURL: "https://spark-2121.firebaseio.com/",
+      projectId: "spark-2121"
+    }
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(config)
+    }
+    var group = "{{ sparkroom }}"
+    var database = firebase.database()
+    var firestore = firebase.firestore()
+    var auth = firebase.auth()
+    var tuser = null;
+    auth.onAuthStateChanged(function (user) {
+        tuser = user;
+    })
       $(document).ready(function () {
         $("#subDisc").click(function () {
           var title = $("#title").val();
@@ -181,6 +208,7 @@
             today.getSeconds();
           var dateTime = date + " " + time;
           post = document.createElement("div");
+          var docRef = database.ref("discussions/"+group).push()
           post.innerHTML =
             '<h1 style="display:inline; margin-top:20px;">' +
             title +
@@ -188,9 +216,19 @@
             dateTime +
             "</i></p> <p>" +
             content +
-            '</p> <h3>Reply</h3> <div id="comments"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> <button class="btn btn-danger" id="delpost">Delete Post</button> <br> <br> <hr>';
+            '</p> <h3>Reply</h3> <div id="'+docRef.path.pieces_[2]+'"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> <button class="btn btn-danger" id="delpost">Delete Post</button> <br> <br> <hr>';
           $("#postarea").prepend(post);
+          docRef.set({
+            title: title,
+            dateTime: dateTime,
+            content: content
+        })
         });
+        var docRef2 = database.ref('discussions/'+group)
+        docRef2.on('child_added', function (data) {
+            console.log(data)
+            addPost(data.val().title,data.val().content,data.val().dateTime,data,"abc") 
+        })
       });
       $(document).on("click", "#subCmt", function () {
         getbox = $(this).parent().parent().children()[0];
@@ -210,6 +248,18 @@
         });
         //
       }, 2000);
+      function addPost (title, content, dateTime, id) {
+          post = document.createElement("div");
+          post.innerHTML =
+            '<h1 style="display:inline; margin-top:20px;">' +
+            title +
+            '</h1> <p style="display:inline;"><i>&nbsp;' +
+            dateTime +
+            "</i></p> <p>" +
+            content +
+            '</p> <h3>Reply</h3> <div id="'+id+'"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> <button class="btn btn-danger" id="delpost">Delete Post</button> <br> <br> <hr>';
+          $("#postarea").prepend(post);
+        }
     </script>
   </head>
   <body style="width: 60vw; margin: 0 auto; margin-top: 5vh;">

@@ -107,10 +107,10 @@ def meetingid(meetingid):
     context = { 'server_time': format_server_time() }
     return render_template('meetings.html', context=context, meetingid=meetingid)
 
-@app.route('/discussions')
-def discussions():
+@app.route('/discussions/<sparkroom>')
+def discussions(sparkroom):
     context = { 'server_time': format_server_time() }
-    return render_template('discussions.html', context=context)
+    return render_template('discussions.html', context=context, sparkroom=sparkroom)
 
 @app.route('/members/<sparkroom>')
 def members(sparkroom):
