@@ -186,6 +186,7 @@
     var firestore = firebase.firestore()
     var auth = firebase.auth()
     var tuser = null;
+    var global = null;
     auth.onAuthStateChanged(function (user) {
         tuser = user;
     })
@@ -226,8 +227,7 @@
         });
         var docRef2 = database.ref('discussions/'+group)
         docRef2.on('child_added', function (data) {
-            console.log(data)
-            addPost(data.val().title,data.val().content,data.val().dateTime,data,"abc") 
+            addPost(data.val().title,data.val().content,data.val().dateTime,data.key) 
         })
       });
       $(document).on("click", "#subCmt", function () {
