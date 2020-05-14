@@ -8,7 +8,7 @@
   <img alt="Maintained" src="https://img.shields.io/badge/Maintained-Yes-orange">
 </p>
 
-> A cumulative productivity app so that you only have to use one app instead of 3,749.
+> An empowering all-in-one productivity web app
 
 ### 🏠 [Homepage](https://www.sparkapp.cf)
 
