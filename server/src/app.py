@@ -122,5 +122,10 @@ def members_test():
     context = { 'server_time': format_server_time() }
     return render_template('members-test.html', context=context)
 
+@app.route('/profile')
+def profile():
+    context = { 'server_time': format_server_time() }
+    return render_template('profile.html', context=context)
+
 if __name__ == '__main__':
     app.run(debug=True,host='127.0.0.1',port=int(os.environ.get('PORT', 5004)))
