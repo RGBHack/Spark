@@ -15,33 +15,105 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        h1 {
-            text-align: center;
-        }
+<style>
+@font-face {
+  font-family: "Lexend Deca Regular";
+  src: url(../fonts/LexendDecaRegular.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
 
-        body {
-            background-color: #26262b;
-            color: #eee;
-        }
-    </style>
+html {
+  background-color: #26262B;
+    font-family: "Lexend Deca Regular";
+}
+
+body {
+  min-width: 250px;
+  font-family: "Lexend Deca Regular";
+  background-color: #26262B;
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  color: #36393f;
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 93, 0, 1) 0,
+    rgba(255, 217, 25, 1) 100%
+  );
+  border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, p {
+    color: #dde9f8;
+}
+
+.btn {
+    background: linear-gradient(
+    90deg,
+    rgba(255, 93, 0, 1) 0,
+    rgba(255, 217, 25, 1) 100%
+  );
+    color: #dde9f8;
+    margin-right: 5px;
+}
+
+.form-control {
+    background-color: #dde9f8;
+    color: #26262B;
+}
+</style>
 </head>
 
-<div class="container bootstrap snippet">
+<body>
+    <div class="container bootstrap snippet">
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-10" style="margin: auto; text-align: center;">
             <h1>Profile</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3">
-            <!--left col-->
-        </div>
-        <!--/col-3-->
-        <div class="col-sm-9">
-
-
-
+        <div class="col-sm-9" style="margin: auto;">
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
                     <form class="form" action="##" method="post" id="registrationForm">
@@ -72,7 +144,7 @@
                                     <h4>Password</h4>
                                 </label>
                                 <input type="password" class="form-control" name="password" id="password"
-                                    placeholder="password" title="enter your password.">
+                                    placeholder="Password" title="enter your password.">
                             </div>
                         </div>
                         <div class="form-group">
@@ -82,16 +154,14 @@
                                     <h4>Verify</h4>
                                 </label>
                                 <input type="password" class="form-control" name="password2" id="password2"
-                                    placeholder="password2" title="enter your password2.">
+                                    placeholder="Verify Password" title="enter your password2.">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i
-                                        class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>
-                                    Reset</button>
+                                <button class="btn btn-lg" type="submit">Save</button>
+                                <button class="btn btn-lg" type="reset">Reset</button>
                             </div>
                         </div>
                     </form>
@@ -106,3 +176,4 @@
     <!--/col-9-->
 </div>
 <!--/row-->
+</body>
