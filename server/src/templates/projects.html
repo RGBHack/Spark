@@ -596,6 +596,18 @@ button#modal {
 </div>
 <script>
   var cardnum = 0;
+  var config = {
+    apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+    authDomain: "httpsspark-2121.web.app/",
+    databseURL: "https://spark-2121.firebaseio.com/",
+    projectId: "spark-2121"
+  }
+  if (firebase.apps.length === 0) {
+    firebase.initializeApp(config)
+    console.log("worked")
+  }
+  const auth = firebase.auth();
+  const database = firebase.database();
   function allowDrop(ev) {
     ev.preventDefault();  // default is not to allow drop
   }
@@ -633,21 +645,7 @@ button#modal {
            
         }
        
-    }else{
-        // Same list. Swap the text of the two cards
-        // Just like swapping the values in two variables
-      
-        // Temporary holder of the destination Object
-        let holder=targetEl;
-        // The text of the destination Object. 
-        // We are really just moving the text, not the Card
-        let holderText=holder.textContent;
-        // Replace the destination Objects text with the sources text
-        targetEl.textContent=sourceIdEl.textContent;
-        // Replace the sources text with the original destinations
-        sourceIdEl.textContent=holderText;
-        holderText='';
-}
+    }
     
   }
 function addcard () {
@@ -656,6 +654,9 @@ function addcard () {
   var name = $("#projName").val();
   var bediv = '<div style="display: table; height: 25px; width: 150px; overflow: hidden;"><div style="display: table-cell; vertical-align: middle;"><div>'
   var afdiv = '</div></div></div>'
+  var divthing = document.createElement("div");
+  divthing.id = "card"+cardnum.toString()
+  document.getElementById("list1").appendChild()
   document.getElementById("list1").innerHTML += "<div id='card" + cardnum.toString() + "' class='card' draggable='true' ondragstart='dragStart(event)'>" + bediv + name + afdiv + "<span class='close' id='closeabcd"+cardnum.toString()+"'>×</span>" +"</div>";
   for (var i = 1; i <= cardnumsafe; i++) {
     console.log(i)
