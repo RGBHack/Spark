@@ -187,8 +187,13 @@
     var auth = firebase.auth()
     var tuser = null;
     var global = null;
+    var uname = null;
     auth.onAuthStateChanged(function (user) {
         tuser = user;
+        var docRef = firestore.collection("users").doc(tuser.uid)
+        docRef.get().then(function (doc) {
+            uname = doc.data().name
+        })
     })
       $(document).ready(function () {
         $("#subDisc").click(function () {
@@ -208,17 +213,7 @@
             ":" +
             today.getSeconds();
           var dateTime = date + " " + time;
-          post = document.createElement("div");
           var docRef = database.ref("discussions/"+group).push()
-          post.innerHTML =
-            '<h1 style="display:inline; margin-top:20px;">' +
-            title +
-            '</h1> <p style="display:inline;"><i>&nbsp;' +
-            dateTime +
-            "</i></p> <p>" +
-            content +
-            '</p> <h3>Reply</h3> <div id="'+docRef.path.pieces_[2]+'"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> <button class="btn btn-danger" id="delpost">Delete Post</button> <br> <br> <hr>';
-          $("#postarea").prepend(post);
           docRef.set({
             title: title,
             dateTime: dateTime,
@@ -228,18 +223,21 @@
         var docRef2 = database.ref('discussions/'+group)
         docRef2.on('child_added', function (data) {
             addPost(data.val().title,data.val().content,data.val().dateTime,data.key) 
+            var docRef3 = database.ref('discussions/'+group+'/'+data.key+'/comments')
+            docRef3.on('child_added',function (data) {
+                addComment(data.val().parid,data.val().content)
+            })
         })
       });
       $(document).on("click", "#subCmt", function () {
-        getbox = $(this).parent().parent().children()[0];
+        if (uname == null) {
+            return;
+        }
+        var getbox = $(this).parent().parent().children()[0];
         var cmt = $(getbox).val();
-        var user = "User 1";
-        comment = document.createElement("div");
-        comment.innerHTML =
-          '<p style="color: #dde9f8;">' + user + ": " + cmt + "</p>";
-        cmtParent = $(this).parent().parent().parent().children()[4];
-        console.log(cmtParent);
-        $(cmtParent).prepend(comment);
+        var cmtParent = $(this).parent().parent().parent().children()[4];
+        var docRef = database.ref('discussions/'+group+'/'+cmtParent.id+'/comments')
+        docRef.push().set({content: uname + ": " + cmt, parid: cmtParent.id})
       });
       var interval;
       interval = setInterval(function () {
@@ -259,6 +257,12 @@
             content +
             '</p> <h3>Reply</h3> <div id="'+id+'"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> <button class="btn btn-danger" id="delpost">Delete Post</button> <br> <br> <hr>';
           $("#postarea").prepend(post);
+        }
+        function addComment (id,content) {
+            comment = document.createElement("div");
+            comment.innerHTML =
+            '<p style="color: #dde9f8;">' + content + "</p>";
+            $("#"+id).prepend(comment);
         }
     </script>
   </head>
