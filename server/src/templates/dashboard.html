@@ -779,7 +779,7 @@
             </a>
           </li>
           <li class="group-elem" style="display: none;">
-            <a href="#0">
+            <a href="javascript:renderDiscussions();">
               <svg>
                 <use xlink:href="#discussions"></use>
               </svg>
@@ -918,6 +918,18 @@
           flex: 1 0 auto;
         "
       ></iframe>
+      <iframe
+        src="/discussions"
+        id="discussions-iframe"
+        style="
+          display: none;
+          border-radius: 20px;
+          overflow: auto;
+          width: 100%;
+          height: 800px;
+          flex: 1 0 auto;
+        "
+      ></iframe>
 
       <!-- end iframes -->
 
@@ -951,6 +963,7 @@
       var projectsElement = document.getElementById("projects-iframe");
       var meetingsElement = document.getElementById("meetings-iframe");
       var teamElement = document.getElementById("members-iframe");
+      var discussionsElement = document.getElementById("discussions-iframe");
 
       var roomnum = 0;
       if (sparkroom !== "") {
@@ -1016,6 +1029,7 @@
           projectsElement.style.display = "none";
           meetingsElement.style.display = "none";
           teamElement.style.display = "none";
+          discussionsElement.style.display = "none";
         }
       }
       function renderTasks() {
@@ -1026,6 +1040,7 @@
           projectsElement.style.display = "none";
           meetingsElement.style.display = "none";
           teamElement.style.display = "none";
+          discussionsElement.style.display = "none";
         }
       }
       function renderMessages() {
@@ -1037,6 +1052,7 @@
           projectsElement.style.display = "none";
           meetingsElement.style.display = "none";
           teamElement.style.display = "none";
+          discussionsElement.style.display = "none";
         }
       }
       function renderProjects() {
@@ -1047,6 +1063,7 @@
           messagesElement.style.display = "none";
           meetingsElement.style.display = "none";
           teamElement.style.display = "none";
+          discussionsElement.style.display = "none";
         }
       }
       function renderMeetings() {
@@ -1057,6 +1074,7 @@
           messagesElement.style.display = "none";
           projectsElement.style.display = "none";
           teamElement.style.display = "none";
+          discussionsElement.style.display = "none";
         }
       }
       function renderTeam() {
@@ -1067,6 +1085,18 @@
           messagesElement.style.display = "none";
           meetingsElement.style.display = "none";
           teamElement.style.display = "inline-block";
+          discussionsElement.style.display = "none";
+        }
+      }
+      function renderDiscussions() {
+        if (discussionsElement.style.display == "none") {
+          projectsElement.style.display = "none";
+          calendarElement.style.display = "none";
+          tasksElement.style.display = "none";
+          messagesElement.style.display = "none";
+          meetingsElement.style.display = "none";
+          teamElement.style.display = "none";
+          discussionsElement.style.display = "inline-block";
         }
       }
       function create() {
