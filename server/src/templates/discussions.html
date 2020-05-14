@@ -156,6 +156,10 @@
           rgba(255, 217, 25, 1) 100%
         );
       }
+
+      .text-muted {
+        color: #dde9f8;
+      }
     </style>
     <script>
       $(document).ready(function () {
@@ -194,7 +198,7 @@
         var user = "User 1";
         comment = document.createElement("div");
         comment.innerHTML =
-          '<p class="text-muted">' + user + ": " + cmt + "</p>";
+          '<p style="color: #dde9f8;">' + user + ": " + cmt + "</p>";
         cmtParent = $(this).parent().parent().parent().children()[4];
         console.log(cmtParent);
         $(cmtParent).prepend(comment);
@@ -221,6 +225,7 @@
       class="btn btn-primary form-control submit-btn"
       type="submit"
       id="subDisc"
+      style="margin-bottom: 10px;"
     />
     <hr />
     <div id="postarea">
