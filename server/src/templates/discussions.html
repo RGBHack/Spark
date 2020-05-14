@@ -187,18 +187,35 @@
     var auth = firebase.auth()
     var tuser = null;
     var global = null;
+    var admin = null;
     var uname = null;
-    auth.onAuthStateChanged(function (user) {
+      $(document).ready(function () {
+        auth.onAuthStateChanged(function (user) {
         if (user !== null) {
             tuser = user;
             var docRef = firestore.collection("users").doc(tuser.uid)
             docRef.get().then(function (doc) {
                 uname = doc.data().name
             })
-        }
-    })
-      $(document).ready(function () {
-        $("#subDisc").click(function () {
+            var docRef2 = firestore.collection("sparkrooms").doc(group);
+            docRef2.get().then(function (doc) {
+                if (!doc.exists) {
+                    console.log("wtf")
+                }
+                for (var i = 0; i<doc.data().users.length; i++) {
+                    if (doc.data().users[i].user === tuser.uid) {
+                        if (doc.data().users[i].admin) {
+                            admin = true;
+                        }
+                        else {
+                            admin = false;
+                        }
+                    }
+                }
+                if (admin === null) {
+                    admin = false;
+                }
+                $("#subDisc").click(function () {
           var title = $("#title").val();
           var content = $("#content").val();
           var today = new Date();
@@ -233,6 +250,9 @@
         docRef2.on('child_removed', function (data) {
             removePost(data.key)
         })
+            })
+        }
+        })
       });
       $(document).on("click", "#subCmt", function () {
         if (uname == null) {
@@ -245,16 +265,12 @@
         docRef.push().set({content: uname + ": " + cmt, parid: cmtParent.id})
       });
       var interval;
-      interval = setInterval(function () {
-        $("#delpost").click(function () {
-            var id = $(this).parent().attr("id").substring(2,$(this).parent().attr("id").length)
-            var docRef2 = database.ref('/discussions/'+group+'/'+id);
-            docRef2.remove()
-        });
-        //
-      }, 2000);
       function addPost (title, content, dateTime, id) {
           post = document.createElement("div");
+          var add = ''
+          if (admin) {
+            add = '<button class="btn btn-danger" id="delpost">Delete Post</button>'
+          }
           post.innerHTML =
             '<h1 style="display:inline; margin-top:20px;">' +
             title +
@@ -262,9 +278,16 @@
             dateTime +
             "</i></p> <p>" +
             content +
-            '</p> <h3>Reply</h3> <div id="'+id+'"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> <button class="btn btn-danger" id="delpost">Delete Post</button> <br> <br> <hr>';
+            '</p> <h3>Reply</h3> <div id="'+id+'"></div> <div class="input-group"> <input class="form-control" type="text" id="cmt"> <div class="input-group-append"> <button class="btn btn-primary" type="button" id="subCmt">Submit</button> </div> </div> <br> '+add+' <br> <br> <hr>';
             post.id="hi"+id;
           $("#postarea").prepend(post);
+          if (admin) {
+            $("#delpost").click(function () {
+            var id = $(this).parent().attr("id").substring(2,$(this).parent().attr("id").length)
+            var docRef2 = database.ref('/discussions/'+group+'/'+id);
+            docRef2.remove()
+            });
+          }
         }
         function addComment (id,content) {
             comment = document.createElement("div");
