@@ -8,7 +8,7 @@
   <img alt="Maintained" src="https://img.shields.io/badge/Maintained-Yes-orange">
 </p>
 
-> ⚡ A productivity web app for helping people during the COVID-19 Pandemic [Still under development]
+> A cumulative productivity app so that you only have to use one app instead of 3,749.
 
 ### 🏠 [Homepage](https://www.sparkapp.cf)
 
