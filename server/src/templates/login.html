@@ -109,7 +109,7 @@
         }
         var logging = true;
         auth.onAuthStateChanged(function (user) {
-            if (user !== null) {
+            if (user !== null && logging) {
                 if ("{{ join }}" !== "") {
                     window.location.pathname = '/join/{{ join }}'
                 }
