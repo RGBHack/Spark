@@ -1,4 +1,5 @@
-<h1 align="center">Welcome to Spark 👋</h1>
+![alt text](./static/img/name_light.png)
+<h3 align="center"><i>An empowering all-in-one productivity <a href="https://www.sparkapp.cf">web app</a></i></h3>
 <p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
@@ -6,35 +7,33 @@
   <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   <img alt="Build" src="https://travis-ci.com/RGBHack/Spark.svg?token=yK4yfmRA1QdUzxuse6q8&branch=master">
   <img alt="Maintained" src="https://img.shields.io/badge/Maintained-Yes-orange">
+  <img alt="awesome" src="https://img.shields.io/badge/awesome-yes-blue">
 </p>
+<hr>
 
-> An empowering all-in-one productivity web app
-
-### 🏠 [Homepage](https://www.sparkapp.cf)
-
-## Install
+## 🚀 Local Development
 
 ```sh
 git clone https://github.com/RGBHack/Spark.git
 npm i -g firebase
-```
-
-## Usage
-
-```sh
 firebase serve
 ```
 
-## Authors
+## ✨ Diagram
 
-👤 **Safin Singh, Rohan Juneja, Aadit Gupta, Raadwan Masum**
+![alt text](./static/img/spark_dark_model.png)
+<p align="center"><i>An intuitive diagram of how our content is served</i></p>
+
+## 👨‍💻 Authors
+
+**Safin Singh, Rohan Juneja, Aadit Gupta, Raadwan Masum**
 
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/RGBHack/Spark/issues). 
+Contributions, PRs, issues and feature requests are welcome! Feel free to check out our [issues page](https://github.com/RGBHack/Spark/issues). 
 
-## Show your support
+## ❤️ Show your support
 
 Give a ⭐️ if this project helped you!
-Hope You Enjoy!
+Hope you enjoy!
