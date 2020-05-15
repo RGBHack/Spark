@@ -131,7 +131,7 @@
                 docRef.get().then(function (doc) {
                     if (!doc.exists) {
                         db.collection("users").doc(user.uid).set({
-                            spakrooms: [],
+                            sparkrooms: [],
                             name: user.displayName,
                             events: [],
                             tasks: [],

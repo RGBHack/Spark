@@ -131,7 +131,7 @@
                 var user = result.user;
                 console.log(user.displayName);
                 db.collection("users").doc(user.uid).set({
-                    spakrooms: [],
+                    sparkrooms: [],
                     name: user.displayName,
                     events: [],
                     tasks: [],
