@@ -1,4 +1,6 @@
-![alt text](./static/img/name_light.png)
+<p align="center">
+  <img width="500" alt="spark logo" src="./static/img/spark_dark.png">
+</p>
 <h3 align="center"><i>An empowering all-in-one productivity <a href="https://www.sparkapp.cf">web app</a></i></h3>
 <p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
@@ -23,6 +25,12 @@ firebase serve
 
 ![alt text](./static/img/spark_dark_model.png)
 <p align="center"><i>An intuitive diagram of how our content is served</i></p>
+
+## 💻 Try it out
+
+Video Demo: [https://youtu.be/q-6XG5c0LZ4](https://youtu.be/q-6XG5c0LZ4)<br>
+DevPost: [https://devpost.com/software/](https://devpost.com/software/)<br>
+Slides Presentation: [https://bit.ly/3bAfzaz](https://bit.ly/3bAfzaz)<br>
 
 ## 👨‍💻 Authors
 

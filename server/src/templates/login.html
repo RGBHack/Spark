@@ -134,7 +134,12 @@
                         alert("Please create this account on the Sign Up Page!")
                     }
                     else {
-                        window.location.pathname = '/dashboard';
+                        if ("{{ join }}" !== "") {
+                        window.location.pathname = '/join/{{ join }}'
+                        }
+                        else {
+                            window.location.pathname = '/dashboard'
+                        }
                     }
                 })
             }).catch(function (error) {

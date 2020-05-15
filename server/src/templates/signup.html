@@ -136,7 +136,12 @@
                     events: [],
                     tasks: []
                 }).then(function () {
-                    window.location.pathame = '/dashboard'
+                    if ("{{ join }}" !== "") {
+                        window.location.pathname = '/join/{{ join }}'
+                    }
+                    else {
+                        window.location.pathname = '/dashboard'
+                    }
                 })
             }).catch(function (error) {
                 // Handle Errors here.
