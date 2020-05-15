@@ -26,6 +26,12 @@ firebase serve
 ![alt text](./static/img/spark_dark_model.png)
 <p align="center"><i>An intuitive diagram of how our content is served</i></p>
 
+## 💻 Try it out
+
+Video Demo: [https://youtu.be/q-6XG5c0LZ4](https://youtu.be/q-6XG5c0LZ4)<br>
+DevPost: [https://devpost.com/software/](https://devpost.com/software/)<br>
+Slides Presentation: [https://bit.ly/3bAfzaz](https://bit.ly/3bAfzaz)<br>
+
 ## 👨‍💻 Authors
 
 **Safin Singh, Rohan Juneja, Aadit Gupta, Raadwan Masum**
