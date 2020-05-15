@@ -130,14 +130,20 @@
                 var docRef = db.collection("users").doc(user.uid)
                 docRef.get().then(function (doc) {
                     if (!doc.exists) {
-                        alert("Please create this account on the Sign Up Page!")
-                        auth.signOut()
-                        if ("{{ join }}" !== "") {
-                            window.location.pathname = '/signup/{{ join }}'
-                        }
-                        else {
-                            window.location.pathname = '/signup'
-                        }
+                        db.collection("users").doc(user.uid).set({
+                            spakrooms: [],
+                            name: user.displayName,
+                            events: [],
+                            tasks: [],
+                            google: true
+                        }).then(function () {
+                            if ("{{ join }}" !== "") {
+                                window.location.pathname = '/join/{{ join }}'
+                            }
+                            else {
+                                window.location.pathname = '/dashboard'
+                            }
+                        })
                     }
                     else {
                         if ("{{ join }}" !== "") {
