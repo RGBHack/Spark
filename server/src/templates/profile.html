@@ -176,4 +176,33 @@ h1, h2, h3, h4, h5, p {
     <!--/col-9-->
 </div>
 <!--/row-->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+<script>
+    var config = {
+            apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+            authDomain: "spark-2121.firebaseapp.com",
+            databaseURL: "https://spark-2121.firebaseio.com",
+            projectId: "spark-2121",
+            storageBucket: "spark-2121.appspot.com",
+            messagingSenderId: "115390923810",
+            appId: "1:115390923810:web:82727423f6479500d9367b",
+            measurementId: "G-R304JKHRPK"
+    }
+    if (firebase.apps.length === 0) {
+        firebase.initializeApp(config)
+        console.log("worked")
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+</script>
 </body>
