@@ -701,12 +701,8 @@ function addcard () {
     list : "list1",
     content : $("#projName").val()
   })
-  docRef2.on('child_changed',function (data) {
-    if (data.val().id !== tuser.uid) {
-      document.getElementById(data.val().list).appendChild(document.getElementById(data.key))
-    }
-  })
 }
+var car = null;
 function addcard2 (name,id,list) {
   cardnum = cardnum + 1;
   var cardnumsafe = cardnum;
@@ -722,7 +718,13 @@ function addcard2 (name,id,list) {
   document.getElementById("closeabcd"+cardnum.toString()).onclick = function (event) {
       database.ref('projects/'+group+'/'+event.target.parentNode.id).remove()
   }
-  
+  var docRef3 = database.ref('projects/'+group+'/'+id)
+  docRef3.on('child_changed', function (data) {
+    if (data.val().id !== tuser.uid) {
+      //console.log(data.parent().key)
+      document.getElementById(data.val()).appendChild(document.getElementById(data.getRef().parent.key))
+    }
+  })
 }
 function removecard (id) {
   document.getElementById(id).style.display = 'none'
