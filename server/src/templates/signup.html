@@ -50,7 +50,7 @@
 
                     <!-- Remind Passowrd -->
                     <div id="formFooter">
-                        <a class="underlineHover" href="/login" id="loginlink">Sign Up</a>
+                        <a class="underlineHover" href="/login" id="loginlink">Log In</a>
                     </div>
 
                 </div>
@@ -129,7 +129,13 @@
                 var token = result.credential.accessToken;
                 // The signed-in user info.
                 var user = result.user;
-                // ...
+                console.log(user.displayName);
+                db.collection("users").doc(user.uid).set({
+                    spakrooms : [],
+                    name : user.displayName,
+                    events : [],
+                    tasks : []
+                })
             }).catch(function (error) {
                 // Handle Errors here.
                 var errorCode = error.code;
