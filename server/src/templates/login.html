@@ -132,6 +132,7 @@
                 docRef.get().then(function (doc) {
                     if (!doc.exists) {
                         alert("Please create this account on the Sign Up Page!")
+                        auth.signOut()
                         if ("{{ join }}" !== "") {
                             window.location.pathname = '/signup/{{ join }}'
                         }
