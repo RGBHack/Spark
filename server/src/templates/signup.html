@@ -70,12 +70,17 @@
     <script>
         var config = {
             apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-            authDomain: "https://spark-2121.web.app/",
-            databseURL: "https://spark-2121.firebaseio.com/",
-            projectId: "spark-2121"
-        }
+            authDomain: "spark-2121.firebaseapp.com",
+            databaseURL: "https://spark-2121.firebaseio.com",
+            projectId: "spark-2121",
+            storageBucket: "spark-2121.appspot.com",
+            messagingSenderId: "115390923810",
+            appId: "1:115390923810:web:82727423f6479500d9367b",
+            measurementId: "G-R304JKHRPK"
+        };
         if (firebase.apps.length === 0) {
             firebase.initializeApp(config)
+            firebase.analytics();
             console.log("worked")
         }
         const auth = firebase.auth();
@@ -116,14 +121,27 @@
                 }
             })
         }
-        function googleauth() {
-            //aadit goooooo
+        googleauth = () => {
             var provider = new firebase.auth.GoogleAuthProvider();
+            console.log("bruh1")
             firebase.auth().signInWithPopup(provider).then(function (result) {
-                var token = result.credential.accessToken
-                var user = result.user
-            })
-        } 
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                var user = result.user;
+                // ...
+            }).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+                console.log(error)
+            });
+        }
 
         // firebase.auth().signInWithPopup(provider).then(function(result) {
         //     // This gives you a Google Access Token. You can use it to access the Google API.
