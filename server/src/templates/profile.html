@@ -8,6 +8,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
 <head>
     <title>Profile</title>
     <meta charset="utf-8">
@@ -112,11 +116,12 @@ h1, h2, h3, h4, h5, p {
             <h1>Profile</h1>
         </div>
     </div>
-    <div class="row">
+    <p id="google" style="display: none;">Google Auth Accounts can't edit profile</p>
+    <div class="row" id="formstuff">
         <div class="col-sm-9" style="margin: auto;">
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
-                    <form class="form" action="##" method="post" id="registrationForm">
+                    <form id="form" class="form" action="##" method="post" id="registrationForm">
                         <div class="form-group">
 
                             <div class="col-xs-6">
@@ -177,6 +182,24 @@ h1, h2, h3, h4, h5, p {
 </div>
 <!--/row-->
 
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Please sign in again to make these changes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <button type="button" class="btn btn-primary" onclick="signin()">Sign In</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
@@ -203,6 +226,62 @@ h1, h2, h3, h4, h5, p {
     }
     const auth = firebase.auth();
     const db = firebase.firestore();
-
+    var displ = null;
+    var email = null;
+    var tuser = null;
+    auth.onAuthStateChanged(function (user) {
+        document.getElementById("email").value = user.email
+        email = user.email;
+        tuser = user;
+        db.collection("users").doc(user.uid).get().then(function (doc) {
+            document.getElementById("display_name").value = doc.data().name
+            displ = doc.data().name
+            if (doc.data().google === true) {
+                document.getElementById("formstuff").style.display = 'none'
+                document.getElementById("google").style.display = 'inline-block'
+            }
+        })
+    })
+    var form = document.getElementById("form")
+    form.onreset = function (e) {
+        e.preventDefault();
+        if (displ === null) {
+            console.log("wtf")
+            return
+        }
+        document.getElementById("display_name").value = displ;
+        document.getElementById("email").value = email;
+        document.getElementById("password").value = ''
+        document.getElementById("password2").value = ''
+    }
+    form.onsubmit = function (e) {
+        e.preventDefault()
+        if (tuser === null) {
+            return
+        }
+        if (displ === null) {
+            return
+        }
+        if (document.getElementById("display_name").value !== displ) {
+            db.collection("users").doc(tuser.uid).update({
+                name : document.getElementById("display_name").value
+            })
+            displ = document.getElementById("display_name").value
+        }
+        if (document.getElementById("email").value !== email) {
+            tuser.updateEmail(document.getElementById("email").value).catch(function (err) {
+                $("#exampleModalCenter").modal()
+            })
+            email = document.getElementById("email").value
+        }
+        if (document.getElementById("password").value !== "" && document.getElementById("password").value === document.getElementById("password2").value) {
+            tuser.updatePassword(document.getElementById("password").value).catch(function (err) {
+                $("#exampleModalCenter").modal()
+            })
+        }
+    }
+    function signin () {
+            auth.signOut()
+        }
 </script>
 </body>
