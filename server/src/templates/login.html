@@ -132,6 +132,12 @@
                 docRef.get().then(function (doc) {
                     if (!doc.exists) {
                         alert("Please create this account on the Sign Up Page!")
+                        if ("{{ join }}" !== "") {
+                            window.location.pathname = '/signup/{{ join }}'
+                        }
+                        else {
+                            window.location.pathname = '/signup'
+                        }
                     }
                     else {
                         if ("{{ join }}" !== "") {
