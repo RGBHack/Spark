@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="500" alt="spark logo" src="./static/img/spark_dark.png">
+  <img width="500" alt="spark logo" src="./static/img/name_light.png">
 </p>
 <h3 align="center"><i>An empowering all-in-one productivity <a href="https://www.sparkapp.cf">web app</a></i></h3>
 <p align="center">
