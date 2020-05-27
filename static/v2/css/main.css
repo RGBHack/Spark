@@ -42,3 +42,8 @@ table > tbody > tr > td > h1 {
     height: 7vh;
     font-size: 1.2rem;
 }
+
+nav.scrolled{
+    background:rgba(0, 0, 0, 0.4);
+    transition: all 0.5s;
+}
