@@ -13,6 +13,8 @@
 </p>
 <hr>
 
+> WARNING: This is the development branch of Spark. Not all changes are stable here.
+
 ## 🚀 Local Development
 
 ```sh
