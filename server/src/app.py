@@ -27,6 +27,11 @@ def index():
     context = { 'server_time': format_server_time() }
     return render_template('index.html', context=context)
 
+@app.route('/v2')
+def index():
+    context = { 'server_time': format_server_time() }
+    return render_template('v2/index.html', context=context)
+
 @app.route('/dashboard')
 def dashboard():
     context = { 'server_time': format_server_time() }
