@@ -28,7 +28,7 @@ def index():
     return render_template('index.html', context=context)
 
 @app.route('/v2')
-def index():
+def indexv2():
     context = { 'server_time': format_server_time() }
     return render_template('v2/index.html', context=context)
 
