@@ -15,6 +15,10 @@ body {
   margin-left: 0.5rem;
 }
 
+.active {
+    text-decoration: underline;
+}
+
 .btn-primary {
   background-color: white;
   color: #2194f9;
