@@ -1,49 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 * {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-.masthead {
-    height: 100vh;
-    min-height: 500px;
-    background: rgb(33,148,249);
-    background: linear-gradient(45deg, rgba(33,148,249,1) 0%, rgba(181,76,255,1) 100%);
-}
-
-.table > tbody > tr:first-child > td {
-    border: none;
+body {
+  font-family: "Poppins", sans-serif;
 }
 
 .nav-link {
-    color: white !important;
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-}
-
-table > tbody > tr > td > p {
-    font-size: 1.5rem;
-    color: white !important;
-}
-
-table > tbody > tr > td > h1 {
-    color: white !important;
-    font-weight: 700;
-    font-size: 7rem;
+  color: white !important;
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .btn-primary {
-    background-color: white;
-    color: #2194f9;
-    border-radius: 999px;
-    font-weight: 700;
-    width: 275px;
-    height: 7vh;
-    font-size: 1.2rem;
+  background-color: white;
+  color: #2194f9;
+  border-radius: 999px;
+  font-weight: 700;
+  width: 20rem;
+  height: 4rem;
+  font-size: 1.2rem;
 }
 
-nav.scrolled{
-    background:rgba(0, 0, 0, 0.4);
-    transition: all 0.5s;
+.btn-primary:hover {
+  background-color: #2a31ff;
+  color: white;
+  border-radius: 999px;
+  font-weight: 700;
+  width: 20rem;
+  height: 4rem;
+  font-size: 1.2rem;
+}
+
+.main-container {
+  width: 100%;
+  height: 100vh;
+  background: rgb(33, 148, 249);
+  background: linear-gradient(
+    45deg,
+    rgba(33, 148, 249, 1) 0%,
+    rgba(181, 76, 255, 1) 100%
+  );
+}
+
+.main-content {
+  margin: 0 auto;
+  width: 80%;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-container > div {
+  width: 500px;
+  text-align: left;
+}
+
+.main-text {
+  padding-top: 1%;
+  color: white;
+}
+
+.main-text > p {
+  font-size: 2rem;
+}
+
+.main-text > h1 {
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(33, 148, 249);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(33, 148, 249);
 }
