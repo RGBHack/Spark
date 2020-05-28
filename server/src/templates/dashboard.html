@@ -39,13 +39,12 @@
     @import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
 
     :root {
-      --page-header-bgColor: #efefef;
+      --page-header-bgColor: #e6f7fc;
       --page-header-bgColor-hover: #1d2636;
       --page-header-bgColorRed-hover: rgb(53, 0, 0);
       --page-header-txtColor: black;
       --page-header-headingColor: black;
       --page-header-width: 220px;
-      /* --page-content-bgColor: #f0f1f6; */
       --page-content-bgColor: #ffffff;
       --page-content-txtColor: #171616;
       --page-content-blockColor: #fff;
@@ -140,7 +139,7 @@
 
     .page-header .logo {
       display: block;
-      max-width: 180px;
+      max-width: 160px;
       margin: 20px;
     }
 
@@ -162,6 +161,7 @@
       flex-direction: column;
       flex-grow: 1;
       margin-top: 0px;
+      overflow: hidden;
     }
 
     .page-header .admin-menu li:nth-last-child(2) {
@@ -206,7 +206,7 @@
     .page-header .admin-menu a:focus,
     .page-header .admin-menu button:hover,
     .page-header .admin-menu button:focus {
-      background: var(--page-header-bgColor-hover);
+      background: #FFFFFF;
       color: var(--blue);
       outline: none;
     }
