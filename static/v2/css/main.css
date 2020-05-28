@@ -58,6 +58,11 @@ body {
   text-align: center;
 }
 
+.auth-title {
+  font-size: 4rem;
+  font-weight: 800;
+}
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -86,15 +91,44 @@ body {
 div.wrapper,
 div.wrapper#create {
   background-color: #fff;
-  width: 35vw;
-  border-radius: 20px;
-  border-top-left-radius: 2vw;
-  border-top-right-radius: 2vw;
-  border-bottom-right-radius: 2vw;
-  border-bottom-left-radius: 2vw;
+  width: 700px;
+  border-radius: 60px;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+  padding: 2rem 4rem;
+}
+
+.loginbtn {
+  background-color: #2194f9;
+  color: white;
+  border-radius: 999px;
+  font-weight: 700;
+  width: 50%;
+  height: 3rem;
+  font-size: 1.2rem;
+}
+
+.loginbtn:hover {
+  background-color: white;
+  color: #2194f9;
+  border-radius: 999px;
+  font-weight: 700;
+  width: 50%;
+  height: 3rem;
+  font-size: 1.2rem;
+}
+
+.text-gradient {
+  background: rgb(33, 148, 249);
+  background: linear-gradient(
+    45deg,
+    rgba(33, 148, 249, 1) 0%,
+    rgba(181, 76, 255, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* width */

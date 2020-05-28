@@ -30,7 +30,12 @@ def index():
 @app.route('/v2')
 def indexv2():
     context = { 'server_time': format_server_time() }
-    return render_template('v2/index.html', context=context)
+    return render_template('/v2/index.html', context=context)
+
+@app.route('/v2/login')
+def loginv2():
+    context = { 'server_time': format_server_time() }
+    return render_template('/v2/login.html', context=context)
 
 @app.route('/dashboard')
 def dashboard():

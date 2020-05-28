@@ -30,7 +30,7 @@
     </script>
     <nav style="height:12vh" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="../../../../static/v2/img/logo.png" style="height:7vh" /></a>
+            <a class="navbar-brand" href="/"><img src="../../../../static/v2/img/logo.png" style="height:7vh" /></a>
             <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse" type="button"><span
                     class="navbar-toggler-icon"></span></button>
@@ -50,9 +50,46 @@
         </div>
     </nav>
 
-    <!--USE THIS FOR FORM CODE OK
-        
-    -->
+     <div class="main-container">
+        <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+                <div class="flex-container">
+                    <span
+                        style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                        <br><br>
+                        <div class="wrapper">
+                            <div id="formContent">
+                                <button class="btn btn-primary loginbtn" onclick="googleauth()" style="margin-bottom:2vh">Sign up
+                                    with
+                                    Google</button>
+                                <div class="separator">
+                                    <h2>OR</h2>
+                                </div>
+                                <!-- Login Form -->
+                                <form id="formEE">
+                                    <input type="text" id="name" name="name" placeholder="Display Name" class="form-control">
+                                    <br>
+                                    <input type="text" id="email" name="email" placeholder="Email" class="form-control">
+                                    <br>
+                                    <input type="password" id="password" name="password" placeholder="Password"
+                                        class="form-control">
+                                    <br>
+                                    <input class="btn btn-primary loginbtn" style="margin-bottom:1vh" type="submit">
+                                </form>
+            
+                                <!-- Remind Passowrd -->
+                                <div id="formFooter">
+                                    <a class="underlineHover" href="/login" id="loginlink">Log In</a>
+                                </div>
+            
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
 
     <div class="main-container">
@@ -80,6 +117,9 @@
     });
     AOS.init();
 </script>
+
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
 
 <!-- Add Firebase products that you want to use -->
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
