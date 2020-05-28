@@ -23,7 +23,6 @@
       integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="{{ extra }}./css/styles.min.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap"
@@ -40,7 +39,7 @@
 
     :root {
       --page-header-bgColor: #efefef;
-      --page-header-bgColor-hover: #d9d9d9;
+      --page-header-bgColor-hover: #cbced6;
       --page-header-bgColorRed-hover: rgb(53, 0, 0);
       --page-header-txtColor: black;
       --page-header-headingColor: black;
@@ -206,7 +205,9 @@
     .page-header .admin-menu a:focus,
     .page-header .admin-menu button:hover,
     .page-header .admin-menu button:focus {
-      color: var(--blue);
+      background: var(--page-header-bgColor-hover);
+      color: var(--black);
+      text-decoration: none;
       outline: none;
     }
 
@@ -214,14 +215,14 @@
     .page-header .admin-menu a:focus svg,
     .page-header .admin-menu button:hover svg,
     .page-header .admin-menu button:focus svg {
-      fill: var(--blue);
+      fill: var(--black);
     }
 
     .page-header .admin-menu .red a:hover,
     .page-header .admin-menu .red a:focus,
     .page-header .admin-menu .red button:hover,
     .page-header .admin-menu .red button:focus {
-      background: var(--page-header-bgColorRed-hover);
+      background: var(--page-header-bgColor-hover);
       color: var(--red);
       outline: none;
     }
