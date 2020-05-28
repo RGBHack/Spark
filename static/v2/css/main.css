@@ -16,7 +16,7 @@ body {
 }
 
 .active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .btn-primary {
@@ -81,6 +81,20 @@ body {
 .main-text > h1 {
   font-size: 6rem;
   font-weight: 700;
+}
+
+div.wrapper,
+div.wrapper#create {
+  background-color: #fff;
+  width: 35vw;
+  border-radius: 20px;
+  border-top-left-radius: 2vw;
+  border-top-right-radius: 2vw;
+  border-bottom-right-radius: 2vw;
+  border-bottom-left-radius: 2vw;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
 /* width */

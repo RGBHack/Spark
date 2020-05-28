@@ -50,6 +50,11 @@
         </div>
     </nav>
 
+    <!--USE THIS FOR FORM CODE OK
+        
+    -->
+
+
     <div class="main-container">
         <div class="row h-100">
             <div class="col-sm-12 my-auto">
@@ -74,6 +79,114 @@
         $('nav').toggleClass('scrolled', $(this).scrollTop() > 10);
     });
     AOS.init();
+</script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
+<script>
+    var config = {
+        apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+        authDomain: "spark-2121.firebaseapp.com",
+        databaseURL: "https://spark-2121.firebaseio.com",
+        projectId: "spark-2121",
+        storageBucket: "spark-2121.appspot.com",
+        messagingSenderId: "115390923810",
+        appId: "1:115390923810:web:82727423f6479500d9367b",
+        measurementId: "G-R304JKHRPK"
+    };
+    if (firebase.apps.length === 0) {
+        firebase.initializeApp(config)
+        firebase.analytics();
+        console.log("worked")
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    var form = document.getElementById("formEE")
+    var submit = document.getElementById("submit")
+
+    if ("{{ join }}" !== "") {
+        document.getElementById("loginlink").setAttribute("href", "/signup/{{ join }}")
+    }
+
+    form.onsubmit = function (e) {
+        e.preventDefault()
+        const email = form['email'].value
+        const password = form['password'].value
+        const name = form['name'].value
+        auth.createUserWithEmailAndPassword(email, password).then(cred => {
+            db.collection("users").doc(cred.user.uid).set({ sparkrooms: [], name: name }).then(function () {
+                console.log("signed up successfully")
+                if ("{{ join }}" !== "") {
+                    window.location.pathname = '/join/{{ join }}'
+                }
+                else {
+                    window.location.pathname = '/dashboard'
+                }
+            }).catch(err => {
+                alert(err.code)
+            })
+        }).catch(err => {
+            if (err.code === "auth/email-already-in-use") {
+                alert("Email is already in use")
+            }
+            else if (err.code === "auth/invalid-email") {
+                alert("Email is formatted incorrectly")
+            }
+            else {
+                alert(err.code)
+            }
+        })
+    }
+    googleauth = () => {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        console.log("bruh1")
+        logging = false;
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            var docRef = db.collection("users").doc(user.uid)
+            docRef.get().then(function (doc) {
+                if (!doc.exists) {
+                    db.collection("users").doc(user.uid).set({
+                        sparkrooms: [],
+                        name: user.displayName,
+                        events: [],
+                        tasks: [],
+                        google: true
+                    }).then(function () {
+                        if ("{{ join }}" !== "") {
+                            window.location.pathname = '/join/{{ join }}'
+                        }
+                        else {
+                            window.location.pathname = '/dashboard'
+                        }
+                    })
+                }
+                else {
+                    if ("{{ join }}" !== "") {
+                    window.location.pathname = '/join/{{ join }}'
+                    }
+                    else {
+                        window.location.pathname = '/dashboard'
+                    }
+                }
+            })
+        }).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+            console.log(error)
+        });
+    }
 </script>
 
 </html>
