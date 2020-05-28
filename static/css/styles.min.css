@@ -92,23 +92,22 @@ p {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    0deg,
-    rgba(255, 93, 0, 1) 0,
-    rgba(255, 217, 25, 1) 100%
-  );
-  border-radius: 10px;
+  background: rgb(33, 148, 249);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(33, 148, 249);
 }
 
 .nav-link {
