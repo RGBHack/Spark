@@ -224,6 +224,7 @@
     .page-header .admin-menu .red button:focus {
       background: var(--page-header-bgColor-hover);
       color: var(--black);
+      fill: var(--black);
       outline: none;
     }
 
@@ -235,7 +236,7 @@
     }
 
     .page-header .admin-menu .red svg {
-      fill: var(--red);
+      fill: var(--black);
     }
 
     /* PAGE CONTENT STYLES
@@ -732,7 +733,15 @@
               <svg>
                 <use xlink:href="#logout"></use>
               </svg>
-              <span style="color: var(--red);">Log Out</span>
+              <style>
+                .hi {
+                  color: var(--black);
+                }
+                .hi:hover {
+                  color: var(--red) !important;
+                }
+              </style>
+              <span id="hi">Log Out</span>
             </a>
           </li>
           <li class="menu-heading">
