@@ -30,7 +30,7 @@
     </script>
     <nav style="height:12vh" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="../../../../static/v2/img/logo.png" style="height:7vh" /></a>
+            <a class="navbar-brand" href="/"><img src="./v2/img/logo.png" style="height:7vh" /></a>
             <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse" type="button"><span
                     class="navbar-toggler-icon"></span></button>
@@ -40,10 +40,10 @@
                         <a class="nav-link" href="#">Dashboard<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log In</a>
+                        <a class="nav-link" href="/login">Log In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign Up</a>
+                        <a class="nav-link" href="/signup">Sign Up</a>
                     </li>
                 </ul>
             </div>
@@ -61,7 +61,7 @@
                         <button class="btn btn-primary">Get Started</button>
                     </div>
                     <div data-aos="slide-left">
-                        <img class="main-img" src="../../../../static/v2/img/floater.png" style="max-width: 100%;" />
+                        <img class="main-img" src="./v2/img/floater.png" style="max-width: 100%;" />
                     </div>
                 </div>
             </div>
@@ -79,6 +79,14 @@
         </div>
     </section> 
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
 <script>
     $(window).scroll(function () {
         $('nav').toggleClass('scrolled', $(this).scrollTop() > 10);

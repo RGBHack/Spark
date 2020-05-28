@@ -24,13 +24,13 @@
     <title>Spark</title>
 </head>
 
-<body>
+<body style="overflow: hidden;">
     <script>
         AOS.init();
     </script>
     <nav style="height:12vh" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="../../../../static/v2/img/logo.png" style="height:7vh" /></a>
+            <a class="navbar-brand" href="/"><img src="./v2/img/logo.png" style="height:7vh" /></a>
             <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse" type="button"><span
                     class="navbar-toggler-icon"></span></button>
@@ -57,30 +57,35 @@
                     <span
                         style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
                         <br><br>
-                        <div class="wrapper">
-                            <p class="auth-title text-gradient">LOGIN</p>
-                            <div id="formContent">
-                                <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
-                                    onclick="googleauth()">Login with
-                                    Google</button>
-                                    <hr>
-                                <!-- Login Form -->
-                                <form id="formEE">
-                                    <input style="text-align: center;" type="text" id="email" name="email" placeholder="Email" class="form-control">
+                        <div>
+                            <img src="./v2/img/dots.png" style="width: 20em; z-index: -1; position: absolute; transform: translate(90px, 231px)"/>
+                            <img src="./static/v2/img/dots.png" style="width: 20em; z-index: -1; position: absolute; transform: translate(-405px,-55px)"/>
+                            <div class="wrapper" style="z-index: 9999999999999;">
+                                <p class="auth-title text-gradient">LOGIN</p>
+                                <div id="formContent">
+                                    <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
+                                        onclick="googleauth()">Login with
+                                        Google</button>
+                                        <hr>
+                                        <br>
+                                    <!-- Login Form -->
+                                    <form id="formEE">
+                                        <input style="text-align: center;" type="text" id="email" name="email" placeholder="Email" class="form-control">
+                                        <br>
+                                        <input style="text-align: center;" type="password" id="password" name="password" placeholder="Password"
+                                            class="form-control">
+                                        <br>
+                                        <input style="text-align: center;" class="btn btn-primary loginbtn" style="margin-bottom:1vh" type="submit"
+                                            value="Login">
+                                    </form>
                                     <br>
-                                    <input style="text-align: center;" type="password" id="password" name="password" placeholder="Password"
-                                        class="form-control">
-                                    <br>
-                                    <input style="text-align: center;" class="btn btn-primary loginbtn" style="margin-bottom:1vh" type="submit"
-                                        value="Login">
-                                </form>
-                                <br>
 
-                                <!-- Remind Passowrd -->
-                                <div id="formFooter">
-                                    <a class="underlineHover" href="/signup" id="signuplink">Sign Up</a>
+                                    <!-- Remind Passowrd -->
+                                    <div id="formFooter">
+                                        <a class="underlineHover" href="/signup" id="signuplink">Sign Up</a>
+                                    </div>
+
                                 </div>
-
                             </div>
                         </div>
                     </span>
@@ -96,6 +101,9 @@
     });
     AOS.init();
 </script>
+
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
 
 <!-- Add Firebase products that you want to use -->
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>

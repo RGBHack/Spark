@@ -97,6 +97,8 @@ div.wrapper#create {
   vertical-align: middle;
   text-align: center;
   padding: 2rem 4rem;
+  padding-top: 1rem;
+  z-index: 999999;
 }
 
 .loginbtn {
@@ -104,7 +106,7 @@ div.wrapper#create {
   color: white;
   border-radius: 999px;
   font-weight: 700;
-  width: 50%;
+  width: 70%;
   height: 3rem;
   font-size: 1.2rem;
 }
@@ -114,7 +116,7 @@ div.wrapper#create {
   color: #2194f9;
   border-radius: 999px;
   font-weight: 700;
-  width: 50%;
+  width: 70%;
   height: 3rem;
   font-size: 1.2rem;
 }

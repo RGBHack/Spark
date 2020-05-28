@@ -12,6 +12,25 @@ class RegexConverter(BaseConverter):
         self.regex = items[0]
 app.url_map.converters['regex'] = RegexConverter
 
+#### ALL V2 STUFF STARTS HERE ####
+
+@app.route('/v2')
+def indexv2():
+    context = { 'server_time': format_server_time() }
+    return render_template('/v2/index.html', context=context)
+
+@app.route('/v2/login')
+def loginv2():
+    context = { 'server_time': format_server_time() }
+    return render_template('/v2/login.html', context=context)
+
+@app.route('/v2/signup')
+def signupv2():
+    context = { 'server_time': format_server_time() }
+    return render_template('/v2/signup.html', context=context)
+
+#### ALL V2 STUFF ENDS HERE ####
+
 @app.route('/workspace/<id>')
 def workspace(id):
     print(id, file=sys.stdout)
@@ -27,15 +46,6 @@ def index():
     context = { 'server_time': format_server_time() }
     return render_template('index.html', context=context)
 
-@app.route('/v2')
-def indexv2():
-    context = { 'server_time': format_server_time() }
-    return render_template('/v2/index.html', context=context)
-
-@app.route('/v2/login')
-def loginv2():
-    context = { 'server_time': format_server_time() }
-    return render_template('/v2/login.html', context=context)
 
 @app.route('/dashboard')
 def dashboard():
