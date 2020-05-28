@@ -39,8 +39,8 @@
     @import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
 
     :root {
-      --page-header-bgColor: #e6f7fc;
-      --page-header-bgColor-hover: #1d2636;
+      --page-header-bgColor: #efefef;
+      --page-header-bgColor-hover: #d9d9d9;
       --page-header-bgColorRed-hover: rgb(53, 0, 0);
       --page-header-txtColor: black;
       --page-header-headingColor: black;
@@ -206,7 +206,6 @@
     .page-header .admin-menu a:focus,
     .page-header .admin-menu button:hover,
     .page-header .admin-menu button:focus {
-      background: #FFFFFF;
       color: var(--blue);
       outline: none;
     }
@@ -684,8 +683,8 @@
         ></path>
       </symbol>
     </svg>
-    <header class="page-header">
-      <nav>
+    <header class="page-header" style="overflow: hidden;">
+      <nav style="overflow: hidden;">
         <a href="/">
           <img
             class="logo"
