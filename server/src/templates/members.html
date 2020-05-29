@@ -104,7 +104,7 @@
     </h1>
     <div class="input-group">
       <input id="myInput" type="text" onkeyup="myFunction()" class="form-control"
-        style="border-radius: 10px 0px 0px 10px; background-color: #ffffff; color: #cbced6; display: inline;"
+        style="border-radius: 10px 0px 0px 10px; background-color: #ffffff; color: black; display: inline;"
         placeholder="Search by keyword..." />
       <span class="input-group-btn">
         <button class="btn btn-primary invite-btn" data-toggle="modal" data-target="#exampleModalCenter">
@@ -319,6 +319,7 @@
             for (var i = 0; i < users.length; i++) {
               if (users[i].user === theuser.uid) {
                 if (users[i].admin) {
+                  console.log("ADMIN!!!")
                   settings1 = '<span id="svg'
                   settings2 = '"><svg><use xlink:href="#settings"></use></svg></span></li>'
                 }

@@ -7,6 +7,8 @@
   <title>Spark</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/styles.min.css">
+  <link href="./css/main.css" rel="stylesheet">
+  <link href="../../../static/css/main.css" rel='stylesheet'>
 </head>
 
 <body style="background-color: #ffffff;">
@@ -15,20 +17,20 @@
       style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
       <img src="./img/spark_dark.png" style="width: 20vw;" />
       <br><br>
-      <div class="wrapper" id="create">
+      <div class="wrapper" id="create"  style="z-index: 9999999999999;">
         <div id="formContent">
 
           <h2>CREATE A SPARKROOM</h2>
 
-
-          <!-- Login Form -->
-          <form id="formEE">
-            <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
-              style="margin:0 auto;">
-            <input type="password" id="password" name="password" placeholder="Password" class="form-control">
-            <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Create">
-          </form>
-
+          <div class="wrapper" style="z-index: 9999999999999;">
+            <!-- Login Form -->
+            <form id="formEE">
+              <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
+                style="margin:0 auto;">
+              <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+              <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Create">
+            </form>
+          </div>
         </div>
       </div>
     </span>
