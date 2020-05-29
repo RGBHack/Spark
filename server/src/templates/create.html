@@ -23,8 +23,8 @@
 
           <!-- Login Form -->
           <form id="formEE">
-            <input type="text" id="name" name="name"
-                      placeholder="Room Name" class="form-control" style="margin:0 auto;">
+            <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
+              style="margin:0 auto;">
             <input type="password" id="password" name="password" placeholder="Password" class="form-control">
             <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Create">
           </form>
@@ -60,8 +60,7 @@
     auth.onAuthStateChanged(function (user) {
       if (user === null) {
         window.location.pathname = '/login'
-      }
-      else {
+      } else {
         var form = document.getElementById("formEE")
         form.onsubmit = function (e) {
           e.preventDefault()
@@ -72,26 +71,37 @@
             return;
           }
           var docRef = db.collection("sparkrooms").doc(name)
-          docRef.get().then(function (doc){
+          docRef.get().then(function (doc) {
             if (doc.exists) {
               alert("Name taken")
-            }
-            else {
+            } else {
               var docRef2 = db.collection("users").doc(user.uid);
               docRef2.get().then(function (doc) {
                 if (doc.exists) {
-                  db.collection("sparkrooms").doc(name).set({ password: password, users : [{user : user.uid, uname : doc.data().name, admin : true, creator : true}] }).then(function () {
+                  db.collection("sparkrooms").doc(name).set({
+                    password: password,
+                    users: [{
+                      user: user.uid,
+                      uname: doc.data().name,
+                      admin: true,
+                      creator: true
+                    }]
+                  }).then(function () {
                     var rooms = doc.data().sparkrooms;
                     rooms.push(name)
-                    db.collection("users").doc(user.uid).update({ sparkrooms: rooms }).then(function () {
-                      window.location.pathname = '/dashboard/'+name
-                    }, { merge: true })
+                    db.collection("users").doc(user.uid).update({
+                      sparkrooms: rooms
+                    }).then(function () {
+                      window.location.pathname = '/dashboard/' + name
+                    }, {
+                      merge: true
+                    })
                   })
                 }
               })
             }
           })
-          
+
         }
       }
     })

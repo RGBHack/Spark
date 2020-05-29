@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-        <title>Calendar</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
-        <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <!--<link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+    rel="stylesheet">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+  <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <!--<link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
         <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
         <script type='text/javascript' src='fullcalendar/packages/core/main.js'></script>
         <script  type='text/javascript' src='fullcalendar/packages/daygrid/main.js'></script>-->
-        <script src='https://unpkg.com/@fullcalendar/core@4.4.0/main.min.js'></script>
-        <link href='https://unpkg.com/@fullcalendar/core@4.4.0/main.min.css' rel='stylesheet'/>
-        <script src='https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.js'></script>
-        <link href='https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.css' rel='stylesheet'/>
-        <link href='https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.css' rel='stylesheet'/>
-        <script src='https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.js'></script>
-        <script src='https://unpkg.com/@fullcalendar/interaction@4.4.0/main.min.js'></script>
-        <link href='https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.css' rel='stylesheet'/>
-        <script src='https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.js'></script>
-        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+  <script src='https://unpkg.com/@fullcalendar/core@4.4.0/main.min.js'></script>
+  <link href='https://unpkg.com/@fullcalendar/core@4.4.0/main.min.css' rel='stylesheet' />
+  <script src='https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.js'></script>
+  <link href='https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.css' rel='stylesheet' />
+  <link href='https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.css' rel='stylesheet' />
+  <script src='https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.js'></script>
+  <script src='https://unpkg.com/@fullcalendar/interaction@4.4.0/main.min.js'></script>
+  <link href='https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.css' rel='stylesheet' />
+  <script src='https://unpkg.com/@fullcalendar/bootstrap@4.4.0/main.min.js'></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
-        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
-      
-        <!-- Add Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-        <script type='text/javascript' src="./js/calendar.js"></script>
-        <script type='text/javascript' src="../../../static/js/calendar.js"></script>
-        <link href='./css/calendar.css' rel='stylesheet'/>
-        <link href='../../../static/css/calendar.css' rel='stylesheet'/>
-        <link rel="shortcut icon" type="image" href="./img/favicon.ico"/>
-    </head>
-    <body>
-      <h1 align="center" style="margin:5px; margin-bottom: 25px; margin-top: 5px; color: #333;font-size: 2.5rem;">Calendar</h1>
-        <div id='wrap'>
-            <div id='calendar'></div>
-            
-            <div style='clear:both'></div>
-        </div>
-        <!--<div id="dialog" title="Basic dialog" style="display: none">
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+  <script type='text/javascript' src="./js/calendar.js"></script>
+  <script type='text/javascript' src="../../../static/js/calendar.js"></script>
+  <link href='./css/calendar.css' rel='stylesheet' />
+  <link href='../../../static/css/calendar.css' rel='stylesheet' />
+  <link rel="shortcut icon" type="image" href="./img/favicon.ico" />
+</head>
+
+<body>
+  <h1 align="center" style="margin:5px; margin-bottom: 25px; margin-top: 5px; color: #333;font-size: 2.5rem;">Calendar
+  </h1>
+  <div id='wrap'>
+    <div id='calendar'></div>
+
+    <div style='clear:both'></div>
+  </div>
+  <!--<div id="dialog" title="Basic dialog" style="display: none">
             <p>Please enter the title of your event here:</p>
             <input type="text" id="title">
             <p>Please enter the start time for your event here (HH:MM -- 24 Hour Format):</p>
@@ -58,28 +69,31 @@
             <input type="submit" id="prompt-submit" onclick="addDate()">
         </div>-->
 
-        <!--MODAL-->
-          <!-- Modal -->
-          <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                    <p style="margin-top: 10px; margin-bottom: 10px;">Title:</p>
-                    <input type="text" id="title" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
-                    <p style="margin-top: 10px; margin-bottom: 10px;">Start Time:</p>
-                    <input type="text" id="start" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
-                    <small id="emailHelp" class="form-text text-muted" style="margin-top: 5px;">24 Hour Format, HH:MM</small>
-                    <p style="margin-top: 10px; margin-bottom: 10px;">End Time:</p>
-                    <input type="text" id="end" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
-                    <small id="emailHelp" class="form-text text-muted" style="margin-top: 5px;">24 Hour Format, HH:MM</small>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" onclick="addDate()" id="modal" data-dismiss="modal">Save</button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!--MODAL-->
+  <!-- Modal -->
+  <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p style="margin-top: 10px; margin-bottom: 10px;">Title:</p>
+          <input type="text" id="title" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
+          <p style="margin-top: 10px; margin-bottom: 10px;">Start Time:</p>
+          <input type="text" id="start" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
+          <small id="emailHelp" class="form-text text-muted" style="margin-top: 5px;">24 Hour Format, HH:MM</small>
+          <p style="margin-top: 10px; margin-bottom: 10px;">End Time:</p>
+          <input type="text" id="end" class="form-control" style="max-width:70%; margin: 0 auto; text-align: center;">
+          <small id="emailHelp" class="form-text text-muted" style="margin-top: 5px;">24 Hour Format, HH:MM</small>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="addDate()" id="modal"
+            data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    </body>
+</body>
+
 </html>
