@@ -181,8 +181,8 @@
           <li class="nav-item">
             <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Log In</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/signup">Sign Up</a>
@@ -195,13 +195,10 @@
     <span
       style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
       <div class="wrapper" id="create" style="z-index: 9999999999999;">
+        <p class="auth-title text-gradient">CREATE</p>
+        <hr>
+        <br>
         <div id="formContent">
-
-          <h1>CREATE A SPARKROOM</h1>
-
-          <br>
-          <hr>
-          <br>
           <!-- Login Form -->
           <form id="formEE">
             <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
@@ -227,7 +224,7 @@
   <script>
     var config = {
       apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-      authDomain: "httpsspark-2121.web.app/",
+      authDomain: "https://spark-2121.web.app/",
       databseURL: "https://spark-2121.firebaseio.com/",
       projectId: "spark-2121"
     }
