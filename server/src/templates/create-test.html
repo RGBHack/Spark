@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Spark</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.min.css">
+  <link href="./css/main.css" rel="stylesheet">
+  <link href="../../../static/css/main.css" rel='stylesheet'>
+</head>
+
+<body style="background-color: #ffffff;">
+  <div style="width: 100vw;height: 85vh;position: relative;">
+    <span
+      style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+      <img src="./img/spark_dark.png" style="width: 20vw;" />
+      <br><br>
+      <div class="wrapper" id="create"  style="z-index: 9999999999999;">
+        <div id="formContent">
+
+          <h2>CREATE A SPARKROOM</h2>
+
+          <div class="wrapper" style="z-index: 9999999999999;">
+            <!-- Login Form -->
+            <form id="formEE">
+              <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
+                style="margin:0 auto;">
+              <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+              <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Create">
+            </form>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+      authDomain: "httpsspark-2121.web.app/",
+      databseURL: "https://spark-2121.firebaseio.com/",
+      projectId: "spark-2121"
+    }
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(config)
+      console.log("worked")
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    auth.onAuthStateChanged(function (user) {
+      if (user === null) {
+        window.location.pathname = '/login'
+      } else {
+        var form = document.getElementById("formEE")
+        form.onsubmit = function (e) {
+          e.preventDefault()
+          const name = form['name'].value
+          const password = form['password'].value
+          if (password === "") {
+            alert("Please fill in a password!")
+            return;
+          }
+          var docRef = db.collection("sparkrooms").doc(name)
+          docRef.get().then(function (doc) {
+            if (doc.exists) {
+              alert("Name taken")
+            } else {
+              var docRef2 = db.collection("users").doc(user.uid);
+              docRef2.get().then(function (doc) {
+                if (doc.exists) {
+                  db.collection("sparkrooms").doc(name).set({
+                    password: password,
+                    users: [{
+                      user: user.uid,
+                      uname: doc.data().name,
+                      admin: true,
+                      creator: true
+                    }]
+                  }).then(function () {
+                    var rooms = doc.data().sparkrooms;
+                    rooms.push(name)
+                    db.collection("users").doc(user.uid).update({
+                      sparkrooms: rooms
+                    }).then(function () {
+                      window.location.pathname = '/dashboard/' + name
+                    }, {
+                      merge: true
+                    })
+                  })
+                }
+              })
+            }
+          })
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
