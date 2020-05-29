@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 								newarr.push(Object.assign(doc.data().events[i]))
 								newarr[i].start = newarr[i].start.toDate()
 								newarr[i].end = newarr[i].end.toDate()
+								newarr[i].color = '#cbced6'
 							}
 							console.log(newarr)
 							setup(newarr,calendarEl)
