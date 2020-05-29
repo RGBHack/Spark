@@ -154,26 +154,23 @@ select.form-control[size], select.form-control[multiple] {
 textarea.form-control {
   height: auto;
 }
-    @font-face {
-  font-family: "Lexend Deca Regular";
-  src: url(../fonts/LexendDecaRegular.woff) format("woff");
-  font-weight: 400;
-  font-style: normal;
-  }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-  html {
-      background-color: #ffffff;
-      font-family: "Lexend Deca Regular";
-  }
+html {
+  background-color: #ffffff;
+  font-family: "Poppins";
+}
 
-  body {
-    margin: 0;
-    min-width: 250px;
-    font-family: "Lexend Deca Regular";
-  }
+body {
+  margin: 0;
+  width: 100%;
+  min-width: 250px;
+  font-family: "Poppins";
+  background-color: #ffffff;
+}
 
 .board-layout {
-    font-family: "Lexend Deca Regular";
+    font-family: "Poppins";
     font-size: 15px;
     display: grid;
     grid-template-rows: max-content auto;
@@ -193,7 +190,7 @@ textarea.form-control {
     font-weight: bold;
     font-size: 28px;
     padding-top: 0px;
-    color: #333;
+    color: black;
     text-align: center;
     margin-top: 0px;
   }
@@ -208,7 +205,7 @@ textarea.form-control {
   }
   
   .board-list {
-    background-color: #333;
+    background-color: #d9d9d9;
     border-radius: 3px;
     display: grid;
     grid-auto-rows: max-content;
@@ -219,7 +216,7 @@ textarea.form-control {
     padding-bottom: 60px;
     padding-left: 30px;
     padding-right: 30px;
-    color: #cbced6;
+    color: black;
   }
   
   .list-title {
@@ -541,7 +538,7 @@ button#modal {
     color:white !important;
     border-style: none;
     outline-style: none;
-    font-family: "Lexend Deca Regular";
+    font-family: "Poppins";
   }
 </style>
 

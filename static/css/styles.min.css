@@ -8,16 +8,10 @@ div.wrapper#create {
   text-align: center;
 }
 
-@font-face {
-  font-family: "Lexend Deca Regular";
-  src: url(../fonts/LexendDecaRegular.woff) format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 * {
   transition: all 0.5s;
-  font-family: "Lexend Deca Regular" !important;
+  font-family: "Poppins" !important;
 }
 
 .navbar-nav.navbar-center {
@@ -67,7 +61,7 @@ div#formContent div.separator {
   margin-left: 0.25em;
 }
 * {
-  font-family: "Lexend Deca Regular";
+  font-family: "Poppins";
 }
 .btn-primary {
   background: linear-gradient(
@@ -120,12 +114,12 @@ p {
 
 .nav-link {
   color: rgba(255, 255, 255, 0.5);
-  font-family: "Lexend Deca Regular";
+  font-family: "Poppins";
   font-size: 5vh;
 }
 
 .nav-link.active {
   color: rgba(255, 255, 255, 0.9);
-  font-family: "Lexend Deca Regular";
+  font-family: "Poppins";
   font-size: 5vh;
 }
