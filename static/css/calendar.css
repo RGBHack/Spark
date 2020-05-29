@@ -99,3 +99,7 @@ td.fc-today fc-event {
   );
   border-radius: 10px;
 }
+
+.fc-day-top {
+  color: #333;
+}
