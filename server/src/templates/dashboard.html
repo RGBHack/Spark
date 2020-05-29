@@ -223,8 +223,8 @@
     .page-header .admin-menu .red button:hover,
     .page-header .admin-menu .red button:focus {
       background: var(--page-header-bgColor-hover);
-      color: var(--black);
-      fill: var(--black);
+      color: var(--red);
+      fill: var(--red);
       outline: none;
     }
 
@@ -890,9 +890,11 @@
       <iframe
         id="messages-iframe"
         style="
+        float: center;
+          margin: auto;
           display: none;
           overflow: auto;
-          width: 100%;
+          width: 60%;
           height: 850px;
           flex: 1 0 auto;
           border: none;
@@ -1076,7 +1078,7 @@
       }
       function renderMessages() {
         if (messagesElement.style.display == "none") {
-          messagesElement.style.display = "inline-block";
+          messagesElement.style.display = "block";
           messagesElement.contentWindow.scrollTo(0, 999999);
           calendarElement.style.display = "none";
           tasksElement.style.display = "none";
