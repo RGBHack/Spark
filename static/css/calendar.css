@@ -105,5 +105,6 @@ td.fc-today fc-event {
 }
 
 .fc-day-grid-event .fc-h-event .fc-event .fc-start .fc-end .fc-draggable {
-  
+  background-color:#cbced6 !important;
+  border-color:#cbced6 !important;
 }

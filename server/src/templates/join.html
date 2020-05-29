@@ -64,14 +64,18 @@
                                 style="width: 20em; z-index: -1; position: absolute; transform: translate(-405px,-55px)" />
                             <div class="wrapper" style="z-index: 9999999999999;">
                                 <p class="auth-title text-gradient">JOIN</p>
+                                <br>
+                                <hr>
+                                <br>
                                 <div id="formContent">
                                     <!-- Login Form -->
                                     <form id="formEE">
-                                        <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
-                                            style="margin:0 auto;" value="{{ name }}"><br>
-                                        <input type="password" id="password" name="password" placeholder="Password" class="form-control"
-                                            value="{{ password }}"><br>
-                                        <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Join">
+                                        <input type="text" id="name" name="name" placeholder="Room Name"
+                                            class="form-control" style="margin:0 auto;" value="{{ name }}"><br>
+                                        <input type="password" id="password" name="password" placeholder="Password"
+                                            class="form-control" value="{{ password }}"><br>
+                                        <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
+                                            value="Join">
                                     </form>
                                     <br>
 
@@ -90,80 +94,81 @@
     </div>
     </div>
 </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
 
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-    <script>
-        var config = {
-            apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-            authDomain: "https://spark-2121.web.app/",
-            databseURL: "https://spark-2121.firebaseio.com/",
-            projectId: "spark-2121"
-        }
-        if (firebase.apps.length === 0) {
-            firebase.initializeApp(config)
-            console.log("worked")
-        }
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        auth.onAuthStateChanged(function (user) {
-            if (user === null) {
-                if ("{{ name }}" !== "") {
-                    window.location.pathname = '/login/{{ name }}:{{ password }}'
-                } else {
-                    window.location.pathname = '/login'
-                }
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+<script>
+    var config = {
+        apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+        authDomain: "https://spark-2121.web.app/",
+        databseURL: "https://spark-2121.firebaseio.com/",
+        projectId: "spark-2121"
+    }
+    if (firebase.apps.length === 0) {
+        firebase.initializeApp(config)
+        console.log("worked")
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    auth.onAuthStateChanged(function (user) {
+        if (user === null) {
+            if ("{{ name }}" !== "") {
+                window.location.pathname = '/login/{{ name }}:{{ password }}'
             } else {
-                var form = document.getElementById("formEE")
-                form.onsubmit = function (e) {
-                    e.preventDefault()
-                    const name = form['name'].value
-                    const password = form['password'].value
-                    console.log(name)
-                    console.log(password)
-                    var docRef = db.collection("sparkrooms").doc(name);
-                    docRef.get().then(function (doc) {
-                        if (doc.exists) {
-                            var password2 = doc.data().password;
-                            if (password === password2) {
-                                var docRef2 = db.collection("users").doc(user.uid);
-                                docRef2.update({
-                                    sparkrooms: firebase.firestore.FieldValue.arrayUnion(
-                                        name)
-                                }).then(function () {
-                                    docRef2.get().then(function (doc) {
-                                        db.collection("sparkrooms").doc(name)
-                                            .update({
-                                                users: firebase.firestore
-                                                    .FieldValue.arrayUnion({
-                                                        user: user.uid,
-                                                        uname: doc.data()
-                                                            .name,
-                                                        admin: false
-                                                    })
-                                            }).then(function () {
-                                                window.location.pathname =
-                                                    '/dashboard/' + name
-                                            })
-                                    })
-                                })
-                            } else {
-                                alert("Wrong Password!")
-                            }
-                        } else {
-                            alert("This room does not exist")
-                        }
-                    })
-                }
+                window.location.pathname = '/login'
             }
-        })
-    </script>
+        } else {
+            var form = document.getElementById("formEE")
+            form.onsubmit = function (e) {
+                e.preventDefault()
+                const name = form['name'].value
+                const password = form['password'].value
+                console.log(name)
+                console.log(password)
+                var docRef = db.collection("sparkrooms").doc(name);
+                docRef.get().then(function (doc) {
+                    if (doc.exists) {
+                        var password2 = doc.data().password;
+                        if (password === password2) {
+                            var docRef2 = db.collection("users").doc(user.uid);
+                            docRef2.update({
+                                sparkrooms: firebase.firestore.FieldValue.arrayUnion(
+                                    name)
+                            }).then(function () {
+                                docRef2.get().then(function (doc) {
+                                    db.collection("sparkrooms").doc(name)
+                                        .update({
+                                            users: firebase.firestore
+                                                .FieldValue.arrayUnion({
+                                                    user: user.uid,
+                                                    uname: doc.data()
+                                                        .name,
+                                                    admin: false
+                                                })
+                                        }).then(function () {
+                                            window.location.pathname =
+                                                '/dashboard/' + name
+                                        })
+                                })
+                            })
+                        } else {
+                            alert("Wrong Password!")
+                        }
+                    } else {
+                        alert("This room does not exist")
+                    }
+                })
+            }
+        }
+    })
+</script>
+
 </html>
