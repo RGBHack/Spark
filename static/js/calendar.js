@@ -37,7 +37,8 @@ function addDate () {
 				title: $("#title").val(),
 				start: new Date(start+$("#start").val()),
 				end: new Date(start+$("#end").val()),
-				allDay: false
+				allDay: false,
+				color: '#cbced6'
 			}
 		);
 		var docRef = db.collection("users").doc(uid)
@@ -46,7 +47,8 @@ function addDate () {
 				title: $("#title").val(),
 				start: new Date(start+$("#start").val()),
 				end: new Date(start+$("#end").val()),
-				allDay: false
+				allDay: false,
+				color: '#cbced6'
 			})
 		})
 	}
