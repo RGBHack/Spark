@@ -19,7 +19,7 @@
     <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../../../../static/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../../static/img/favicon.ico" type="image/x-icon">
-    <link href="./css/main.css" rel="stylesheet">
+    <link href="{{ extra }}./css/main.css" rel="stylesheet">
     <link href="../../../static/css/main.css" rel='stylesheet'>
     <title>Spark | Login</title>
 </head>
@@ -63,13 +63,8 @@
                             <img src="./img/dots.png"
                                 style="width: 20em; z-index: -1; position: absolute; transform: translate(-405px,-55px)" />
                             <div class="wrapper" style="z-index: 9999999999999;">
-                                <p class="auth-title text-gradient">LOGIN</p>
+                                <p class="auth-title text-gradient">JOIN</p>
                                 <div id="formContent">
-                                    <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
-                                        onclick="googleauth()">Login with
-                                        Google</button>
-                                    <hr>
-                                    <br>
                                     <!-- Login Form -->
                                     <form id="formEE">
                                         <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
@@ -82,7 +77,7 @@
 
                                     <!-- Remind Passowrd -->
                                     <div id="formFooter">
-                                        <a class="underlineHover" href="/signup" id="signuplink">Sign Up</a>
+                                        <a class="underlineHover" href="/create" id="signuplink">Create a sparkroom</a>
                                     </div>
 
                                 </div>
