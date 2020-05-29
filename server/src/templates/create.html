@@ -7,18 +7,197 @@
   <title>Spark | Create a Sparkroom</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/styles.min.css">
-  <link href="./css/main.css" rel="stylesheet">
+  <link href="./static/main.css" rel="stylesheet">
   <link href="../../../static/css/main.css" rel='stylesheet'>
 </head>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+  * {
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: rgb(33, 148, 249);
+    background: linear-gradient(45deg,
+        rgba(33, 148, 249, 1) 0%,
+        rgba(181, 76, 255, 1) 100%);
+  }
+
+  .nav-link {
+    color: white !important;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
+
+  .btn-primary {
+    background-color: white;
+    color: #2194f9;
+    border-radius: 999px;
+    font-weight: 700;
+    width: 20rem;
+    height: 4rem;
+    font-size: 1.2rem;
+  }
+
+  .btn-primary:hover {
+    background-color: #2a31ff;
+    color: white;
+    border-radius: 999px;
+    font-weight: 700;
+    width: 20rem;
+    height: 4rem;
+    font-size: 1.2rem;
+  }
+
+  .main-container {
+    width: 100%;
+    height: 100vh;
+    background: rgb(33, 148, 249);
+    background: linear-gradient(45deg,
+        rgba(33, 148, 249, 1) 0%,
+        rgba(181, 76, 255, 1) 100%);
+  }
+
+  .main-content {
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .auth-title {
+    font-size: 4rem;
+    font-weight: 800;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .flex-container>div {
+    width: 500px;
+    text-align: left;
+  }
+
+  .main-text {
+    padding-top: 1%;
+    color: white;
+  }
+
+  .main-text>p {
+    font-size: 2rem;
+  }
+
+  .main-text>h1 {
+    font-size: 6rem;
+    font-weight: 700;
+  }
+
+  div.wrapper,
+  div.wrapper#create {
+    background-color: #fff;
+    width: 700px;
+    border-radius: 60px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 2rem 4rem;
+    padding-top: 1rem;
+    z-index: 999999;
+  }
+
+  .loginbtn {
+    background-color: #2194f9;
+    color: white;
+    border-radius: 999px;
+    font-weight: 700;
+    width: 70%;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .loginbtn:hover {
+    background-color: white;
+    color: #2194f9;
+    border-radius: 999px;
+    font-weight: 700;
+    width: 70%;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .text-gradient {
+    background: rgb(33, 148, 249);
+    background: linear-gradient(45deg,
+        rgba(33, 148, 249, 1) 0%,
+        rgba(181, 76, 255, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(33, 148, 249);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(33, 148, 249);
+  }
+</style>
+
 
 <body style="background-color: #ffffff;">
+  <nav style="height:12vh" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="./img/logo.png" style="height:7vh" /></a>
+      <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+        class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse" type="button"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <div style="width: 100vw;height: 85vh;position: relative;">
     <span
       style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
       <div class="wrapper" id="create" style="z-index: 9999999999999;">
         <div id="formContent">
 
-          <h2>CREATE A SPARKROOM</h2>
+          <h1>CREATE A SPARKROOM</h1>
 
           <br>
           <hr>
@@ -26,8 +205,8 @@
           <!-- Login Form -->
           <form id="formEE">
             <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
-              style="margin:0 auto;">
-            <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+              style="margin:0 auto;"><br>
+            <input type="password" id="password" name="password" placeholder="Password" class="form-control"><br>
             <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Create">
           </form>
         </div>
