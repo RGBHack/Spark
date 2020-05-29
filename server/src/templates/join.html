@@ -19,7 +19,7 @@
     <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../../../../static/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../../static/img/favicon.ico" type="image/x-icon">
-    <link href="./main.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
     <link href="../../../static/css/main.css" rel='stylesheet'>
     <title>Spark | Join a Sparkroom</title>
 </head>
@@ -39,8 +39,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Log In</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Log In</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/signup">Sign Up</a>
@@ -61,26 +61,31 @@
                             <img src="./img/dots.png"
                                 style="width: 20em; z-index: -1; position: absolute; transform: translate(90px, 231px)" />
                             <img src="./img/dots.png"
-                                style="width: 20em; z-index: -1; position: absolute; transform: translate(-405px,0px)" />
+                                style="width: 20em; z-index: -1; position: absolute; transform: translate(-405px,-55px)" />
                             <div class="wrapper" style="z-index: 9999999999999;">
-                                <p class="auth-title text-gradient">JOIN</p>
-                                <hr>
-                                <br>
+                                <p class="auth-title text-gradient">LOGIN</p>
                                 <div id="formContent">
+                                    <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
+                                        onclick="googleauth()">Login with
+                                        Google</button>
+                                    <hr>
+                                    <br>
                                     <!-- Login Form -->
                                     <form id="formEE">
-                                        <input type="text" id="name" name="name" placeholder="Room Name"
-                                            class="form-control" style="margin:0 auto;" value="{{ name }}"><br>
-                                        <input type="password" id="password" name="password" placeholder="Password"
-                                            class="form-control" value="{{ password }}"><br>
-                                        <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
-                                            value="Join">
+                                        <input style="text-align: center;" type="text" id="email" name="email"
+                                            placeholder="Email" class="form-control">
+                                        <br>
+                                        <input style="text-align: center;" type="password" id="password" name="password"
+                                            placeholder="Password" class="form-control">
+                                        <br>
+                                        <input style="text-align: center;" class="btn btn-primary loginbtn"
+                                            style="margin-bottom:1vh" type="submit" value="Login">
                                     </form>
                                     <br>
 
                                     <!-- Remind Passowrd -->
                                     <div id="formFooter">
-                                        <a class="underlineHover" href="/create" id="signuplink">Create a sparkroom</a>
+                                        <a class="underlineHover" href="/signup" id="signuplink">Sign Up</a>
                                     </div>
 
                                 </div>
@@ -93,8 +98,19 @@
     </div>
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(window).scroll(function () {
+        $('nav').toggleClass('scrolled', $(this).scrollTop() > 10);
+    });
+    AOS.init();
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
