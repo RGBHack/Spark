@@ -102,7 +102,7 @@ p {
 ::-webkit-scrollbar-thumb {
   background: rgb(33, 148, 249);
   background: linear-gradient(
-    45deg,
+    180deg,
     rgba(33, 148, 249, 1) 0%,
     rgba(181, 76, 255, 1) 100%
   );
@@ -112,7 +112,7 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(33, 148, 249);
   background: linear-gradient(
-    45deg,
+    180deg,
     rgba(33, 148, 249, 1) 0%,
     rgba(181, 76, 255, 1) 100%
   );

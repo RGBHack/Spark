@@ -1,15 +1,18 @@
 <!DOCTYPE html>
+
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
 </head>
 
 <style>
   @font-face {
-  font-family: "Lexend Deca Regular";
-  src: url(../fonts/LexendDecaRegular.woff) format("woff");
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Lexend Deca Regular";
+    src: url(../fonts/LexendDecaRegular.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
   }
 
   html {
@@ -28,30 +31,32 @@
     color: #333;
     text-align: left;
   }
+
   .main-content {
     text-align: center;
     margin-top: 5px;
     width: 60vw;
     margin: 0 auto;
   }
-  
+
   .txt-msg {
     background-color: #cbced6;
     border-radius: 0px 10px 10px 10px;
     display: inline-block;
     padding: 10px;
-    margin:20px;
-    clear:both;
-    
+    margin: 20px;
+    clear: both;
+
   }
 
   .your-msg {
-    background:rgba(255, 93, 0, 1);
-    float:right;
-    clear:both;
+    background: rgb(33, 148, 249);
+    color: white;
+    float: right;
+    clear: both;
     border-radius: 10px 0px 10px 10px !important;
   }
-  
+
   /* input {
     background: linear-gradient(
       90deg,
@@ -89,44 +94,44 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: rgb(33, 148, 249);
-    background: linear-gradient(
-      45deg,
-  rgba(33, 148, 249, 1) 0%,
-  rgba(181, 76, 255, 1) 100%
-    );
+    background: linear-gradient(180deg,
+        rgba(33, 148, 249, 1) 0%,
+        rgba(181, 76, 255, 1) 100%);
     border-radius: 10px;
   }
 
   .send-btn {
+    border: none;
     border-radius: 0px 10px 10px 0px;
     background: rgb(33, 148, 249);
-  background: linear-gradient(
-    45deg,
-    rgba(33, 148, 249, 1) 0%,
-    rgba(181, 76, 255, 1) 100%
-  );
-    padding: 6px 12px;
+    background: linear-gradient(45deg,
+        rgba(33, 148, 249, 1) 0%,
+        rgba(181, 76, 255, 1) 100%);
+    padding: 6px 10px;
     display: inline-block;
+    color: white;
   }
 </style>
 
 <body>
-<div class="main-content">
-<h1 style="color:#333;margin-bottom: 25px; margin-top: 5px;font-weight: bold;">Messages</h1>
-<div class="messages" id="messages" style="margin-bottom: 90px;">
-</div>
-<form id="formEE" style="margin-top:20px">
-  <div class="input-group mb-3"  style="margin: 0 auto;">
-    <input type="text" class="form-control"  style="background: #333;width: 100%; border-radius: 10px 0px 0px 10px; display: inline-block;" type="text" id="chat-input">
-    <div class="input-group-append">
-      <input class="btn btn-dark send-btn" style=" color: #333;" type="submit" value="Send" type="button"></button>
+  <div class="main-content">
+    <h1 style="color:#333;margin-bottom: 25px; margin-top: 5px;font-weight: bold;">Messages</h1>
+    <div class="messages" id="messages" style="margin-bottom: 90px;">
     </div>
-  </div>
-  
-  
-</form> 
+    <form id="formEE" style="margin-top:20px">
+      <div class="input-group mb-3" style="margin: 0 auto;">
+        <input type="text" class="form-control"
+          style="background: #333;width: 100%; border-radius: 10px 0px 0px 10px; display: inline-block;" type="text"
+          id="chat-input">
+        <div class="input-group-append">
+          <input class="btn btn-dark send-btn" type="submit" value="Send" type="button"></button>
+        </div>
+      </div>
 
-</div>
+
+    </form>
+
+  </div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -142,88 +147,86 @@
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 <script>
-    var config = {
-      apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-      authDomain: "httpsspark-2121.web.app/",
-      databaseURL: "https://spark-2121.firebaseio.com/",
-      projectId: "spark-2121"
-    }
-    if (firebase.apps.length === 0) {
-      firebase.initializeApp(config)
-    }
-    var group = "{{ sparkroom }}"
-    var database = firebase.database()
-    var firestore = firebase.firestore()
-    const auth = firebase.auth();
-    var username = null
-    var uid = null
-    var chatRef2 = null
-    auth.onAuthStateChanged(function (user) {
-      if (user !== null) {
-        theuser = user
-        uid = user.uid
-        var chatRef = firebase.database().ref('chat/' + group);
-        chatRef2 = chatRef
-        var docRef = firestore.collection("users").doc(user.uid);
-        docRef.get().then(function (doc) {
-          if (doc.exists) {
-            if (doc.data().name !== undefined) {
-              username = doc.data().name
-            }
+  var config = {
+    apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
+    authDomain: "httpsspark-2121.web.app/",
+    databaseURL: "https://spark-2121.firebaseio.com/",
+    projectId: "spark-2121"
+  }
+  if (firebase.apps.length === 0) {
+    firebase.initializeApp(config)
+  }
+  var group = "{{ sparkroom }}"
+  var database = firebase.database()
+  var firestore = firebase.firestore()
+  const auth = firebase.auth();
+  var username = null
+  var uid = null
+  var chatRef2 = null
+  auth.onAuthStateChanged(function (user) {
+    if (user !== null) {
+      theuser = user
+      uid = user.uid
+      var chatRef = firebase.database().ref('chat/' + group);
+      chatRef2 = chatRef
+      var docRef = firestore.collection("users").doc(user.uid);
+      docRef.get().then(function (doc) {
+        if (doc.exists) {
+          if (doc.data().name !== undefined) {
+            username = doc.data().name
           }
-          chatRef.on('child_added', function(data) {
-            console.log(data.val())
-            if (data.val().id === uid) {
-              msg_p = document.createElement("p")
-              msg_p.className = "txt-msg your-msg";
-              msg_p.innerHTML = data.val().text
-              $("#messages").append(msg_p);
-              msg_br = document.createElement("br")
-              $("#messages").append(msg_br);
-              window.scrollTo(0,document.body.scrollHeight);
-            }
-            else {
-              msg_p = document.createElement("p")
-              msg_p.className = "txt-msg";
-              msg_p.innerHTML = data.val().text
-              $("#messages").append(msg_p);
-              msg_br = document.createElement("br")
-              $("#messages").append(msg_br);
-              window.scrollTo(0,document.body.scrollHeight);
-            }
+        }
+        chatRef.on('child_added', function (data) {
+          console.log(data.val())
+          if (data.val().id === uid) {
+            msg_p = document.createElement("p")
+            msg_p.className = "txt-msg your-msg";
+            msg_p.innerHTML = data.val().text
+            $("#messages").append(msg_p);
+            msg_br = document.createElement("br")
+            $("#messages").append(msg_br);
+            window.scrollTo(0, document.body.scrollHeight);
+          } else {
+            msg_p = document.createElement("p")
+            msg_p.className = "txt-msg";
+            msg_p.innerHTML = data.val().text
+            $("#messages").append(msg_p);
+            msg_br = document.createElement("br")
+            $("#messages").append(msg_br);
+            window.scrollTo(0, document.body.scrollHeight);
+          }
         });
-        })
-      }
-      else {
-        // window.location.pathname = '/login'
-      }
-    })
-    var form = document.getElementById("formEE")
-    form.onsubmit = function submit (e) {
-      e.preventDefault()
-      if (username === null) {
-          return;
-      }
-      if (chatRef2 === null) {
-          return;
-      }
-      var text = username + ": " + document.getElementById("chat-input").value;
-      document.getElementById("chat-input").value = ''
-      console.log("text")
-      var newchatref = chatRef2.push()
-      newchatref.set({
-          id : uid,
-          text: text
       })
+    } else {
+      // window.location.pathname = '/login'
     }
+  })
+  var form = document.getElementById("formEE")
+  form.onsubmit = function submit(e) {
+    e.preventDefault()
+    if (username === null) {
+      return;
+    }
+    if (chatRef2 === null) {
+      return;
+    }
+    var text = username + ": " + document.getElementById("chat-input").value;
+    document.getElementById("chat-input").value = ''
+    console.log("text")
+    var newchatref = chatRef2.push()
+    newchatref.set({
+      id: uid,
+      text: text
+    })
+  }
 
-    // Click on a close button to hide the current list item
-    var close = document.getElementsByClassName("close");
-    var i;
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
-      }
+  // Click on a close button to hide the current list item
+  var close = document.getElementsByClassName("close");
+  var i;
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      var div = this.parentElement;
+      div.style.display = "none";
     }
+  }
 </script>
