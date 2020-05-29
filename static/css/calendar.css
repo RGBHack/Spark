@@ -103,3 +103,7 @@ td.fc-today fc-event {
 .fc-day-top {
   color: #333;
 }
+
+.fc-day-grid-event .fc-h-event .fc-event .fc-start .fc-end .fc-draggable {
+  
+}
