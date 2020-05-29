@@ -1,43 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html style="width: 100vw; height: 100vh; overflow-x: hidden;">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Spark</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ extra }}./css/styles.min.css">
-    <link rel="shortcut icon" type="image" href="{{ extra }}./img/favicon.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <script src="https://unpkg.com/aos@2.1.1/dist/aos.js"></script>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../../static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../../static/img/favicon.ico" type="image/x-icon">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="../../../static/css/main.css" rel='stylesheet'>
+    <title>Spark | Login</title>
 </head>
 
-<body>
-    <div style="width: 100vw;height: 85vh;position: relative;">
-        <span
-            style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-            <img src="{{ extra }}./img/spark_dark.png" style="width: 20vw;" />
-            <br><br>
-            <div class="wrapper" style="z-index: 9999999999999;">
-                <div id="formContent">
+<body style="overflow: hidden;">
+    <script>
+        AOS.init();
+    </script>
+    <nav style="height:12vh" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="./img/logo.png" style="height:7vh" /></a>
+            <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse" type="button"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-                    <h2>JOIN A SPARKROOM</h2>
+    <div class="main-container">
+        <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+                <div class="flex-container">
+                    <span
+                        style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                        <br><br>
+                        <div>
+                            <img src="./img/dots.png"
+                                style="width: 20em; z-index: -1; position: absolute; transform: translate(90px, 231px)" />
+                            <img src="./img/dots.png"
+                                style="width: 20em; z-index: -1; position: absolute; transform: translate(-405px,-55px)" />
+                            <div class="wrapper" style="z-index: 9999999999999;">
+                                <p class="auth-title text-gradient">LOGIN</p>
+                                <div id="formContent">
+                                    <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
+                                        onclick="googleauth()">Login with
+                                        Google</button>
+                                    <hr>
+                                    <br>
+                                    <!-- Login Form -->
+                                    <form id="formEE">
+                                        <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
+                                            style="margin:0 auto;" value="{{ name }}">
+                                        <input type="password" id="password" name="password" placeholder="Password" class="form-control"
+                                            value="{{ password }}">
+                                        <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Join">
+                                    </form>
+                                    <br>
 
+                                    <!-- Remind Passowrd -->
+                                    <div id="formFooter">
+                                        <a class="underlineHover" href="/signup" id="signuplink">Sign Up</a>
+                                    </div>
 
-                        <form id="formEE">
-                            <input type="text" id="name" name="name" placeholder="Room Name" class="form-control"
-                                style="margin:0 auto;" value="{{ name }}">
-                            <input type="password" id="password" name="password" placeholder="Password" class="form-control"
-                                value="{{ password }}">
-                            <input class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh" value="Join">
-                        </form>
-                    <!-- Remind Passowrd -->
-                    <div id="formFooter">
-                        <a class="underlineHover" href="/create">Create a SparkRoom</a>
-                    </div>
-
+                                </div>
+                            </div>
+                        </div>
+                    </span>
                 </div>
             </div>
-        </span>
+        </div>
     </div>
+    </div>
+</body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -114,6 +171,4 @@
             }
         })
     </script>
-</body>
-
 </html>
