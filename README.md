@@ -28,7 +28,7 @@ firebase serve
 
 ## 💻 Try it out
 
-Video Demo: [https://youtu.be/q-6XG5c0LZ4](https://youtu.be/q-6XG5c0LZ4)<br>
+Video Demo: [https://youtu.be/xEvN5Cqgtfk](https://youtu.be/q-6XG5c0LZ4)<br>
 DevPost: [https://devpost.com/software/spark-k6txdh](https://devpost.com/software/spark-k6txdh)<br>
 Slides Presentation: [https://bit.ly/3bAfzaz](https://bit.ly/3bAfzaz)<br>
 
