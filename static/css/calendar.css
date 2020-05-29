@@ -1,55 +1,56 @@
 body {
-    overflow: hidden;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    text-align: center;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    }
-    
-#wrap {
-    width: 100vw;
-    height: 100vh;
-    padding: 10px;
-    margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
 }
-    
-#external-events {
-    float: left;
-    width: 150px;
-    padding: 0 10px;
-    text-align: left;
-    }
-    
-#external-events h4 {
-    font-size: 16px;
 
-    padding-top: 1em;
-    }
-    
-.external-event { /* try to mimick the look of a real event */
-    margin: 10px 0;
-    padding: 2px 4px;
-    background: #3366CC;
-    color: #fff;
-    font-size: .85em;
-    cursor: pointer;
-    }
-    
+#wrap {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+#external-events {
+  float: left;
+  width: 150px;
+  padding: 0 10px;
+  text-align: left;
+}
+
+#external-events h4 {
+  font-size: 16px;
+
+  padding-top: 1em;
+}
+
+.external-event {
+  /* try to mimick the look of a real event */
+  margin: 10px 0;
+  padding: 2px 4px;
+  background: #3366cc;
+  color: #fff;
+  font-size: 0.85em;
+  cursor: pointer;
+}
+
 #external-events p {
-    margin: 1.5em 0;
-    font-size: 11px;
-    color: #666;
-    }
-    
+  margin: 1.5em 0;
+  font-size: 11px;
+  color: #666;
+}
+
 #external-events p input {
-    margin: 0;
-    vertical-align: middle;
-    }
+  margin: 0;
+  vertical-align: middle;
+}
 
 /*#calendar {*/
 /* 		float: right; */
-    /*margin: 0 auto;
+/*margin: 0 auto;
     padding: 20px;
     width: 900px;
     background-color: #FFFFFF;
@@ -60,21 +61,21 @@ body {
     box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
 }*/
 .fc-view-container {
-    background: #ffffff;
+  background: #ffffff;
 }
 .fc-unthemed td.fc-today {
-    background: #333959;
+  background: #333959;
 }
 body {
-    background: #ffffff;
+  background: #ffffff;
 }
 
 td.fc-today fc-event {
-    background: blue;
+  background: blue;
 }
 
 .fc-view-container {
-    overflow: auto;
+  overflow: auto;
 }
 
 /* width */
@@ -91,9 +92,9 @@ td.fc-today fc-event {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
-    0deg,
-    rgba(255, 93, 0, 1) 0,
-    rgba(255, 217, 25, 1) 100%
+    45deg,
+    rgba(33, 148, 249, 1) 0%,
+    rgba(181, 76, 255, 1) 100%
   );
   border-radius: 10px;
 }
