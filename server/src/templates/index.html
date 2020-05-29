@@ -27,8 +27,20 @@
 <body>
     <script>
         AOS.init();
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $(".navbar");
+                $nav.toggleClass('nav-active', $(this).scrollTop() > $nav.height());
+            });
+        });
     </script>
-    <nav style="height:12vh" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
+    <style>
+        .nav-active {
+            background: linear-gradient(90deg, #2593FA, #8861FD);
+            transition: all 0.2s linear;
+        }
+    </style>
+    <nav style="height:12vh;" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="./img/logo.png" style="height:7vh" /></a>
             <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
@@ -50,7 +62,7 @@
         </div>
     </nav>
 
-    <div class="main-container">
+    <div class="main-container"> 
         <div class="row h-100">
             <div class="col-sm-12 my-auto">
                 <div class="flex-container">
@@ -71,10 +83,14 @@
     <section class="py-5">
         <div class="container">
             <h2 class="font-weight-light">About</h2>
-            <p>
-                Spark is a Firebase-hosted Flask app running on a Docker served by Google Cloud. It employs Cloud Firestore and Realtime Database to store information pertaining to users. Spark was created because we, RGBHack, (a team of high school students) noticed the need for a platform that could bring increased productivity to teams during the quaratine due to COVID-19. This project is open source, so you can  learn more by visiting our <a href="https://github.com/RGBHack/Spark">GitHub Repository</a>.<br>
+            <p data-aos="fade-right">
+                Spark is a Firebase-hosted Flask app running on a Docker served by Google Cloud. It employs Cloud
+                Firestore and Realtime Database to store information pertaining to users. Spark was created because we,
+                RGBHack (a team of high school students), noticed the need for a platform that could bring increased
+                productivity to teams during the quaratine due to COVID-19. This project is open source, so you can
+                learn more by visiting our <a href="https://github.com/RGBHack/Spark">GitHub Repository</a>.<br>
                 <br>
-                <img src="./img/ipad2.png" style="width: 100%" />
+                <img src="./img/ipad2.png" style="width: 100%" data-aos="fade-left"/>
             </p>
         </div>
     </section>

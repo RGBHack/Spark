@@ -19,6 +19,10 @@ body {
   text-decoration: underline;
 }
 
+.nav-active {
+  background: linear-gradient(90deg, #2593FA, #8861FD);
+}
+
 .btn-primary {
   background-color: white;
   color: #2194f9;
