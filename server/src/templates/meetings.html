@@ -1,185 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+	<body style="background-color: #ffffff !important">
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-<body style="background-color: #ffffff !important;">
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+			html {
+				background-color: #ffffff;
+				font-family: 'Poppins';
+			}
 
-        html {
-            background-color: #ffffff;
-            font-family: "Poppins";
-        }
+			body {
+				margin: 0;
+				width: 100%;
+				min-width: 250px;
+				font-family: 'Poppins';
+				background-color: #ffffff;
+			}
 
-        body {
-            margin: 0;
-            width: 100%;
-            min-width: 250px;
-            font-family: "Poppins";
-            background-color: #ffffff;
-        }
+			/* Include the padding and border in an element's total width and height */
+			* {
+				box-sizing: border-box;
+			}
 
-        /* Include the padding and border in an element's total width and height */
-        * {
-            box-sizing: border-box;
-        }
+			/* Remove margins and padding from the list */
+			ul {
+				margin: 0;
+				padding: 0;
+			}
 
-        /* Remove margins and padding from the list */
-        ul {
-            margin: 0;
-            padding: 0;
-        }
+			/* Style the list items */
+			ul li {
+				color: #cbced6;
+				cursor: pointer;
+				position: relative;
+				padding: 12px 8px 12px 40px;
+				list-style-type: none;
+				background: #eee;
+				font-size: 18px;
+				transition: 0.2s;
 
-        /* Style the list items */
-        ul li {
-            color: #cbced6;
-            cursor: pointer;
-            position: relative;
-            padding: 12px 8px 12px 40px;
-            list-style-type: none;
-            background: #eee;
-            font-size: 18px;
-            transition: 0.2s;
+				/* make the list items unselectable */
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
 
-            /* make the list items unselectable */
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+			/* Set all odd list items to a different color (zebra-stripes) */
+			ul li:nth-child(odd) {
+				background: #333;
+			}
 
-        /* Set all odd list items to a different color (zebra-stripes) */
-        ul li:nth-child(odd) {
-            background: #333;
-        }
+			/* Darker background-color on hover */
+			ul li:hover {
+				background: #ddd;
+			}
 
-        /* Darker background-color on hover */
-        ul li:hover {
-            background: #ddd;
-        }
+			/* When clicked on, add a background color and strike out text */
+			ul li.checked {
+				background: #888;
+				color: #fff;
+				text-decoration: line-through;
+			}
 
-        /* When clicked on, add a background color and strike out text */
-        ul li.checked {
-            background: #888;
-            color: #fff;
-            text-decoration: line-through;
-        }
+			/* Add a "checked" mark when clicked on */
+			ul li.checked::before {
+				content: '';
+				position: absolute;
+				border-color: #fff;
+				border-style: solid;
+				border-width: 0 2px 2px 0;
+				top: 10px;
+				left: 16px;
+				transform: rotate(45deg);
+				height: 15px;
+				width: 7px;
+			}
 
-        /* Add a "checked" mark when clicked on */
-        ul li.checked::before {
-            content: '';
-            position: absolute;
-            border-color: #fff;
-            border-style: solid;
-            border-width: 0 2px 2px 0;
-            top: 10px;
-            left: 16px;
-            transform: rotate(45deg);
-            height: 15px;
-            width: 7px;
-        }
+			.meeting-input {
+				border-radius: 5px 0px 0px 5px;
+				margin: 0px;
+				border-radius: 10px 0px 0px 10px;
+				width: 75%;
+				padding: 10px;
+				border: none;
+				background-color: #dee2e6;
+				display: inline-block;
+				font-size: 16px;
+			}
 
-        .meeting-input {
-            border-radius: 5px 0px 0px 5px;
-            margin: 0px;
-            border-radius: 10px 0px 0px 10px;
-            width: 75%;
-            padding: 10px;
-            border: none;
-            background-color: #dee2e6;
-            display: inline-block;
-            font-size: 16px;
-        }
+			.submit-btn {
+				border-radius: 0px 10px 10px 0px;
+				margin: 0px;
+				width: 25%;
+				background: rgb(33, 148, 249);
+				background: linear-gradient(
+					45deg,
+					rgba(33, 148, 249, 1) 0%,
+					rgba(181, 76, 255, 1) 100%
+				);
+				color: #dee2e6;
+				padding: 10px;
+				border: none;
+				transition: 0.3s;
+				display: inline-block;
+				font-size: 16px;
+			}
 
-        .submit-btn {
-            border-radius: 0px 10px 10px 0px;
-            margin: 0px;
-            width: 25%;
-            background: rgb(33, 148, 249);
-            background: linear-gradient(45deg,
-                    rgba(33, 148, 249, 1) 0%,
-                    rgba(181, 76, 255, 1) 100%);
-            color: #dee2e6;
-            padding: 10px;
-            border: none;
-            transition: 0.3s;
-            display: inline-block;
-            font-size: 16px;
-        }
+			.body-content {
+				width: 50vw;
+				margin: 0 auto;
+				margin: 0;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
 
-        .body-content {
-            width: 50vw;
-            margin: 0 auto;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
+			.padder {
+				width: 100%;
+				height: 100%;
+				background-color: #cbced6;
+			}
+		</style>
+		<!--display input here-->
 
-        .padder {
-            width: 100%;
-            height: 100%;
-            background-color: #cbced6;
-        }
-    </style>
-    <!--display input here-->
-
-    <div class="padder">
-        <div class="body-content">
-
-            <div id="inputform"
-                style="text-align: center; background-color: #ffffff; margin-top: 0px; padding: 10px 10px 20px;">
-                <h2 style="color: #333; margin-top: 0px; font-size: 2.5rem;">Join a Zoom Meeting</h2>
-                <form id="formEE">
-                    <input class="meeting-input" type="text" id="input" placeholder="Zoom Meeting ID"><input
-                        class="submit-btn" type="submit" value="Join Meeting!">
-                </form>
-                <br><br>
-                <hr><br><br>
-                <h2 style="color: #333; margin-top: 0px; font-size: 2.5rem;">Create a Zoom Meeting</h2>
-                <form id="form2">
-                    <input style="width: 100%; border-radius: 20px;" class="submit-btn" type="submit"
-                        value="Create Meeting!">
-                </form>
-            </div>
-        </div>
-        <iframe src="https://success.zoom.us/wc/join/{{ meetingid }}" id="meetings-iframe" allow="microphone; camera"
-            style="display:none; border: 5; border-color: white; height: 900px; position: relative; top: 0; width: 100%; overflow: none;"
-            frameborder="0"></iframe>
-        <!--<iframe src="https://zoom.us/start/webmeeting" id="start-iframe" allow="microphone; camera" style="display:none; border: 5; border-color: white; height: 900px; position: relative; top: 0; width: 100%; overflow: none;" frameborder="0"></iframe>-->
-</body>
-<script>
-    if ("{{ meetingid }}" === "new") {
-        //document.getElementById("start-iframe").style.display = 'block'
-        document.getElementById("inputform").style.display = 'none'
-    } else if ("{{ meetingid }}" !== "") {
-        document.getElementById("meetings-iframe").style.display = 'block'
-        document.getElementById("inputform").style.display = 'none'
-    } else {
-        document.getElementById("meetings-iframe").style.display = 'none'
-        //document.getElementById("start-iframe").style.display = 'none'
-        document.getElementById("inputform").style.display = 'block'
-    }
-    document.getElementById("formEE").onsubmit = function (e) {
-        e.preventDefault()
-        var id = document.getElementById("input").value
-        id = id.replace(/\s/g, '');
-        if (id.length !== 10 && id.length !== 9 && id.length !== 11) {
-            alert("This meeting ID is not in the valid format! It should be 9-11 numbers long.")
-        } else {
-            window.location.pathname = '/meetings/' + id
-        }
-    }
-    document.getElementById("form2").onsubmit = function (e) {
-        e.preventDefault()
-        window.location = 'https://zoom.us/meeting/schedule'
-    }
-</script>
-
+		<div class="padder">
+			<div class="body-content">
+				<div
+					id="inputform"
+					style="
+						text-align: center;
+						background-color: #ffffff;
+						margin-top: 0px;
+						padding: 10px 10px 20px;
+					"
+				>
+					<h2 style="color: #333; margin-top: 0px; font-size: 2.5rem">
+						Join a Zoom Meeting
+					</h2>
+					<form id="formEE">
+						<input
+							class="meeting-input"
+							type="text"
+							id="input"
+							placeholder="Zoom Meeting ID"
+						/><input
+							class="submit-btn"
+							type="submit"
+							value="Join Meeting!"
+						/>
+					</form>
+					<br /><br />
+					<hr />
+					<br /><br />
+					<h2 style="color: #333; margin-top: 0px; font-size: 2.5rem">
+						Create a Zoom Meeting
+					</h2>
+					<form id="form2">
+						<input
+							style="width: 100%; border-radius: 20px"
+							class="submit-btn"
+							type="submit"
+							value="Create Meeting!"
+						/>
+					</form>
+				</div>
+			</div>
+		</div>
+		<iframe
+			src="https://success.zoom.us/wc/join/{{ meetingid }}"
+			id="meetings-iframe"
+			allow="microphone; camera"
+			style="
+				display: none;
+				border: 5;
+				border-color: white;
+				height: 900px;
+				position: relative;
+				top: 0;
+				width: 100%;
+				overflow: none;
+			"
+			frameborder="0"
+		></iframe>
+		<!--<iframe src="https://zoom.us/start/webmeeting" id="start-iframe" allow="microphone; camera" style="display:none; border: 5; border-color: white; height: 900px; position: relative; top: 0; width: 100%; overflow: none;" frameborder="0"></iframe>-->
+	</body>
+	<script>
+		if ('{{ meetingid }}' === 'new') {
+			//document.getElementById("start-iframe").style.display = 'block'
+			document.getElementById('inputform').style.display = 'none'
+		} else if ('{{ meetingid }}' !== '') {
+			document.getElementById('meetings-iframe').style.display = 'block'
+			document.getElementById('inputform').style.display = 'none'
+		} else {
+			document.getElementById('meetings-iframe').style.display = 'none'
+			//document.getElementById("start-iframe").style.display = 'none'
+			document.getElementById('inputform').style.display = 'block'
+		}
+		document.getElementById('formEE').onsubmit = function (e) {
+			e.preventDefault()
+			var id = document.getElementById('input').value
+			id = id.replace(/\s/g, '')
+			if (id.length !== 10 && id.length !== 9 && id.length !== 11) {
+				alert(
+					'This meeting ID is not in the valid format! It should be 9-11 numbers long.'
+				)
+			} else {
+				window.location.pathname = '/meetings/' + id
+			}
+		}
+		document.getElementById('form2').onsubmit = function (e) {
+			e.preventDefault()
+			window.location = 'https://zoom.us/meeting/schedule'
+		}
+	</script>
 </html>
