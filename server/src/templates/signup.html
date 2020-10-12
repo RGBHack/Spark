@@ -1,219 +1,323 @@
 <!DOCTYPE html>
-<html style="width: 100vw; height: 100vh; overflow-x: hidden;">
+<html style="width: 100vw; height: 100vh; overflow-x: hidden">
+	<head>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+			crossorigin="anonymous"
+		></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css"
+		/>
+		<script src="https://unpkg.com/aos@2.1.1/dist/aos.js"></script>
+		<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
+		<link
+			rel="shortcut icon"
+			href="../../../../static/img/favicon.ico"
+			type="image/x-icon"
+		/>
+		<link
+			rel="icon"
+			href="../../../static/img/favicon.ico"
+			type="image/x-icon"
+		/>
+		<link href="./css/main.css" rel="stylesheet" />
+		<link href="../../../static/css/main.css" rel="stylesheet" />
+		<title>Spark | Signup</title>
+	</head>
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-    <script src="https://unpkg.com/aos@2.1.1/dist/aos.js"></script>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../../../../static/img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../../../static/img/favicon.ico" type="image/x-icon">
-    <link href="./css/main.css" rel="stylesheet">
-    <link href="../../../static/css/main.css" rel='stylesheet'>
-    <title>Spark | Signup</title>
-</head>
+	<body style="overflow: hidden">
+		<script>
+			AOS.init()
+		</script>
+		<nav
+			style="height: 12vh"
+			class="navbar navbar-expand-lg navbar-light fixed-top"
+			data-aos="zoom-in-down"
+		>
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"
+					><img src="./img/logo.png" style="height: 7vh"
+				/></a>
+				<button
+					aria-controls="navbarResponsive"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+					class="navbar-toggler"
+					data-target="#navbarResponsive"
+					data-toggle="collapse"
+					type="button"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="/dashboard"
+								>Dashboard<span class="sr-only">(current)</span></a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/login">Log In</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Sign Up</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-<body style="overflow: hidden;">
-    <script>
-        AOS.init();
-    </script>
-    <nav style="height:12vh" class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="zoom-in-down">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="./img/logo.png" style="height:7vh" /></a>
-            <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-                class="navbar-toggler" data-target="#navbarResponsive" data-toggle="collapse" type="button"><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Log In</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+		<div class="main-container">
+			<div class="row h-100">
+				<div class="col-sm-12 my-auto">
+					<div class="flex-container" data-aos="zoom-out-up">
+						<span
+							style="
+								width: fit-content;
+								height: fit-content;
+								margin: 0;
+								position: absolute;
+								top: 45%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+								text-align: center;
+							"
+						>
+							<br /><br />
+							<div>
+								<img
+									src="./img/dots.png"
+									style="
+										width: 20em;
+										z-index: -1;
+										position: absolute;
+										transform: translate(90px, 291px);
+									"
+								/>
+								<img
+									src="./img/dots.png"
+									style="
+										width: 20em;
+										z-index: -1;
+										position: absolute;
+										transform: translate(-405px, -55px);
+									"
+								/>
+								<div class="wrapper" style="z-index: 9999999999999">
+									<p class="auth-title text-gradient">SIGN UP</p>
+									<div id="formContent">
+										<button
+											class="btn btn-primary loginbtn"
+											type="submit"
+											style="margin-bottom: 2vh"
+											onclick="googleauth()"
+										>
+											Sign Up with Google
+										</button>
+										<hr />
+										<br />
+										<!-- Login Form -->
+										<form id="formEE">
+											<input
+												style="text-align: center"
+												type="text"
+												id="name"
+												name="name"
+												placeholder="Display Name"
+												class="form-control"
+											/>
+											<br />
+											<input
+												style="text-align: center"
+												type="text"
+												id="email"
+												name="email"
+												placeholder="Email"
+												class="form-control"
+											/>
+											<br />
+											<input
+												style="text-align: center"
+												type="password"
+												id="password"
+												name="password"
+												placeholder="Password"
+												class="form-control"
+											/>
+											<br />
+											<input
+												style="text-align: center"
+												class="btn btn-primary loginbtn"
+												style="margin-bottom: 1vh"
+												type="submit"
+												value="Sign Up"
+											/>
+										</form>
+										<br />
 
-    <div class="main-container">
-        <div class="row h-100">
-            <div class="col-sm-12 my-auto">
-                <div class="flex-container" data-aos="zoom-out-up">
-                    <span
-                        style="width: fit-content;height: fit-content;margin: 0; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                        <br><br>
-                        <div>
-                            <img src="./img/dots.png"
-                                style="width: 20em; z-index: -1; position: absolute; transform: translate(90px, 291px)" />
-                            <img src="./img/dots.png"
-                                style="width: 20em; z-index: -1; position: absolute; transform: translate(-405px,-55px)" />
-                            <div class="wrapper" style="z-index: 9999999999999;">
-                                <p class="auth-title text-gradient">SIGN UP</p>
-                                <div id="formContent">
-                                    <button class="btn btn-primary loginbtn" type="submit" style="margin-bottom:2vh"
-                                        onclick="googleauth()">Sign Up with
-                                        Google</button>
-                                    <hr>
-                                    <br>
-                                    <!-- Login Form -->
-                                    <form id="formEE">
-                                        <input style="text-align: center;" type="text" id="name" name="name"
-                                            placeholder="Display Name" class="form-control">
-                                        <br>
-                                        <input style="text-align: center;" type="text" id="email" name="email"
-                                            placeholder="Email" class="form-control">
-                                        <br>
-                                        <input style="text-align: center;" type="password" id="password" name="password"
-                                            placeholder="Password" class="form-control">
-                                        <br>
-                                        <input style="text-align: center;" class="btn btn-primary loginbtn"
-                                            style="margin-bottom:1vh" type="submit" value="Sign Up">
+										<!-- Remind Passowrd -->
+										<div id="formFooter">
+											<a
+												class="underlineHover"
+												href="/signup"
+												id="loginlink"
+												>Log In</a
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(window).scroll(function () {
+				$('nav').toggleClass('scrolled', $(this).scrollTop() > 10)
+			})
+			AOS.init()
+		</script>
 
+		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
-                                    </form>
-                                    <br>
+		<!-- Add Firebase products that you want to use -->
+		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 
-                                    <!-- Remind Passowrd -->
-                                    <div id="formFooter">
-                                        <a class="underlineHover" href="/signup" id="loginlink">Log In</a>
-                                    </div>
+		<script>
+			var config = {
+				apiKey: 'AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY',
+				authDomain: 'spark-2121.firebaseapp.com',
+				databaseURL: 'https://spark-2121.firebaseio.com',
+				projectId: 'spark-2121',
+				storageBucket: 'spark-2121.appspot.com',
+				messagingSenderId: '115390923810',
+				appId: '1:115390923810:web:82727423f6479500d9367b',
+				measurementId: 'G-R304JKHRPK',
+			}
+			if (firebase.apps.length === 0) {
+				firebase.initializeApp(config)
+				console.log('worked')
+			}
+			const auth = firebase.auth()
+			const db = firebase.firestore()
+			var form = document.getElementById('formEE')
+			var submit = document.getElementById('submit')
 
-                                </div>
-                            </div>
-                        </div>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <script>
-        $(window).scroll(function () {
-            $('nav').toggleClass('scrolled', $(this).scrollTop() > 10);
-        });
-        AOS.init();
-    </script>
+			if ('{{ join }}' !== '') {
+				document
+					.getElementById('loginlink')
+					.setAttribute('href', '/signup/{{ join }}')
+			}
 
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-
-    <script>
-        var config = {
-            apiKey: "AIzaSyAFsWpVKy1bjsOM07arnzk5UYIUZz7qxGY",
-            authDomain: "spark-2121.firebaseapp.com",
-            databaseURL: "https://spark-2121.firebaseio.com",
-            projectId: "spark-2121",
-            storageBucket: "spark-2121.appspot.com",
-            messagingSenderId: "115390923810",
-            appId: "1:115390923810:web:82727423f6479500d9367b",
-            measurementId: "G-R304JKHRPK"
-        };
-        if (firebase.apps.length === 0) {
-            firebase.initializeApp(config)
-            console.log("worked")
-        }
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        var form = document.getElementById("formEE")
-        var submit = document.getElementById("submit")
-
-        if ("{{ join }}" !== "") {
-            document.getElementById("loginlink").setAttribute("href", "/signup/{{ join }}")
-        }
-
-        form.onsubmit = function (e) {
-            e.preventDefault()
-            const email = form['email'].value
-            const password = form['password'].value
-            const name = form['name'].value
-            auth.createUserWithEmailAndPassword(email, password).then(cred => {
-                db.collection("users").doc(cred.user.uid).set({
-                    sparkrooms: [],
-                    name: name
-                }).then(function () {
-                    console.log("signed up successfully")
-                    if ("{{ join }}" !== "") {
-                        window.location.pathname = '/join/{{ join }}'
-                    } else {
-                        window.location.pathname = '/dashboard'
-                    }
-                }).catch(err => {
-                    alert(err.code)
-                })
-            }).catch(err => {
-                if (err.code === "auth/email-already-in-use") {
-                    alert("Email is already in use")
-                } else if (err.code === "auth/invalid-email") {
-                    alert("Email is formatted incorrectly")
-                } else {
-                    alert(err.code)
-                }
-            })
-        }
-        googleauth = () => {
-            var provider = new firebase.auth.GoogleAuthProvider();
-            console.log("bruh1")
-            logging = false;
-            firebase.auth().signInWithPopup(provider).then(function (result) {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = result.credential.accessToken;
-                // The signed-in user info.
-                var user = result.user;
-                var docRef = db.collection("users").doc(user.uid)
-                docRef.get().then(function (doc) {
-                    if (!doc.exists) {
-                        db.collection("users").doc(user.uid).set({
-                            sparkrooms: [],
-                            name: user.displayName,
-                            events: [],
-                            tasks: [],
-                            google: true
-                        }).then(function () {
-                            if ("{{ join }}" !== "") {
-                                window.location.pathname = '/join/{{ join }}'
-                            } else {
-                                window.location.pathname = '/dashboard'
-                            }
-                        })
-                    } else {
-                        if ("{{ join }}" !== "") {
-                            window.location.pathname = '/join/{{ join }}'
-                        } else {
-                            window.location.pathname = '/dashboard'
-                        }
-                    }
-                })
-            }).catch(function (error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // The email of the user's account used.
-                var email = error.email;
-                // The firebase.auth.AuthCredential type that was used.
-                var credential = error.credential;
-                // ...
-                console.log(error)
-            });
-        }
-    </script>
-
+			form.onsubmit = function (e) {
+				e.preventDefault()
+				const email = form['email'].value
+				const password = form['password'].value
+				const name = form['name'].value
+				auth
+					.createUserWithEmailAndPassword(email, password)
+					.then((cred) => {
+						db.collection('users')
+							.doc(cred.user.uid)
+							.set({
+								sparkrooms: [],
+								name: name,
+							})
+							.then(function () {
+								console.log('signed up successfully')
+								if ('{{ join }}' !== '') {
+									window.location.pathname = '/join/{{ join }}'
+								} else {
+									window.location.pathname = '/dashboard'
+								}
+							})
+							.catch((err) => {
+								alert(err.code)
+							})
+					})
+					.catch((err) => {
+						if (err.code === 'auth/email-already-in-use') {
+							alert('Email is already in use')
+						} else if (err.code === 'auth/invalid-email') {
+							alert('Email is formatted incorrectly')
+						} else {
+							alert(err.code)
+						}
+					})
+			}
+			googleauth = () => {
+				var provider = new firebase.auth.GoogleAuthProvider()
+				console.log('bruh1')
+				logging = false
+				firebase
+					.auth()
+					.signInWithPopup(provider)
+					.then(function (result) {
+						// This gives you a Google Access Token. You can use it to access the Google API.
+						var token = result.credential.accessToken
+						// The signed-in user info.
+						var user = result.user
+						var docRef = db.collection('users').doc(user.uid)
+						docRef.get().then(function (doc) {
+							if (!doc.exists) {
+								db.collection('users')
+									.doc(user.uid)
+									.set({
+										sparkrooms: [],
+										name: user.displayName,
+										events: [],
+										tasks: [],
+										google: true,
+									})
+									.then(function () {
+										if ('{{ join }}' !== '') {
+											window.location.pathname = '/join/{{ join }}'
+										} else {
+											window.location.pathname = '/dashboard'
+										}
+									})
+							} else {
+								if ('{{ join }}' !== '') {
+									window.location.pathname = '/join/{{ join }}'
+								} else {
+									window.location.pathname = '/dashboard'
+								}
+							}
+						})
+					})
+					.catch(function (error) {
+						// Handle Errors here.
+						var errorCode = error.code
+						var errorMessage = error.message
+						// The email of the user's account used.
+						var email = error.email
+						// The firebase.auth.AuthCredential type that was used.
+						var credential = error.credential
+						// ...
+						console.log(error)
+					})
+			}
+		</script>
+	</body>
 </html>

@@ -1,125 +1,125 @@
 div.wrapper,
 div.wrapper#create {
-  background-color: #fff;
-  width: 35vw;
-  border-radius: 2vw;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
+	background-color: #fff;
+	width: 35vw;
+	border-radius: 2vw;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 * {
-  transition: all 0.5s;
-  font-family: "Poppins" !important;
+	transition: all 0.5s;
+	font-family: 'Poppins' !important;
 }
 
 .navbar-nav.navbar-center {
-  position: absolute;
-  left: 50%;
-  transform: translatex(-50%);
+	position: absolute;
+	left: 50%;
+	transform: translatex(-50%);
 }
 .nav-item {
-  margin-right: 2.5vw;
-  margin-left: 2.5vw;
+	margin-right: 2.5vw;
+	margin-left: 2.5vw;
 }
 div.wrapper {
-  height: 25vw;
+	height: 25vw;
 }
 div.wrapper#create {
-  height: 20vw;
+	height: 20vw;
 }
 div#formContent {
-  width: 27vw;
-  height: fit-content;
-  margin: 0 auto;
-  display: inline-block;
+	width: 27vw;
+	height: fit-content;
+	margin: 0 auto;
+	display: inline-block;
 }
 button,
 input {
-  text-align: center;
-  margin-top: 2vh;
+	text-align: center;
+	margin-top: 2vh;
 }
 div#formContent div.separator {
-  width: 100% !important;
+	width: 100% !important;
 }
 .separator {
-  display: flex;
-  align-items: center;
-  text-align: center;
+	display: flex;
+	align-items: center;
+	text-align: center;
 }
 .separator::after,
 .separator::before {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #000;
+	content: '';
+	flex: 1;
+	border-bottom: 1px solid #000;
 }
 .separator::before {
-  margin-right: 0.25em;
+	margin-right: 0.25em;
 }
 .separator::after {
-  margin-left: 0.25em;
+	margin-left: 0.25em;
 }
 * {
-  font-family: "Poppins";
+	font-family: 'Poppins';
 }
 .btn-primary {
-  background: linear-gradient(
-    45deg,
-    rgba(33, 148, 249, 1) 0%,
-    rgba(181, 76, 255, 1) 100%
-  );
-  border-color: #fff;
+	background: linear-gradient(
+		45deg,
+		rgba(33, 148, 249, 1) 0%,
+		rgba(181, 76, 255, 1) 100%
+	);
+	border-color: #fff;
 }
 .loginbtn {
-  width: 60%;
+	width: 60%;
 }
 a {
-  color: #ff5d00;
+	color: #ff5d00;
 }
 h2,
 p {
-  margin-bottom: 2vh;
+	margin-bottom: 2vh;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+	width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(33, 148, 249);
-  background: linear-gradient(
-    180deg,
-    rgba(33, 148, 249, 1) 0%,
-    rgba(181, 76, 255, 1) 100%
-  );
+	background: rgb(33, 148, 249);
+	background: linear-gradient(
+		180deg,
+		rgba(33, 148, 249, 1) 0%,
+		rgba(181, 76, 255, 1) 100%
+	);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(33, 148, 249);
-  background: linear-gradient(
-    180deg,
-    rgba(33, 148, 249, 1) 0%,
-    rgba(181, 76, 255, 1) 100%
-  );
+	background: rgb(33, 148, 249);
+	background: linear-gradient(
+		180deg,
+		rgba(33, 148, 249, 1) 0%,
+		rgba(181, 76, 255, 1) 100%
+	);
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.5);
-  font-family: "Poppins";
-  font-size: 5vh;
+	color: rgba(255, 255, 255, 0.5);
+	font-family: 'Poppins';
+	font-size: 5vh;
 }
 
 .nav-link.active {
-  color: rgba(255, 255, 255, 0.9);
-  font-family: "Poppins";
-  font-size: 5vh;
+	color: rgba(255, 255, 255, 0.9);
+	font-family: 'Poppins';
+	font-size: 5vh;
 }

@@ -24,6 +24,7 @@ firebase serve
 ## ✨ Diagram
 
 ![alt text](./static/img/spark_dark_model.png)
+
 <p align="center"><i>An intuitive diagram of how our content is served</i></p>
 
 ## 💻 Try it out
@@ -36,10 +37,9 @@ Slides Presentation: [https://bit.ly/3bAfzaz](https://bit.ly/3bAfzaz)<br>
 
 **Safin Singh, Rohan Juneja, Aadit Gupta, Raadwan Masum**
 
-
 ## 🤝 Contributing
 
-Contributions, PRs, issues and feature requests are welcome! Feel free to check out our [issues page](https://github.com/RGBHack/Spark/issues). 
+Contributions, PRs, issues and feature requests are welcome! Feel free to check out our [issues page](https://github.com/RGBHack/Spark/issues).
 
 ## ❤️ Show your support
 
