@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, send_from_directory
 import os
 import time
 import sys
@@ -123,6 +123,23 @@ def members(sparkroom):
 def profile():
     context = { 'server_time': format_server_time() }
     return render_template('profile.html', context=context)
+
+@app.route('/js/<path>')
+def send_js(path):
+    return send_from_directory('./static/js', './static/'+path)
+
+@app.route('/css/<path>')
+def send_css(path):
+    return send_from_directory('./static/css', './static/'+path)
+
+@app.route('/fonts/<path>')
+def send_fonts(path):
+    return send_from_directory('./static/fonts', path)
+
+@app.route('/img/<path>')
+def send_img(path):
+    print("using send_img")
+    return send_from_directory('./static/img', path)
 
 @app.errorhandler(404)
 def error404(error):
