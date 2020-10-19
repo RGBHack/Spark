@@ -17,8 +17,8 @@
 
 ```sh
 git clone https://github.com/RGBHack/Spark.git
-npm i -g firebase
-firebase serve
+pip install -r requirements.txt
+python app.py
 ```
 
 ## ✨ Diagram
