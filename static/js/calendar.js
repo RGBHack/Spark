@@ -53,7 +53,12 @@ function addDate() {
 	$('#end').val('')
 	$('#modal-container').modal('hide')
 }
+
+let called = false
+
 document.addEventListener('DOMContentLoaded', function () {
+  if (called) return
+  called = true
 	var date = new Date()
 	var calendarEl = document.getElementById('calendar')
 	console.log(calendarEl)
