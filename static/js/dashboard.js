@@ -3,7 +3,6 @@ const menuLinks = document.querySelectorAll('.admin-menu a')
 const collapseBtn = document.querySelector('.admin-menu .collapse-btn')
 const toggleMobileMenu = document.querySelector('.toggle-mob-menu')
 const collapsedClass = 'collapsed'
-const sparkroom = '{{ sparkroom }}'
 var profileElement = document.getElementById('profile-iframe')
 var calendarElement = document.getElementById('calendar-iframe')
 var tasksElement = document.getElementById('tasks-iframe')
