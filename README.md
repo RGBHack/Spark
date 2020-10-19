@@ -3,13 +3,12 @@
 </p>
 <h3 align="center"><i>An empowering all-in-one productivity <a href="http://sparkapp.ml">web app</a></i></h3>
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg" />
-  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-  <img alt="Build" src="https://travis-ci.com/RGBHack/Spark.svg?token=yK4yfmRA1QdUzxuse6q8&branch=master">
-  <img alt="Maintained" src="https://img.shields.io/badge/Maintained-Yes-orange">
-  <img alt="awesome" src="https://img.shields.io/badge/awesome-yes-blue">
+  <img alt="Version" src="https://img.shields.io/badge/Version-1.0-red.svg" />
+  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-orange.svg" />
+  <img alt="Made with Python" src="https://img.shields.io/badge/Made%20With-Python-yellow" />
+  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg">
+  <img alt="Maintained" src="https://img.shields.io/badge/Maintained-Yes-blue">
+  <img alt="awesome" src="https://img.shields.io/badge/Awesome-Yes-purple">
 </p>
 <hr>
 
@@ -43,5 +42,4 @@ Contributions, PRs, issues and feature requests are welcome! Feel free to check 
 
 ## ❤️ Show your support
 
-Give a ⭐️ if this project helped you!
-Hope you enjoy!
+Give this project a ⭐️ if you enjoyed it!
