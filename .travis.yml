@@ -1,11 +1,24 @@
 language: node_js
 node_js:
-   - 'node'
+  - 'node'
 
 branches:
-   only:
-      - master
+  only:
+    - master
 
 script:
-   - npm i -g prettier
-   - prettier --check .
+  # Install prettier and eclint globally
+  # through the Node package manager
+  - echo "==[ INSTALLING DEPENDENCIES ]=="
+  - npm i -g prettier
+  - npm i -g eclint
+
+  # Check formatting of all files
+  # with prettier
+  - echo "==[ FORMATTING ] =="
+  - prettier --check .
+
+  # Lint all files with eclint to
+  # enforce editorconfig
+  - echo "==[ LINTING ]=="
+  - eclint check .
