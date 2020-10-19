@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+html {
+	background-color: #ffffff;
+	font-family: 'Poppins';
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	min-width: 250px;
+	font-family: 'Poppins';
+	background-color: #ffffff;
+}
+
+li {
+	&:nth-child(odd) {
+		background: #c4c4c4;
+		color: #333;
+	}
+
+	&:nth-child(even) {
+		background: #eeeeee;
+		color: #333;
+	}
+
+	vertical-align: middle;
+
+	&.badge {
+		vertical-align: middle;
+		margin-top: -0.5em;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+.invite-btn {
+	background: rgb(33, 148, 249);
+	background: linear-gradient(
+		45deg,
+		rgba(33, 148, 249, 1) 0%,
+		rgba(181, 76, 255, 1) 100%
+	);
+	border-radius: 0px 10px 10px 0px;
+	color: white;
+	display: inline;
+	border: none;
+	padding: 7px 12px;
+}
+
+svg {
+	fill: white;
+	width: 25px;
+	height: 25px;
+	float: right;
+	visibility: hidden;
+}
+
+li:hover svg {
+	visibility: visible;
+	cursor: pointer;
+}
+
+#modal-mem {
+	text-align: center;
+}
+
+.modal-body > button {
+	margin: 5px;
+}

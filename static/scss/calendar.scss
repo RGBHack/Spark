@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+	overflow: hidden;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	text-align: center;
+	font-size: 14px;
+	font-family: 'Poppins', sans-serif !important;
+}
+
+#wrap {
+	width: 100vw;
+	height: 100vh;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+#external-events {
+	float: left;
+	width: 150px;
+	padding: 0 10px;
+	text-align: left;
+
+	h4 {
+		font-size: 16px;
+		padding-top: 1em;
+	}
+}
+
+.external-event {
+	/* try to mimick the look of a real event */
+	margin: 10px 0;
+	padding: 2px 4px;
+	background: #3366cc;
+	color: #fff;
+	font-size: 0.85em;
+	cursor: pointer;
+}
+
+#external-events p {
+	margin: 1.5em 0;
+	font-size: 11px;
+	color: #666;
+
+	input {
+		margin: 0;
+		vertical-align: middle;
+	}
+}
+
+.fc-view-container {
+	background: #ffffff;
+}
+
+.fc-unthemed td.fc-today {
+	background: #efefef;
+}
+
+body {
+	background: #ffffff;
+}
+
+td.fc-today fc-event {
+	background: blue;
+}
+
+.fc-view-container {
+	overflow: auto;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 10px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(
+		45deg,
+		rgba(33, 148, 249, 1) 0%,
+		rgba(181, 76, 255, 1) 100%
+	);
+	border-radius: 10px;
+}
+
+.fc-day-top {
+	color: #333;
+}
+
+.fc-day-grid-event {
+	background-color: #cbced6 !important;
+	border-color: #cbced6 !important;
+}
