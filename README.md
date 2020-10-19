@@ -1,7 +1,7 @@
 <p align="center">
   <img width="500" alt="spark logo" src="./static/img/spark_dashboard_logo.png">
 </p>
-<h3 align="center"><i>An empowering all-in-one productivity <a href="https://www.sparkapp.cf">web app</a></i></h3>
+<h3 align="center"><i>An empowering all-in-one productivity <a href="http://sparkapp.ml">web app</a></i></h3>
 <p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
